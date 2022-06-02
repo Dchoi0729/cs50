@@ -3,6 +3,11 @@
 
 int main(void)
 {
-    int height = get_int("HEIGHT? ");
+    do
+    {
+        int height = get_int("Height: ");
+    }while()
+
+
     printf("%i", height);
 }
