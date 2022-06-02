@@ -8,6 +8,6 @@ int main(void)
 
     do
     {
-        long card_number = 
-    }
+        long number = get_long("Number: ");
+    } while();
 }
