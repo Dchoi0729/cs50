@@ -15,8 +15,11 @@ int main(void)
     while(height > 8 || height < 1);
 
     // Print pyramid with given height
-    for(int i = 0; i < height; i++)
+    for(int r = 0; r < height; r++)
     {
-        
+        for(int c = 0; c < 2*height+2; c++)
+        {
+
+        }
     }
 }
