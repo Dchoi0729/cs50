@@ -17,10 +17,25 @@ int main(void)
     // For each row, r
     for(int r = 0; r < height; r++)
     {
-        // For each column, c
-        for(int c = 0; c < 2*height+2; c++)
+        // Print spaces
+        for(int i = 0 ; i < height - r - 1; i++)
         {
-            if(c < )
+            printf(" ");
+        }
+
+        // Print left hashes
+        for(int i = 0 ; i < r + 1; i++)
+        {
+            printf("#");
+        }
+
+        // Print gap
+        printf("  ");
+
+        // Print right hashes
+        for(int i = 0 ; i < r + 1; i++)
+        {
+            printf("#");
         }
 
         // Next row
