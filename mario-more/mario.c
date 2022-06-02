@@ -14,14 +14,17 @@ int main(void)
     }
     while(height > 8 || height < 1);
 
-    // Print pyramid with given height
+    // For each row, r
     for(int r = 0; r < height; r++)
     {
+
+        // For each column, c
         for(int c = 0; c < 2*height+2; c++)
         {
             if()
         }
-    }
 
-    printf("\n");
+        // Next row
+        printf("\n");
+    }
 }
