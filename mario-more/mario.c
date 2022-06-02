@@ -7,12 +7,16 @@ int main(void)
 {
     int height;
 
+    // Get user input(must be an int between 1-8)
     do
     {
         height = get_int("Height: ");
     }
     while(height > 8 || height < 1);
 
-
-    printf("%i", height);
+    // Print pyramid with given height
+    for(int i = 0; i < height; i++)
+    {
+        
+    }
 }
