@@ -21,7 +21,7 @@ int main(void)
         // For each column, c
         for(int c = 0; c < 2*height+2; c++)
         {
-            if()
+            if(c < )
         }
 
         // Next row
