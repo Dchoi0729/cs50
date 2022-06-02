@@ -3,6 +3,11 @@
 
 int main(void)
 {
-    int getDigit(int place);
-    bool checkSum(long number);
+    int get_digit(int place);
+    bool check_sum(long number);
+
+    do
+    {
+        long card_number = 
+    }
 }
