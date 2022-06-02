@@ -22,4 +22,6 @@ int main(void)
             if()
         }
     }
+
+    printf("\n");
 }
