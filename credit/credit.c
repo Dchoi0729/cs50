@@ -17,16 +17,17 @@ int main(void)
         number = get_long("Number: ");
     } while(number < 0);
 
+    number = number /100;
 
     printf("%li\n", number);
 }
 
 int get_number_length(long number)
 {
-
+    return 1;
 }
 
 int get_digit(long number, int place)
 {
-    return(number / 10**)
+    return(number);
 }
