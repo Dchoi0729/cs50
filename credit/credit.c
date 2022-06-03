@@ -1,6 +1,7 @@
 // Checks if credit card number is valid
 
 #include <cs50.h>
+#include <math.h>
 #include <stdio.h>
 
 int main(void)
