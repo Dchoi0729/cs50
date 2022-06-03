@@ -33,6 +33,7 @@ bool check_sum(long number)
     for(int i = 1; i < numberLength; i = i + 2)
     {
         int n = get_digit(number, i) * 2;
+        printf("%i\n", n);
         if (n > 10)
         {
             sum = sum + (n / 10) + (n % 10);
@@ -43,10 +44,14 @@ bool check_sum(long number)
         }
     }
 
+    printf("%i\n", sum);
+
     for(int i = 0; i < numberLength; i = i + 2)
     {
         sum = sum + get_digit(number, i);
     }
+
+    printf("%i\n", sum);
 
     return(sum % 10 == 0);
 }
