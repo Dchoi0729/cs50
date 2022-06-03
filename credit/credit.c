@@ -3,13 +3,13 @@
 #include <cs50.h>
 #include <stdio.h>
 
+long power(int base, int power);
+int get_digit(long number, int place);
+int get_number_length(long number);
+bool check_sum(long number);
+
 int main(void)
 {
-    long power(int base, int power);
-    int get_digit(long number, int place);
-    int get_number_length(long number);
-    bool check_sum(long number);
-
     // Get user input
     long number;
     do
