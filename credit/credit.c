@@ -43,7 +43,7 @@ bool check_sum(long number)
             sum = sum + n;
         }
     }
-
+    printf("\n");
     printf("%i\n", sum);
 
     for(int i = 0; i < numberLength; i = i + 2)
@@ -79,7 +79,7 @@ int get_number_length(long number)
 // Returns the given place of given number
 int get_digit(long number, int place)
 {
-    return((number / power(10, place - 1))%10);
+    return((number / power(10, place))%10);
 }
 
 // Returns base^power
