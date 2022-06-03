@@ -17,8 +17,6 @@ int main(void)
         number = get_long("Number: ");
     } while(number < 0);
 
-    number = number /100;
-
     printf("%li\n", number);
 
     printf("%i\n",get_digit(number, 2));
@@ -26,9 +24,11 @@ int main(void)
 
 int get_number_length(long number)
 {
+    int length;
     return 1;
 }
 
+// Returns the given place of given number
 int get_digit(long number, int place)
 {
     return((number / power(10, place - 1))%10);
