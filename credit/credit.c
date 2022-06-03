@@ -17,10 +17,35 @@ int main(void)
         number = get_long("Number: ");
     } while(number < 0);
 
+    int numberLength = get_number_length(number);
+    string answer = "INVALID";
+
+    //  If valid card
     if(check_sum(number))
     {
-        printf("success\n");
+        int firstTwo = 10 * get_digit(number, numberLength - 1) + get_digit(number, numberLength - 2);
+
+        // Check for American Express card
+        if(numberLength == 15 && (firstTwo == 34 || firstTwo == 37))
+        {
+            answer = "AMEX";
+        }
+
+        // Check for Master Card
+        if(numberLength == 16 && (firstTwo > 50 && firstTwo < 56))
+        {
+            answer = "MASTERCARD";
+        }
+
+        // Check for Visa Card
+        if((numberLength == 13 || numberLength == 16) && (firstTwo / 10 == 4))
+        {
+            answer = "VISA";
+        }
+
     }
+
+    printf("%s\n",answer);
 }
 
 // Implements Luhn's algorithm and returns true/false
@@ -33,7 +58,6 @@ bool check_sum(long number)
     for(int i = 1; i < numberLength; i = i + 2)
     {
         int n = get_digit(number, i) * 2;
-        printf("%i ", n);
         if (n > 9)
         {
             sum = sum + (n / 10) + (n % 10);
@@ -43,15 +67,13 @@ bool check_sum(long number)
             sum = sum + n;
         }
     }
-    printf("\n");
-    printf("%i\n", sum);
 
+    // Adds the rest of the numbers
     for(int i = 0; i < numberLength; i = i + 2)
     {
         sum = sum + get_digit(number, i);
     }
 
-    printf("%i\n", sum);
 
     return(sum % 10 == 0);
 }
@@ -76,7 +98,7 @@ int get_number_length(long number)
     return(length);
 }
 
-// Returns the given place of given number
+// Returns the given place of given number (starting with 0)
 int get_digit(long number, int place)
 {
     return((number / power(10, place))%10);
