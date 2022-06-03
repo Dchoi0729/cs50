@@ -17,18 +17,38 @@ int main(void)
         number = get_long("Number: ");
     } while(number < 0);
 
-    int numberLength = get_number_length(number);
-
-
-
+    if(check_sum(number))
+    {
+        printf("success\n");
+    }
 }
 
 // Implements Luhn's algorithm and returns true/false
 bool check_sum(long number)
 {
     int numberLength = get_number_length(number);
-    
-    for(int i = 1; i < )
+    int sum = 0;
+
+    // For every other digit starting from second to last
+    for(int i = 1; i < numberLength; i = i + 2)
+    {
+        int n = get_digit(number, i) * 2;
+        if (n > 10)
+        {
+            sum = sum + (n / 10) + (n % 10);
+        }
+        else
+        {
+            sum = sum + n;
+        }
+    }
+
+    for(int i = 0; i < numberLength; i = i + 2)
+    {
+        sum = sum + get_digit(number, i);
+    }
+
+    return(sum % 10 == 0);
 }
 
 // Returns length of given number
