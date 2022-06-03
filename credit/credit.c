@@ -11,12 +11,5 @@ int main(void)
     // Get user input
     long number = get_long("Number: ");
 
-    if(check_sum(number))
-    {
-
-    }
-    else
-    {
-        printf("INVALID\n");
-    }
+    printf("%li", number);
 }
