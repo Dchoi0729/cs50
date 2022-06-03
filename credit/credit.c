@@ -6,6 +6,7 @@
 int main(void)
 {
     int get_digit(long number, int place);
+    int get_number_length(long number);
     bool check_sum(long number);
 
     // Get user input
@@ -17,4 +18,14 @@ int main(void)
 
 
     printf("%li\n", number);
+}
+
+int get_number_length(long number)
+{
+
+}
+
+int get_digit(long number, int place)
+{
+    return(number / 10**)
 }
