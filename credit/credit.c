@@ -17,22 +17,38 @@ int main(void)
         number = get_long("Number: ");
     } while(number < 0);
 
-    printf("%li\n", number);
+    int numberLength = get_number_length(number);
 
-    printf("%i\n",get_digit(number, 2));
+
+
 }
 
+// Implements Luhn's algorithm and returns true/false
+bool check_sum(long number)
+{
+    int numberLength = get_number_length(number);
+    
+    for(int i = 1; i < )
+}
+
+// Returns length of given number
 int get_number_length(long number)
 {
     int length = 0;
 
     while (true)
     {
-        if ()
+        if (number / power(10,length) > 0)
         {
-
+            length++;
+        }
+        else
+        {
+            break;
         }
     }
+
+    return(length);
 }
 
 // Returns the given place of given number
