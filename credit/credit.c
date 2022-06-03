@@ -24,7 +24,8 @@ int main(void)
 
 int get_number_length(long number)
 {
-    int length;
+    int length = 0;
+    
     return 1;
 }
 
