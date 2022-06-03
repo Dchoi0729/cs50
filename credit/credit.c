@@ -5,11 +5,16 @@
 
 int main(void)
 {
-    int get_digit(int place);
+    int get_digit(long number, int place);
     bool check_sum(long number);
 
     // Get user input
-    long number = get_long("Number: ");
+    long number;
+    do
+    {
+        number = get_long("Number: ");
+    } while(number < 0);
 
-    printf("%li", number);
+
+    printf("%li\n", number);
 }
