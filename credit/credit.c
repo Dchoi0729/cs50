@@ -25,8 +25,14 @@ int main(void)
 int get_number_length(long number)
 {
     int length = 0;
-    
-    return 1;
+
+    while (true)
+    {
+        if ()
+        {
+
+        }
+    }
 }
 
 // Returns the given place of given number
