@@ -34,7 +34,7 @@ bool check_sum(long number)
     {
         int n = get_digit(number, i) * 2;
         printf("%i ", n);
-        if (n > 10)
+        if (n > 9)
         {
             sum = sum + (n / 10) + (n % 10);
         }
