@@ -24,12 +24,12 @@ int main(int argc, string argv[])
     }
 }
 
-// Work on this
+// Checks if word only contains alphabets
 bool only_alpha(string word)
 {
     for (int i = 0, n = strlen(word); i < n; i++)
     {
-        if (isalpha(word[i]) == 0)
+        if (!isalpha(word[i]))
         {
             return false;
         }
