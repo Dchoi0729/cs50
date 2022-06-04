@@ -26,7 +26,7 @@ int main(int argc, string argv[])
     //string plaintext = get_string("plaintext: ");
     //string ciphertext = encrypt(plaintext);
 
-    string a = "hello";
+    string a = "";
     a[1] = 'c';
     printf("%s\n", a);
 
