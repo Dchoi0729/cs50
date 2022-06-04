@@ -21,18 +21,17 @@ int main(int argc, string argv[])
         return 1;
     }
 
-    string key = argv[1];
+    //string key = argv[1];
 
     string plaintext = get_string("plaintext: ");
 
-    string ciphertext = encrypt(plaintext);
+    //string ciphertext = encrypt(plaintext);
 
-    for (int i = 0, n = strlen(word); i < n; i++)
-    {
-        
-    }
+    string a = "hello";
+    a[0] = 'c';
+    printf("%s\n", a);
 
-    printf("ciphertext: %s\n", ciphertext);
+    //printf("ciphertext: %s\n", ciphertext);
     return 0;
 }
 
