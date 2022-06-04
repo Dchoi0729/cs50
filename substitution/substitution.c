@@ -25,17 +25,18 @@ int main(int argc, string argv[])
 
     // Creates an all uppercase version of key
     char upperKey[26];
-    for(int i = 0, n = strlen(key); i < n; i++)
+    for (int i = 0, n = strlen(key); i < n; i++)
     {
         upperKey[i] = toupper(key[i]);
     }
 
     // Get user's plaintext
-    string plaintext = get_string("plaintext : ");
+    string plaintext = get_string("plaintext:  ");
 
     // Begin printing ciphertext line
     printf("ciphertext: ");
 
+    // Print the individual character's mapped to encrypted version
     for (int i = 0, n = strlen(plaintext); i < n; i++)
     {
         if (isalpha(plaintext[i]))
