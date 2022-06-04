@@ -21,8 +21,8 @@ int main(void)
 
     double averageLetters = letters / words * 100;
     double averageSentences = sentences / words * 100;
-
     double index = 0.0588 * averageLetters - 0.296 * averageSentences - 15.8;
+
     int finalIndex = (int) round(index);
 
     if (finalIndex < 1)
