@@ -18,7 +18,7 @@ int main(void)
     int score1 = compute_score(word1);
     int score2 = compute_score(word2);
 
-    // TODO: Print the winner
+    // Print the winner
     if (score1 > score2)
     {
         printf("Player 1 wins!\n");
@@ -35,5 +35,10 @@ int main(void)
 
 int compute_score(string word)
 {
-    // TODO: Compute and return score for string
+    int score = 0;
+
+    // Iterating through each character
+    for(int i = 0, int n = strlen(word); i < n; i++){
+        char c = toupper(word[i]);
+    }
 }
