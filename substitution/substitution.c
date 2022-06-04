@@ -82,14 +82,19 @@ bool only_alpha(string word)
 // Checks if word contains duplicates
 bool contains_dup(string word)
 {
+    // For each alphabet
     for (int i = 65; i < 91; i++)
     {
         int sum = 0;
 
-        if (i == toupper(word))
+        for (int j = 0, n = strlen(word); j < n; j++)
         {
-            sum++;
+            if (toupper(word[j]) == i)
+            {
+                sum++;
+            }
         }
+
 
         if (sum > 1)
         {
