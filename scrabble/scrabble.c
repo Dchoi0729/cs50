@@ -33,6 +33,7 @@ int main(void)
     }
 }
 
+// Returns the score for given word
 int compute_score(string word)
 {
     int score = 0;
