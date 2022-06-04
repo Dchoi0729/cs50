@@ -38,7 +38,7 @@ int compute_score(string word)
     int score = 0;
 
     // Iterating through each character
-    for (int i = 0, int n = strlen(word); i < n; i++){
+    for (int i = 0, n = strlen(word); i < n; i++){
         char c = toupper(word[i]);
 
         score += POINTS[c-65];
