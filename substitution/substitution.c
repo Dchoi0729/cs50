@@ -29,7 +29,7 @@ bool only_alpha(string word)
 {
     for (int i = 0, n = strlen(word); i < n; i++)
     {
-        if (isalpha(word[i]))
+        if (isalpha(word[i]) == 0)
         {
             return false;
         }
