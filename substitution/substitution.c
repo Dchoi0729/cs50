@@ -23,21 +23,38 @@ int main(int argc, string argv[])
         return 1;
     }
 
+    // Creates an all uppercase version of key
+    char upperKey[26];
+    for(int i = 0, n = strlen(key); i < n; i++)
+    {
+        upperKey[i] = toupper(key[i]);
+    }
+
+    // Get user's plaintext
+    string plaintext = get_string("plaintext : ");
+
+    // Begin printing ciphertext line
     printf("ciphertext: ");
 
-    string plaintext = get_string("plaintext: ");
-
-    for (int i = 0, n = strlen(word); i < n; i++)
+    for (int i = 0, n = strlen(plaintext); i < n; i++)
     {
-        if (isalpha(word[i]))
+        if (isalpha(plaintext[i]))
         {
-            int index = toupper(word[i]) - 65;
+            int index = toupper(plaintext[i]) - 65;
 
-            
+            if (isupper(plaintext[i]))
+            {
+                printf("%c", upperKey[index]);
+            }
+            else
+            {
+                printf("%c", tolower(upperKey[index]));
+            }
+
         }
         else
         {
-            printf("%c", word[i]);
+            printf("%c", plaintext[i]);
         }
     }
 
