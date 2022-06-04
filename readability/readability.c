@@ -15,6 +15,10 @@ int main(void)
     printf("%i letters\n", count_letters(text));
     printf("%i words\n", count_words(text));
     printf("%i sentences\n", count_sentences(text));
+
+    
+
+    double index = 0.0588 * L - 0.296 * S - 15.8;
 }
 
 // Returns the number of sentences in the text
