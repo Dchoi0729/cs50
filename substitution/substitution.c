@@ -18,13 +18,11 @@ int main(int argc, string argv[])
     string key = argv[1];
 
     // Checks if a valid string of 26 alphabets has been provided
-    if (strlen(key) != 26 || !only_alpha(key) || !contains_dup(key))
+    if (strlen(key) != 26 || !only_alpha(key) || contains_dup(key))
     {
         printf("Key must contain 26 distinct characters.\n");
         return 1;
     }
-
-    printf("%s\n", key);
 
     // Creates an all uppercase version of key
     char upperKey[26];
