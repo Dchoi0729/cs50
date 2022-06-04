@@ -4,6 +4,7 @@
 #include <ctype.h>
 
 bool only_alpha(string word);
+bool contains_dup(string word);
 
 int main(int argc, string argv[])
 {
@@ -17,9 +18,9 @@ int main(int argc, string argv[])
     string key = argv[1];
 
     // Checks if a valid string of 26 alphabets has been provided
-    if (strlen(key) != 26 || !only_alpha(key))
+    if (strlen(key) != 26 || !only_alpha(key) || !contains_dup(key))
     {
-        printf("Key must contain 26 characters.\n");
+        printf("Key must contain 26 distinct characters.\n");
         return 1;
     }
 
@@ -76,4 +77,25 @@ bool only_alpha(string word)
     }
 
     return true;
+}
+
+// Checks if word contains duplicates
+bool contains_dup(string word)
+{
+    for (int i = 65; i < 91; i++)
+    {
+        int sum = 0;
+
+        if (i == toupper(word))
+        {
+            sum++;
+        }
+
+        if (sum > 1)
+        {
+            return true;
+        }
+    }
+
+    return false;
 }
