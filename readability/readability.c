@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include <math.h>
 
 int count_letters(string text);
 int count_words(string text);
@@ -12,21 +13,31 @@ int main(void)
     // Get user input
     string text = get_string("Text: ");
 
-    printf("%i letters\n", count_letters(text));
-    printf("%i words\n", count_words(text));
-    printf("%i sentences\n", count_sentences(text));
-
     int letters = count_letters(text);
     int sentences = count_sentences(text);
 
     // To ensure int division doesn't happen
     double words = (double) count_words(text);
 
-
     double averageLetters = letters / words * 100;
     double averageSentences = sentences / words * 100;
 
     double index = 0.0588 * averageLetters - 0.296 * averageSentences - 15.8;
+    int finalIndex = (int) round(index);
+
+    if (finalIndex < 1)
+    {
+        printf("Before Grade 1\n");
+    }
+    else if (finalIndex > 16)
+    {
+        printf("Grade 16+\n");
+    }
+    else
+    {
+        printf("Grade %i\n", finalIndex);
+    }
+
 }
 
 // Returns the number of sentences in the text
