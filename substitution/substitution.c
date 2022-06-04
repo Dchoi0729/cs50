@@ -24,6 +24,8 @@ int main(int argc, string argv[])
         return 1;
     }
 
+    printf("%s\n", key);
+
     // Creates an all uppercase version of key
     char upperKey[26];
     for (int i = 0, n = strlen(key); i < n; i++)
