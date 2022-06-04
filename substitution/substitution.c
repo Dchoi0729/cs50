@@ -36,7 +36,7 @@ int main(int argc, string argv[])
     // Begin printing ciphertext line
     printf("ciphertext: ");
 
-    // Print the individual character's mapped to encrypted version
+    // Print the individual characters mapped to encrypted version
     for (int i = 0, n = strlen(plaintext); i < n; i++)
     {
         if (isalpha(plaintext[i]))
