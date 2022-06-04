@@ -31,7 +31,9 @@ int main(int argc, string argv[])
     {
         if (isalpha(word[i]))
         {
+            int index = toupper(word[i]) - 65;
 
+            if ()
         }
         else
         {
