@@ -33,7 +33,7 @@ int main(int argc, string argv[])
         {
             int index = toupper(word[i]) - 65;
 
-            if ()
+            
         }
         else
         {
