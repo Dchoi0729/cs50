@@ -7,8 +7,6 @@ bool only_alpha(string word);
 
 int main(int argc, string argv[])
 {
-    // string key = argv[1];
-
     // Checks if one command-line argument has been provided
     if (argc != 2)
     {
@@ -22,6 +20,15 @@ int main(int argc, string argv[])
         printf("Key must contain 26 characters.\n");
         return 1;
     }
+
+    string key = argv[1];
+
+    string plaintext = get_string("plaintext: ");
+
+    string ciphertext = encrypt(plaintext);
+
+    printf("ciphertext: %s\n", ciphertext);
+    return 0;
 }
 
 // Checks if word only contains alphabets
