@@ -16,9 +16,17 @@ int main(void)
     printf("%i words\n", count_words(text));
     printf("%i sentences\n", count_sentences(text));
 
-    
+    int letters = count_letters(text);
+    int sentences = count_sentences(text);
 
-    double index = 0.0588 * L - 0.296 * S - 15.8;
+    // To ensure int division doesn't happen
+    double words = (double) count_words(text);
+
+
+    double averageLetters = letters / words * 100;
+    double averageSentences = sentences / words * 100;
+
+    double index = 0.0588 * averageLetters - 0.296 * averageSentences - 15.8;
 }
 
 // Returns the number of sentences in the text
