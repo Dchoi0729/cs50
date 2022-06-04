@@ -14,21 +14,20 @@ int main(int argc, string argv[])
         return 1;
     }
 
+    string key = argv[1];
+
     // Checks if a valid string of 26 alphabets has been provided
-    if (strlen(argv[1]) != 26 || !only_alpha(argv[1]))
+    if (strlen(key) != 26 || !only_alpha(key))
     {
         printf("Key must contain 26 characters.\n");
         return 1;
     }
 
-    //string key = argv[1];
-
-    string plaintext = get_string("plaintext: ");
-
+    //string plaintext = get_string("plaintext: ");
     //string ciphertext = encrypt(plaintext);
 
     string a = "hello";
-    a[0] = 'c';
+    a[1] = 'c';
     printf("%s\n", a);
 
     //printf("ciphertext: %s\n", ciphertext);
