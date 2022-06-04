@@ -23,12 +23,24 @@ int main(int argc, string argv[])
         return 1;
     }
 
-    //string plaintext = get_string("plaintext: ");
-    //string ciphertext = encrypt(plaintext);
+    printf("ciphertext: ");
 
-    
+    string plaintext = get_string("plaintext: ");
 
-    //printf("ciphertext: %s\n", ciphertext);
+    for (int i = 0, n = strlen(word); i < n; i++)
+    {
+        if (isalpha(word[i]))
+        {
+
+        }
+        else
+        {
+            printf("%c", word[i]);
+        }
+    }
+
+    printf("\n");
+
     return 0;
 }
 
