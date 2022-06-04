@@ -27,6 +27,11 @@ int main(int argc, string argv[])
 
     string ciphertext = encrypt(plaintext);
 
+    for (int i = 0, n = strlen(word); i < n; i++)
+    {
+        
+    }
+
     printf("ciphertext: %s\n", ciphertext);
     return 0;
 }
