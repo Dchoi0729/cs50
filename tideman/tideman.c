@@ -1,5 +1,6 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <string.h>
 
 // Max number of candidates
 #define MAX 9
@@ -103,7 +104,7 @@ bool vote(int rank, string name, int ranks[])
 
     for (int i = 0; i < candidate_count; i++)
     {
-        if (strcmp(name, candidate[i]) == 0)
+        if (strcmp(name, candidates[i]) == 0)
         {
             ranks[rank] = name;
             return true;
@@ -124,7 +125,7 @@ void record_preferences(int ranks[])
     {
         for(int j = 0; j < candidate_count; j++)
         {
-            if(strcmp(ranks[i], candidate[j]) == 0)
+            if(strcmp(ranks[i], candidates[j]) == 0)
             {
                 candidate_index[i] = j;
                 break;
