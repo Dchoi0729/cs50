@@ -191,7 +191,7 @@ void merge_sort(pair arr[], int start, int end)
 // Merges arr[start:middle] with arr[middle+1:end]
 void merge(pair arr[], int start, int middle, int end)
 {
-
+    pair temp[];
 }
 
 
