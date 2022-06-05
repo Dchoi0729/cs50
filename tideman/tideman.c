@@ -266,7 +266,13 @@ void merge(pair arr[], int start, int middle, int end)
 void lock_pairs(void)
 {
     pairs
-    for (int i = 0; i < pair_count)
+    for (int i = 0; i < pair_count; i++)
+    {
+        if (doesn't create loop)
+        {
+            
+        }
+    }
 }
 
 // Print the winner of the election
