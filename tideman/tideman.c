@@ -32,6 +32,7 @@ void add_pairs(void);
 void sort_pairs(void);
 void lock_pairs(void);
 void print_winner(void);
+void merge_sort(pair list[]);
 
 int main(int argc, string argv[])
 {
@@ -170,6 +171,12 @@ void add_pairs(void)
 
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
+{
+    merge_sort(pairs);
+}
+
+// Recursive merge sort algorithm for pair list
+void merge_sort(pair list[])
 {
     
 }
