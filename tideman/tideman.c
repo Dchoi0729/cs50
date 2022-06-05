@@ -286,8 +286,10 @@ bool check_cycle(int w, int l)
 
     for (int i = 0; i < candidate_count; i++)
     {
-        
+
     }
+
+    
 }
 
 // Print the winner of the election
