@@ -207,16 +207,50 @@ void merge(pair arr[], int start, int middle, int end)
         temp_right[i] = arr[i + middle + 1]
     }
 
-    int left_counter = 0, right_counter = 0;
+    int left_counter = 0, right_counter = 0, arr_counter = start;
 
-    while ()
+    while (left_counter < left_size && right_counter < right_size)
     {
         int left_score = preferences[temp_left[left_counter].winner][temp_left[left_counter].loser];
         int right_score = preferences[temp_right[right_counter].winner][temp_right[right_counter].loser];
 
         if(left_score > right_score)
+        {
+            arr[arr_counter] = temp_left[left_counter];
+            left_counter++;
+        }
+        else if(right_score > left_score)
+        {
+            arr[arr_counter] = temp_right[right_counter];
+            right_counter++;
+        }
+        else
+        {
+            arr[arr_counter] = temp_right[right_counter];
+            arr[arr_counter + 1] = temp_left[left_counter];
+            right_counter++;
+            left_counter++;
+            arr_counter++;
+        }
+
+        arr_counter++;
     }
-    preferences[temp_left[i].winner][temp_left[i].loser]
+
+    // If there are left over elements in left array
+    while(left_counter < left_size)
+    {
+        arr[arr_counter] = temp_left[left_counter];
+        left_counter++;
+        arr_counter++;
+    }
+
+    // If there are left over elements in right array
+    while(left_counter < left_size)
+    {
+        arr[arr_counter] = temp_right[right_counter];
+        right_counter++;
+        arr_counter++;
+    }
 }
 
 
