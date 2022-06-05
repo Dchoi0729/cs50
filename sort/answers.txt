@@ -9,3 +9,14 @@ How do you know?: TODO
 sort3 uses: TODO
 
 How do you know?: TODO
+
+
+
+sort 1 - reversed10000
+0.291s, 0.334s, 0.335s
+
+sort 2 - reversed10000
+0.052s, 0.061s, 0.079s
+
+sort 3 - reversed10000
+0.201s, 0.170s, 0.173s
