@@ -116,7 +116,7 @@ int main(int argc, string argv[])
     add_pairs();
     sort_pairs();
     lock_pairs();
-    //print_locked();
+    print_locked();
     print_winner();
     return 0;
 }
