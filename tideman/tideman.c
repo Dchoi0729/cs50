@@ -305,10 +305,10 @@ bool check_cycle(int w, int l)
 
     if (count1 > 0 && count2 > 0)
     {
-        return true;
+        return false;
     }
 
-    return false;
+    return true;
 }
 
 // Print the winner of the election
