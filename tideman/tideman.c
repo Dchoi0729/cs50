@@ -178,7 +178,7 @@ void sort_pairs(void)
 // Recursive merge sort algorithm for pair list
 void merge_sort(pair arr[], int size)
 {
-    
+    pair arr1[]
 }
 
 // merges two arrays
