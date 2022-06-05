@@ -196,6 +196,7 @@ void merge(pair arr[], int start, int middle, int end)
 
     pair temp_left[left_size], temp_right[right_size];
 
+    // Populate temporary arrays with appropriate values
     for (int i = 0; i < left_size; i ++)
     {
         temp_left[i] = arr[i + start]
@@ -205,6 +206,17 @@ void merge(pair arr[], int start, int middle, int end)
     {
         temp_right[i] = arr[i + middle + 1]
     }
+
+    int left_counter = 0, right_counter = 0;
+
+    while ()
+    {
+        int left_score = preferences[temp_left[left_counter].winner][temp_left[left_counter].loser];
+        int right_score = preferences[temp_right[right_counter].winner][temp_right[right_counter].loser];
+
+        if(left_score > right_score)
+    }
+    preferences[temp_left[i].winner][temp_left[i].loser]
 }
 
 
