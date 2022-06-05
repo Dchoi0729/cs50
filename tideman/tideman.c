@@ -118,7 +118,7 @@ void record_preferences(int ranks[])
     // For each candidate until the second last rank
     for (int i = 0; i < candidate_count - 1; i++)
     {
-        // For all the candidate below rank i 
+        // For all the candidate below rank i
         for (int j = i + 1; j < candidate_count; j++)
         {
             preferences[i][j]++;
@@ -129,8 +129,7 @@ void record_preferences(int ranks[])
 // Record pairs of candidates where one is preferred over the other
 void add_pairs(void)
 {
-    // TODO
-    return;
+    for (int i = 0; i < candidate_count)
 }
 
 // Sort pairs in decreasing order by strength of victory
