@@ -1,6 +1,6 @@
 sort1 uses: bubble sort
 
-How do you know?: TODO
+How do you know?: already sorted list took much shorted time to sort than the reversed or random list, implying that there is a "best" case scenario for sort 2.
 
 sort2 uses: merge sort
 
@@ -9,33 +9,3 @@ How do you know?: sort2 was remarkably faster comapred to the others when sortin
 sort3 uses: selection sort
 
 How do you know?: sort3 took roughly the same amount of time to sort random and already sorted list. This is the case for selection sort, not bubble sort.
-
-
-
-sort 1 - reversed10000
-0.291s, 0.334s, 0.335s
-
-sort 2 - reversed10000 (merge??)
-0.052s, 0.061s, 0.079s
-
-sort 3 - reversed10000
-0.201s, 0.170s, 0.173s
-
-sort 1 - sorted10000(bubble)
-0.092s
-
-sort 2 - reversed10000 (merge??)
-0.088s, 0.079s
-
-sort 3 - reversed10000 (selection??)
-0.208s, 0.165s, 0.160s
-
-
-sort 1 - random50000(bubble)
-7.429s
-
-sort 2 - reversed10000 (merge??)
-0.570s
-
-sort 3 - reversed10000 (selection??)
-3.139s
