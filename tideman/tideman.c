@@ -44,7 +44,7 @@ void print_locked(void)
     {
         for (int j = 0; j < candidate_count; j++)
         {
-            if(locked[i][j])
+            if (locked[i][j])
             {
                 printf("true ");
             }
@@ -163,7 +163,7 @@ void add_pairs(void)
 
         for (int j = 0; j < i + 1; j++)
         {
-            if(preferences[i][j] > preferences[j][i])
+            if (preferences[i][j] > preferences[j][i])
             {
                 pairs[counter].winner = i;
                 pairs[counter].loser = j;
@@ -227,12 +227,12 @@ void merge(pair arr[], int start, int middle, int end)
         int left_score = preferences[temp_left[left_counter].winner][temp_left[left_counter].loser];
         int right_score = preferences[temp_right[right_counter].winner][temp_right[right_counter].loser];
 
-        if(left_score > right_score)
+        if (left_score > right_score)
         {
             arr[arr_counter] = temp_left[left_counter];
             left_counter++;
         }
-        else if(right_score > left_score)
+        else if (right_score > left_score)
         {
             arr[arr_counter] = temp_right[right_counter];
             right_counter++;
@@ -250,7 +250,7 @@ void merge(pair arr[], int start, int middle, int end)
     }
 
     // If there are left over elements in left array
-    while(left_counter < left_size)
+    while (left_counter < left_size)
     {
         arr[arr_counter] = temp_left[left_counter];
         left_counter++;
@@ -258,7 +258,7 @@ void merge(pair arr[], int start, int middle, int end)
     }
 
     // If there are left over elements in right array
-    while(left_counter < left_size)
+    while (left_counter < left_size)
     {
         arr[arr_counter] = temp_right[right_counter];
         right_counter++;
