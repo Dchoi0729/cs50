@@ -33,7 +33,8 @@ void add_pairs(void);
 void sort_pairs(void);
 void lock_pairs(void);
 void print_winner(void);
-void merge_sort(pair list[]);
+void merge_sort(pair arr[], int start, int end);
+void merge(pair arr[], int start, int middle, int end);
 
 int main(int argc, string argv[])
 {
@@ -161,14 +162,14 @@ void add_pairs(void)
             {
                 pairs[counter].winner = i;
                 pairs[counter].loser = j;
+                counter++;
             }
             else if (preferences[j][i] > preferences[i][j])
             {
                 pairs[counter].winner = j;
                 pairs[counter].loser = i;
+                counter++;
             }
-
-            counter++;
         }
     }
 
@@ -186,11 +187,11 @@ void merge_sort(pair arr[], int start, int end)
 {
     if (end > start)
     {
-        int middle = start + (end - 1) / 2
-        merge_sort(arr[], start, middle);
-        merge_sort(arr[], middle + 1, end);
+        int middle = start + (end - 1) / 2;
+        merge_sort(arr, start, middle);
+        merge_sort(arr, middle + 1, end);
 
-        merge(arr[], start, middle, end);
+        merge(arr, start, middle, end);
     }
 }
 
@@ -205,12 +206,12 @@ void merge(pair arr[], int start, int middle, int end)
     // Populate temporary arrays with appropriate values
     for (int i = 0; i < left_size; i ++)
     {
-        temp_left[i] = arr[i + start]
+        temp_left[i] = arr[i + start];
     }
 
     for (int i = 0; i < right_size; i ++)
     {
-        temp_right[i] = arr[i + middle + 1]
+        temp_right[i] = arr[i + middle + 1];
     }
 
     int left_counter = 0, right_counter = 0, arr_counter = start;
