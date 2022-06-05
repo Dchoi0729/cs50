@@ -196,14 +196,14 @@ void merge(pair arr[], int start, int middle, int end)
 
     pair temp_left[left_size], temp_right[right_size];
 
-    for (int i = start; i < middle + 1; i++)
+    for (int i = 0; i < left_size; i ++)
     {
-        temp_left[i] = arr[i]
+        temp_left[i] = arr[i + start]
     }
 
-    for (int i = middle + 1; i < end + 1; i++)
+    for (int i = 0; i < right_size; i ++)
     {
-        temp_right[i] = arr[i]
+        temp_right[i] = arr[i + middle + 1]
     }
 }
 
