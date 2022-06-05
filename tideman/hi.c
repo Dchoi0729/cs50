@@ -10,7 +10,7 @@ int main(void)
 
     for (int i = 0; i < 2; i++)
     {
-        printf("%i\n", b[i]);
+        printf("%i\n", 5/2);
     }
 
 
