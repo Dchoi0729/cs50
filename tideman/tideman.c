@@ -172,17 +172,17 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
-    merge_sort(pairs);
+    merge_sort(pairs, pair_count);
 }
 
 // Recursive merge sort algorithm for pair list
-void merge_sort(pair list[])
+void merge_sort(pair arr[], int size)
 {
-
+    
 }
 
 // merges two arrays
-void merge(pair list[], int i, int j)
+void merge(pair arr1[], pair arr2[])
 {
 
 }
