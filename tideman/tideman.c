@@ -183,11 +183,13 @@ void merge_sort(pair arr[], int start, int end)
         int middle = start + (end - 1) / 2
         merge_sort(arr[], start, middle);
         merge_sort(arr[], middle + 1, end);
+
+        merge(arr[], start, middle, end);
     }
 }
 
-// merges two arrays
-void merge(pair arr1[], pair arr2[])
+// Merges arr[start:middle] with arr[middle+1:end]
+void merge(pair arr[], int start, int middle, int end)
 {
 
 }
