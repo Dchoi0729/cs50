@@ -282,30 +282,22 @@ void lock_pairs(void)
     }
 }
 
-// Helper function to check for cycles in locked
+// Helper function to check for cycles in locked, return true if there are no cycles
 bool check_cycle(int w, int l)
 {
-    int count1 = 0, count2 = 0;
-
-    for (int i = 0; i < candidate_count; i++)
-    {
-        if (locked[l][i] == true)
-        {
-            count1++;
-        }
-    }
-
-    for (int i = 0; i < candidate_count; i++)
-    {
-        if (locked[i][w] == true)
-        {
-            count2++;
-        }
-    }
-
-    if (count1 > 0 && count2 > 0)
+    // If l is already locked onto w
+    if (locked[l][w])
     {
         return false;
+    }
+
+    for (int i = 0; i < candidate_count; i++)
+    {
+        // If i is locked into w
+        if (locked[i][w])
+        {
+            return check_cycle(i, l);
+        }
     }
 
     return true;
