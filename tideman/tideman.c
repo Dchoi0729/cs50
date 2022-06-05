@@ -281,6 +281,13 @@ void lock_pairs(void)
 bool check_cycle(int w, int l)
 {
     locked[w][l]
+
+    int temp[candidate_count];
+
+    for (int i = 0; i < candidate_count; i++)
+    {
+        
+    }
 }
 
 // Print the winner of the election
