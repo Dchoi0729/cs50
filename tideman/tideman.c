@@ -36,6 +36,26 @@ void print_winner(void);
 void merge_sort(pair arr[], int start, int end);
 void merge(pair arr[], int start, int middle, int end);
 bool check_cycle(int w, int l);
+void print_locked(void);
+
+void print_locked(void)
+{
+    for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
+        {
+            if(locked[i][j])
+            {
+                printf("true ");
+            }
+            else
+            {
+                printf("false ");
+            }
+        }
+        printf("\n");
+    }
+}
 
 int main(int argc, string argv[])
 {
@@ -96,6 +116,7 @@ int main(int argc, string argv[])
     add_pairs();
     sort_pairs();
     lock_pairs();
+    print_locked();
     print_winner();
     return 0;
 }
@@ -119,22 +140,6 @@ bool vote(int rank, string name, int ranks[])
 // Update preferences given one voter's ranks
 void record_preferences(int ranks[])
 {
-    // An array with the index of candidates at each rank
-    // The candidate_index[0] is the index of the first ranking candidate
-  //  int candidate_index[candidate_count];
-
-   // for(int i = 0; i < candidate_count; i ++)
-    //{
-      //  for(int j = 0; j < candidate_count; j++)
-        //{
-          //  if(strcmp(ranks[i], candidates[j]) == 0)
-  //          {
-    //            candidate_index[i] = j;
-      //          break;
-        //    }
-       // }
-   // }
-
     // For each candidate above the second lowerst rank
     for (int i = 0; i < candidate_count - 1; i++)
     {
