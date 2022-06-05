@@ -1,6 +1,6 @@
 sort1 uses: bubble sort
 
-How do you know?: already sorted list took much shorted time to sort than the reversed or random list, implying that there is a "best" case scenario for sort 2.
+How do you know?: already sorted list took much shorter time to sort than the reversed or random list, implying that there is a "best" case scenario for sort1.
 
 sort2 uses: merge sort
 
