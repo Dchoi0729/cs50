@@ -116,7 +116,7 @@ int main(int argc, string argv[])
     add_pairs();
     sort_pairs();
     lock_pairs();
-    print_locked();
+    //print_locked();
     print_winner();
     return 0;
 }
@@ -124,7 +124,6 @@ int main(int argc, string argv[])
 // Update ranks given a new vote
 bool vote(int rank, string name, int ranks[])
 {
-
     for (int i = 0; i < candidate_count; i++)
     {
         if (strcmp(name, candidates[i]) == 0)
@@ -283,6 +282,7 @@ void lock_pairs(void)
     }
 }
 
+// Helper function to check for cycles in locked
 bool check_cycle(int w, int l)
 {
     int count1 = 0, count2 = 0;
