@@ -178,8 +178,15 @@ void sort_pairs(void)
 // Recursive merge sort algorithm for pair list
 void merge_sort(pair list[])
 {
-    
+
 }
+
+// merges two arrays
+void merge(pair list[], int i, int j)
+{
+
+}
+
 
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
