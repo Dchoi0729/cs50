@@ -136,12 +136,12 @@ void record_preferences(int ranks[])
     // For each candidate above the second lowerst rank
     for (int i = 0; i < candidate_count - 1; i++)
     {
-        int winner_index = candidate_index[i];
+        int winner_index = ranks[i];
 
         // For all the candidate below rank i
         for (int j = i + 1; j < candidate_count; j++)
         {
-            int loser_index = candidate_index[j];
+            int loser_index = ranks[j];
             preferences[winner_index][loser_index]++;
         }
     }
