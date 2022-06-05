@@ -35,6 +35,7 @@ void lock_pairs(void);
 void print_winner(void);
 void merge_sort(pair arr[], int start, int end);
 void merge(pair arr[], int start, int middle, int end);
+bool check_cycle(int w, int l)
 
 int main(int argc, string argv[])
 {
@@ -270,11 +271,16 @@ void lock_pairs(void)
         int winner = pairs[i].winner;
         int loser = pairs[i].loser;
 
-        if (true)
+        if (check_cycle(winner, loser))
         {
             locked[winner][loser] = true;
         }
     }
+}
+
+bool check_cycle(int w, int l)
+{
+    locked[w][l]
 }
 
 // Print the winner of the election
