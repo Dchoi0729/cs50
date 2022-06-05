@@ -36,26 +36,6 @@ void print_winner(void);
 void merge_sort(pair arr[], int start, int end);
 void merge(pair arr[], int start, int middle, int end);
 bool check_cycle(int w, int l);
-void print_locked(void);
-
-void print_locked(void)
-{
-    for (int i = 0; i < candidate_count; i++)
-    {
-        for (int j = 0; j < candidate_count; j++)
-        {
-            if (locked[i][j])
-            {
-                printf("true ");
-            }
-            else
-            {
-                printf("false ");
-            }
-        }
-        printf("\n");
-    }
-}
 
 int main(int argc, string argv[])
 {
@@ -116,7 +96,6 @@ int main(int argc, string argv[])
     add_pairs();
     sort_pairs();
     lock_pairs();
-    print_locked();
     print_winner();
     return 0;
 }
