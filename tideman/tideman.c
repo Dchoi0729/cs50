@@ -265,12 +265,14 @@ void merge(pair arr[], int start, int middle, int end)
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
-    pairs
     for (int i = 0; i < pair_count; i++)
     {
-        if (doesn't create loop)
+        int winner = pairs[i].winner;
+        int loser = pairs[i].loser;
+
+        if (true)
         {
-            
+            locked[winner][loser] = true;
         }
     }
 }
