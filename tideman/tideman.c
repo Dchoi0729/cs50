@@ -282,7 +282,7 @@ void lock_pairs(void)
     }
 }
 
-// Helper function to check for cycles in locked, return true if there are no cycles
+// Helper function to check if l --> w, return true if there are no cycles
 bool check_cycle(int w, int l)
 {
     // If l is already locked onto w
