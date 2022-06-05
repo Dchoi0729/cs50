@@ -85,7 +85,7 @@ void print_winner(void)
 
     for (int i = 0; i < candidate_count; i++)
     {
-        if (candidates[i].votes > winning_votes)\
+        if (candidates[i].votes > winning_votes)
         {
             winning_votes = candidates[i].votes;
         }
