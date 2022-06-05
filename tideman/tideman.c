@@ -118,9 +118,11 @@ void record_preferences(int ranks[])
     // For each candidate until the second last rank
     for (int i = 0; i < candidate_count - 1; i++)
     {
+        string winner = ranks[i];
         // For all the candidate below rank i
         for (int j = i + 1; j < candidate_count; j++)
         {
+            string loser = ranks[j];
             preferences[i][j]++;
         }
     }
