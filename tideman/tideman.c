@@ -216,6 +216,7 @@ void merge(pair arr[], int start, int middle, int end)
 
     int left_counter = 0, right_counter = 0, arr_counter = start;
 
+    // Merging two arrays
     while (left_counter < left_size && right_counter < right_size)
     {
         int left_score = preferences[temp_left[left_counter].winner][temp_left[left_counter].loser];
@@ -264,8 +265,8 @@ void merge(pair arr[], int start, int middle, int end)
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
-    // TODO
-    return;
+    pairs
+    for (int i = 0; i < pair_count)
 }
 
 // Print the winner of the election
