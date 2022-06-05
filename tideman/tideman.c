@@ -291,11 +291,13 @@ bool check_cycle(int w, int l)
         return false;
     }
 
+    // Checking to see if something is locked into w
     for (int i = 0; i < candidate_count; i++)
     {
         // If i is locked into w
         if (locked[i][w])
         {
+            // Note this will return false if l is connected to i (l --> i --> w)
             return check_cycle(i, l);
         }
     }
