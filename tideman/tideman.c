@@ -180,7 +180,7 @@ void merge_sort(pair arr[], int start, int end)
 {
     if (end > start)
     {
-        int middle = start + end / 2
+        int middle = start + (end - 1) / 2
         merge_sort(arr[], start, middle);
         merge_sort(arr[], middle + 1, end);
     }
