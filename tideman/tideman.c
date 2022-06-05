@@ -200,6 +200,11 @@ void merge(pair arr[], int start, int middle, int end)
     {
         temp_left[i] = arr[i]
     }
+
+    for (int i = middle + 1; i < end + 1; i++)
+    {
+        temp_right[i] = arr[i]
+    }
 }
 
 
