@@ -282,14 +282,15 @@ bool check_cycle(int w, int l)
 {
     locked[w][l]
 
-    int temp[candidate_count];
+    // Array containing all elements that lost to l (directly or indirectly)
+    int lost_to_l[candidate_count];
 
     for (int i = 0; i < candidate_count; i++)
     {
 
     }
 
-    
+
 }
 
 // Print the winner of the election
