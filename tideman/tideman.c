@@ -280,8 +280,30 @@ void lock_pairs(void)
 
 bool check_cycle(int w, int l)
 {
-    int invertedw = l;
-    int invertedl = w;
+    int count1 = 0, count2 = 0;
+
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (locked[l][i] == true)
+        {
+            count1++;
+        }
+    }
+
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (locked[i][w] == true)
+        {
+            count2++;
+        }
+    }
+
+    if (count1 > 0 && count2 > 0)
+    {
+        return true;
+    }
+
+    return false;
 }
 
 // Print the winner of the election
