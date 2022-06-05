@@ -35,7 +35,7 @@ void lock_pairs(void);
 void print_winner(void);
 void merge_sort(pair arr[], int start, int end);
 void merge(pair arr[], int start, int middle, int end);
-bool check_cycle(int w, int l)
+bool check_cycle(int w, int l);
 
 int main(int argc, string argv[])
 {
@@ -309,6 +309,21 @@ bool check_cycle(int w, int l)
 // Print the winner of the election
 void print_winner(void)
 {
-    // TODO
-    return;
+    for (int i = 0; i < candidate_count; i++)
+    {
+        bool winner = true;
+
+        for (int j = 0; j < candidate_count; j++)
+        {
+            if (locked[j][i])
+            {
+                winner = false;
+            }
+        }
+
+        if (winner)
+        {
+            printf("%s", candidates[i]);
+        }
+    }
 }
