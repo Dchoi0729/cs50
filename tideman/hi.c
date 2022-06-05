@@ -5,8 +5,8 @@ void hi(int hi[]);
 
 int main(void)
 {
-    int b[] = {1,2};
-    hi(b);
+    int b[2];
+    //hi(b);
 
     for (int i = 0; i < 2; i++)
     {
