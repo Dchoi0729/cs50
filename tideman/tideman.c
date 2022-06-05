@@ -106,7 +106,7 @@ bool vote(int rank, string name, int ranks[])
     {
         if (strcmp(name, candidates[i]) == 0)
         {
-            ranks[rank] = name;
+            ranks[rank] = i;
             return true;
         }
     }
@@ -119,19 +119,19 @@ void record_preferences(int ranks[])
 {
     // An array with the index of candidates at each rank
     // The candidate_index[0] is the index of the first ranking candidate
-    int candidate_index[candidate_count];
+  //  int candidate_index[candidate_count];
 
-    for(int i = 0; i < candidate_count; i ++)
-    {
-        for(int j = 0; j < candidate_count; j++)
-        {
-            if(strcmp(ranks[i], candidates[j]) == 0)
-            {
-                candidate_index[i] = j;
-                break;
-            }
-        }
-    }
+   // for(int i = 0; i < candidate_count; i ++)
+    //{
+      //  for(int j = 0; j < candidate_count; j++)
+        //{
+          //  if(strcmp(ranks[i], candidates[j]) == 0)
+  //          {
+    //            candidate_index[i] = j;
+      //          break;
+        //    }
+       // }
+   // }
 
     // For each candidate above the second lowerst rank
     for (int i = 0; i < candidate_count - 1; i++)
