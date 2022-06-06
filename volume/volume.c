@@ -35,9 +35,8 @@ int main(int argc, char *argv[])
 
     // Copy the header to the new file
     uint8_t header[HEADER_SIZE];
-
-    fread(header, sizeof(uint8_t), HEADER_SIZE, input);
-    fwrite(header, sizeof(uint8_t), HEADER_SIZE, output);
+    fread(header, HEADER_SIZE, sizeof(uint8_t), input);
+    fwrite(header, HEADER_SIZE, sizeof(uint8_t), output);
 
     // Copy the changed values to the new file
     int16_t buffer;
