@@ -44,11 +44,11 @@ int main(int argc, char *argv[])
 
     int16_t buffer;
 
-    while (buffer)
-    fread(&buffer, sizeof(int16_t), 1, input);
-    fread(&buffer, sizeof(int16_t), 1, output);
-
-
+    while (fread(&buffer), sizeof(int16_t), 1, input)
+    {
+        buffer *= factor;
+        fread(&buffer, sizeof(int16_t), 1, output);
+    }
 
     // Close files
     fclose(input);
