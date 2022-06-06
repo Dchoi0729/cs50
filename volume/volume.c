@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     // Copy the changed values to the new file
     int16_t buffer;
 
-    while (fread((&buffer), sizeof(int16_t), 1, input))
+    while (fread(&buffer, sizeof(int16_t), 1, input))
     {
         buffer *= factor;
         fread(&buffer, sizeof(int16_t), 1, output);
