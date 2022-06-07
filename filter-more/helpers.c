@@ -13,9 +13,9 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
             BYTE average_value = round((pixel.rgbtBlue + pixel.rgbtGreen + pixel.rgbtRed) / 3.0);
 
             // Replace each pixel by the average of the three blue
-            image[r][c].rgbtBlue = average_value;
-            image[r][c].rgbtGreen = average_value;
             image[r][c].rgbtRed = average_value;
+            image[r][c].rgbtGreen = average_value;
+            image[r][c].rgbtBlue = average_value;
         }
     }
 }
@@ -42,20 +42,28 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int c = 0; c < width; c++)
         {
-            BYTE red_val, green_val, blue_val;
-            RGBTRIPLE pixel = image[r][c];
+            BYTE red_val = 0, green_val = 0, blue_val = 0;
+            double counter = 0.0;
 
             // For surrounding pixels
             for (int i = r - 1; i < r + 2; i++)
             {
                 for (int j = c - 1; j < c + 2; j++)
                 {
-                    RGBTRIPLE surrounding_pixel = image[i][j];
-                    red_val =+ surrounding_pixel.rgbtRed;
-                    green_val =+ surrounding_pixel.rgbtGreen;
-                    blue_val =+ surrounding_pixel.rgbtBlue;
+                    if ((i > 0) && (i < height) && (j > 0) && (j < width))
+                    {
+                        RGBTRIPLE surrounding_pixel = image[i][j];
+                        red_val += surrounding_pixel.rgbtRed;
+                        green_val += surrounding_pixel.rgbtGreen;
+                        blue_val += surrounding_pixel.rgbtBlue;
+                        counter++;
+                    }
                 }
             }
+
+            image[r][c].rgbtRed = round(red_val / counter);
+            image[r][c].rgbtGreen = round(green_val / counter);
+            image[r][c].rgbtBlue = round(blue_val / counter);
         }
     }
 }
