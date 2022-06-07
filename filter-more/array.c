@@ -7,3 +7,5 @@ int main() {
     printf("size of element: %zu\n", sizeof(**array)/sizeof(int));
     return 0;
 }
+
+//https://overiq.com/c-programming-101/pointers-and-2-d-arrays/
