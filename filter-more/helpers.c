@@ -26,11 +26,11 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     // Iterating through the left side of the image
     for (int r = 0; r < height; r++)
     {
-        for (int c = 0; c < width / 2; c++)
+        for (int c = 0; c < (width / 2) + 1; c++)
         {
             RGBTRIPLE temp = image[r][c];
-            image[r][c] = image[r][width -c];
-            image[r][width-c] = temp;
+            image[r][c] = image[r][width - c - 1];
+            image[r][width - c - 1] = temp;
         }
     }
 }
