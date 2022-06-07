@@ -31,7 +31,7 @@ typedef struct
     WORD   bfReserved1;
     WORD   bfReserved2;
     DWORD  bfOffBits;
-} __attribute__((__packed__))
+} __attribute__((__packed__)) // packed means it will "cram" data without padding
 BITMAPFILEHEADER;
 
 /**
@@ -55,7 +55,7 @@ typedef struct
     LONG   biYPelsPerMeter;
     DWORD  biClrUsed;
     DWORD  biClrImportant;
-} __attribute__((__packed__))
+} __attribute__((__packed__)) // packed means it will "cram" data without padding
 BITMAPINFOHEADER;
 
 /**
