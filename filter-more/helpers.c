@@ -38,7 +38,30 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
-    return;
+    for (int r = 0; r < height; r++)
+    {
+        for (int c = 0; c < width; c++)
+        {
+            if (r == 0 || r == (height - 1) || c == 0 || c == (width - 1))
+            {
+                BYTE red_val, green_val, blue_val;
+                for (int i = r - 1; i < r + 2; i++)
+                {
+                    for (int j = c - 1; j < c + 2; j++)
+                    {
+                        RGBTRIPLE surrounding_pixel = image[i][j];
+                        red_val =+ surrounding_pixel.rgbtRed;
+                        green_val =+ surrounding_pixel.rgbtGreen;
+                        blue_val =+ surrounding_pixel.rgbtBlue;
+                    }
+                }
+            }
+            else
+            {
+
+            }
+        }
+    }
 }
 
 // Detect edges
