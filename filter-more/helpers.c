@@ -7,7 +7,7 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int c = 0; c < width; c++)
         {
-            
+            RGBTRIPLE pixel = image[r][c];
         }
     }
 }
