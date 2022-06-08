@@ -86,6 +86,8 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
     RGBTRIPLE temp[height][width];
+    int gx_kernel[][] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
+    int gy_kernel[][] = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}};
 
     for (int r = 0; r < height; r++)
     {
@@ -100,14 +102,17 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int j = c - 1; j < c + 2; j++)
                 {
-                    if ((i == -1) && (i == height) && (j == -1) && (j == width))
+                    double red = 0.0, blue = 0.0, green = 0.0;
+
+                    if ((i > -1) && (i < height) && (j > -1) && (j < width))
                     {
-                        // For gx
+                        RGBTRIPLE surrounding_pixel = image[i][j];
+                        red = (double) surrounding_pixel.rgbtRed;
+                        blue = (double) surrounding_pixel.rgbtBlue;
+                        green = (double) surrounding_pixel.rgbtGreen;
                     }
-                    else
-                    {
-                        //For gx
-                    }
+
+                    gx_red_sum += red * gx_kernel[][];
                 }
             }
 
