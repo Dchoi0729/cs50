@@ -38,11 +38,15 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
+
+    RGBTRIPLE temp[height][width];
+
+    // Fill the temp 2d array with the blurred RGB values
     for (int r = 0; r < height; r++)
     {
         for (int c = 0; c < width; c++)
         {
-            BYTE red_val = 0, green_val = 0, blue_val = 0;
+            BYTE red_sum = 0, green_sum = 0, blue_sum = 0;
             double counter = 0.0;
 
             // For surrounding pixels
@@ -53,17 +57,26 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     if ((i > 0) && (i < height) && (j > 0) && (j < width))
                     {
                         RGBTRIPLE surrounding_pixel = image[i][j];
-                        red_val += surrounding_pixel.rgbtRed;
-                        green_val += surrounding_pixel.rgbtGreen;
-                        blue_val += surrounding_pixel.rgbtBlue;
+                        red_sum += surrounding_pixel.rgbtRed;
+                        green_sum += surrounding_pixel.rgbtGreen;
+                        blue_sum += surrounding_pixel.rgbtBlue;
                         counter++;
                     }
                 }
             }
 
-            image[r][c].rgbtRed = round(red_val / counter);
-            image[r][c].rgbtGreen = round(green_val / counter);
-            image[r][c].rgbtBlue = round(blue_val / counter);
+            temp[r][c].rgbtRed = round(red_sum / counter);
+            temp[r][c].rgbtGreen = round(green_sum / counter);
+            temp[r][c].rgbtBlue = round(blue_sum / counter);
+        }
+    }
+
+    // Fill in the original image 2d aray with values
+    for (int r = 0; r < height; r++)
+    {
+        for (int c = 0; c < width; c++)
+        {
+            image[r][c] = temp[r][c];
         }
     }
 }
