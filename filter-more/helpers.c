@@ -1,8 +1,6 @@
 #include "helpers.h"
 #include <math.h>
 
-double combine_gxgy(double gx, double gy);
-
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
 {
@@ -143,12 +141,11 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     }
 }
 
-RGBTRIPLE
 
 // Helper function that combines gx and gy values and caps it at 255
-double combine_gxgy(double gx, double gy)
+BYTE combine_gxgy(double gx, double gy)
 {
-    double temp = round(sqrt(pow(gx, 2.0) + pow(gy, 2.0)));
+    BYTE temp = round(sqrt(pow(gx, 2.0) + pow(gy, 2.0)));
 
     if (temp > 255)
     {
@@ -156,6 +153,6 @@ double combine_gxgy(double gx, double gy)
     }
     else
     {
-        return temp;
+        return (BYTE) temp;
     }
 }
