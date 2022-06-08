@@ -125,9 +125,9 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             }
 
             // Input sqrt(gx^2 + gy^2) into each RGB value
-            temp[r][c].rgbtRed = ((BYTE) round(sqrt(pow(gx_red_sum, 2.0) + pow(gy_red_sum, 2.0)))) % 256;
-            temp[r][c].rgbtGreen = ((BYTE) round(sqrt(pow(gx_green_sum, 2.0) + pow(gy_green_sum, 2.0)))) % 256;
-            temp[r][c].rgbtBlue = ((BYTE) round(sqrt(pow(gx_blue_sum, 2.0) + pow(gy_blue_sum, 2.0)))) % 256;
+            temp[r][c].rgbtRed = (BYTE) round(sqrt(pow(gx_red_sum, 2.0) + pow(gy_red_sum, 2.0))) % 256;
+            temp[r][c].rgbtGreen = (BYTE) round(sqrt(pow(gx_green_sum, 2.0) + pow(gy_green_sum, 2.0))) % 256;
+            temp[r][c].rgbtBlue = (BYTE) round(sqrt(pow(gx_blue_sum, 2.0) + pow(gy_blue_sum, 2.0))) % 256;
 
         }
     }
