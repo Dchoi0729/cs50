@@ -46,7 +46,8 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int c = 0; c < width; c++)
         {
-            BYTE red_sum = 0, green_sum = 0, blue_sum = 0;
+            // Use uint16_t since BYTE can't hold the sum of (maximum) 9 RGB values
+            uint16_t red_sum = 0, green_sum = 0, blue_sum = 0;
             double counter = 0.0;
 
             // For surrounding pixels
@@ -57,17 +58,17 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     if ((i > -1) && (i < height) && (j > -1) && (j < width))
                     {
                         RGBTRIPLE surrounding_pixel = image[i][j];
-                        red_sum += surrounding_pixel.rgbtRed;
-                        green_sum += surrounding_pixel.rgbtGreen;
-                        blue_sum += surrounding_pixel.rgbtBlue;
+                        red_sum += (uint16_t) surrounding_pixel.rgbtRed;
+                        green_sum += (uint16_t) surrounding_pixel.rgbtGreen;
+                        blue_sum += (uint16_t) surrounding_pixel.rgbtBlue;
                         counter++;
                     }
                 }
             }
 
-            temp[r][c].rgbtRed = round(red_sum / counter);
-            temp[r][c].rgbtGreen = round(green_sum / counter);
-            temp[r][c].rgbtBlue = round(blue_sum / counter);
+            temp[r][c].rgbtRed = (BYTE) round(red_sum / counter);
+            temp[r][c].rgbtGreen = (BYTE)round(green_sum / counter);
+            temp[r][c].rgbtBlue = (BYTE) round(blue_sum / counter);
         }
     }
 
