@@ -147,7 +147,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 // Helper function that combines gx and gy values and caps it at 255
 BYTE combine_gxgy(double gx, double gy)
 {
-    BYTE temp = round(sqrt(pow(gx, 2.0) + pow(gy, 2.0)));
+    double temp = round(sqrt(pow(gx, 2.0) + pow(gy, 2.0)));
 
     if (temp > 255)
     {
