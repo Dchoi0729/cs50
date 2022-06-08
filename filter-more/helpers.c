@@ -100,14 +100,21 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int j = c - 1; j < c + 2; j++)
                 {
-
+                    if ((i == -1) && (i == height) && (j == -1) && (j == width))
+                    {
+                        // For gx
+                    }
+                    else
+                    {
+                        //For gx
+                    }
                 }
             }
 
             // Input sqrt(gx^2 + gy^2) into each RGB value
-            temp[r][c].rgbtRed = (BYTE) round(sqrt(pow(gx_red_sum, 2.0) + pow(gy_red_sum, 2.0)));
-            temp[r][c].rgbtGreen = (BYTE) round(sqrt(pow(gx_green_sum, 2.0) + pow(gy_green_sum, 2.0)));
-            temp[r][c].rgbtBlue = (BYTE) round(sqrt(pow(gx_blue_sum, 2.0) + pow(gy_blue_sum, 2.0)));
+            temp[r][c].rgbtRed = (BYTE) round(sqrt(pow(gx_red_sum, 2.0) + pow(gy_red_sum, 2.0))) % 255;
+            temp[r][c].rgbtGreen = (BYTE) round(sqrt(pow(gx_green_sum, 2.0) + pow(gy_green_sum, 2.0))) % 255;
+            temp[r][c].rgbtBlue = (BYTE) round(sqrt(pow(gx_blue_sum, 2.0) + pow(gy_blue_sum, 2.0))) % 255;
 
         }
     }
