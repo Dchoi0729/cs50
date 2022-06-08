@@ -1,7 +1,7 @@
 #include "helpers.h"
 #include <math.h>
 
-BYTE combine_gxgy(double gx, double gy);
+double combine_gxgy(double gx, double gy);
 
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
@@ -127,9 +127,9 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             }
 
             // Input sqrt(gx^2 + gy^2) into each RGB value
-            temp[r][c].rgbtRed = combine_gxgy(gx_red_sum, gy_red_sum);
-            temp[r][c].rgbtGreen = combine_gxgy(gx_green_sum, gy_green_sum);
-            temp[r][c].rgbtBlue = combine_gxgy(gx_blue_sum, gy_blue_sum);
+            temp[r][c].rgbtRed = (BYTE) combine_gxgy(gx_red_sum, gy_red_sum);
+            temp[r][c].rgbtGreen = (BYTE) combine_gxgy(gx_green_sum, gy_green_sum);
+            temp[r][c].rgbtBlue = (BYTE) combine_gxgy(gx_blue_sum, gy_blue_sum);
         }
     }
 
@@ -146,7 +146,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 RGBTRIPLE
 
 // Helper function that combines gx and gy values and caps it at 255
-BYTE combine_gxgy(double gx, double gy)
+double combine_gxgy(double gx, double gy)
 {
     double temp = round(sqrt(pow(gx, 2.0) + pow(gy, 2.0)));
 
@@ -156,6 +156,6 @@ BYTE combine_gxgy(double gx, double gy)
     }
     else
     {
-        return (BYTE) temp;
+        return temp;
     }
 }
