@@ -91,9 +91,10 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int c = 0; c < width; c++)
         {
-            // Use uint16_t since BYTE can't hold the sum of 9 RGB values
-            uint16_t gx_red_sum = 0, gx_green_sum = 0, gx_blue_sum = 0;
-            uint16_t gy_red_sum = 0, gy_green_sum = 0, gy_blue_sum = 0;
+            // Use double since BYTE can't hold the sum of 9 RGB values
+            // Double convenient later for mathematical expressions
+            double gx_red_sum = 0, gx_green_sum = 0, gx_blue_sum = 0;
+            double gy_red_sum = 0, gy_green_sum = 0, gy_blue_sum = 0;
 
             for (int i = r - 1; i < r + 2; i++)
             {
@@ -103,7 +104,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 }
             }
 
-            temp[r][c].rgbtRed = (BYTE) round(red_sum / counter);
+            temp[r][c].rgbtRed = (BYTE) round(sqrt());
             temp[r][c].rgbtGreen = (BYTE)round(green_sum / counter);
             temp[r][c].rgbtBlue = (BYTE) round(blue_sum / counter);
 
