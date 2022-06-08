@@ -112,7 +112,15 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                         green = (double) surrounding_pixel.rgbtGreen;
                     }
 
-                    gx_red_sum += red * gx_kernel[][];
+                    // For gx kernel
+                    gx_red_sum += red * gx_kernel[i - (r - 1)][j - (c - 1)];
+                    gx_green_sum += green * gx_kernel[i - (r - 1)][j - (c - 1)];
+                    gx_blue_sum += blue * gx_kernel[i - (r - 1)][j - (c - 1)];
+
+                    // For gy kernel
+                    gy_red_sum += red * gy_kernel[i - (r - 1)][j - (c - 1)];
+                    gy_green_sum += green * gy_kernel[i - (r - 1)][j - (c - 1)];
+                    gy_blue_sum += blue * gy_kernel[i - (r - 1)][j - (c - 1)];
                 }
             }
 
