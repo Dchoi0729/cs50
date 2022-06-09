@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
 
     BYTE buffer[BLOCK_SIZE];
     int counter = 0;
+    int start = 0;
     char name[8];
 
     while (fread(buffer, sizeof(BYTE), BLOCK_SIZE, raw_file) == BLOCK_SIZE)
@@ -31,6 +32,7 @@ int main(int argc, char *argv[])
         // If the block has the jpeg demarcator at start
         if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] > 223) && (buffer[3] < 239))
         {
+            start = 1;
             sprintf(name, "%03d.jpg", counter);
 
             FILE *new_output = fopen(name, "w");
@@ -47,9 +49,12 @@ int main(int argc, char *argv[])
         }
         else
         {
-            FILE *append_output = fopen(name, "a");
-            fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, append_output);
-            fclose(append_output);
+            if (start)
+            {
+                FILE *append_output = fopen(name, "a");
+                fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, append_output);
+                fclose(append_output);
+            }
         }
     }
 
