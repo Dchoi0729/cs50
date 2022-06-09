@@ -14,15 +14,15 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    FILE *file = fopen(argv[1], "r");
-    if (file == NULL)
+    FILE *raw_file = fopen(argv[1], "r");
+    if (raw_file == NULL)
     {
         printf("Could not open file.\n");
         return 1;
     }
 
-
-    while (fread(buffer, 1, BLOCK_SIZE, raw_file) == BLOCK_SIZE)
+    
+    while (fread(buffer, sizeof(BYTE), BLOCK_SIZE, raw_file) == BLOCK_SIZE)
     {
 
 
