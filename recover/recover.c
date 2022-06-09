@@ -25,6 +25,7 @@ int main(int argc, char *argv[])
     BYTE buffer[BLOCK_SIZE];
     int start = 0;
     int counter = -1;
+    char name[8];
 
     FILE *output;
 
@@ -35,6 +36,9 @@ int main(int argc, char *argv[])
         {
             start = 1;
             counter++;
+
+            sprintf(name, "00%i.jpg\0", counter);
+
             output = fopen("name", "w");
             if (output == NULL)
             {
