@@ -1,3 +1,4 @@
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -22,37 +23,34 @@ int main(int argc, char *argv[])
     }
 
     BYTE buffer[BLOCK_SIZE];
-    bool start = false;
+    int start = 0;
     int counter = -1;
+
+    FILE *output;
 
     while (fread(buffer, sizeof(BYTE), BLOCK_SIZE, raw_file) == BLOCK_SIZE)
     {
         // If the block has the jpeg demarcator at start
         if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff)
         {
-            // start = true
-            // counter + 1;
-            start = true;
+            start = 1;
             counter++;
+            output = fopen("name", "w");
+            if (output == NULL)
+            {
+                printf("Could not open file.\n");
+                return 1;
+            }
         }
 
         if (start)
         {
             // Create new output, and write to it
-            start = false;
+            start = 0;
         }
         else
         {
             // Continue writing to the initial file
         }
     }
-
-    // Creating files - should edit
-    FILE *output = fopen(argv[2], "w");
-    if (output == NULL)
-    {
-        printf("Could not open file.\n");
-        return 1;
-    }
-
 }
