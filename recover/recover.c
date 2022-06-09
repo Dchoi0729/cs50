@@ -22,12 +22,27 @@ int main(int argc, char *argv[])
     }
 
     BYTE buffer[BLOCK_SIZE];
+    bool start = false;
+    int counter = -1;
 
     while (fread(buffer, sizeof(BYTE), BLOCK_SIZE, raw_file) == BLOCK_SIZE)
     {
+        // If the block has the jpeg demarcator at start
         if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff)
         {
-            
+            // start = true
+            // counter + 1;
+            start = true;
+            counter++;
+        }
+
+        if (start)
+        {
+            // Create new output, and write to it
+        }
+        else
+        {
+            // Continue writing to the initial file
         }
     }
 
