@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     int counter = -1;
     char name[8];
 
-    FILE *output;
+    FILE *new_output, *append_output;
 
     while (fread(buffer, sizeof(BYTE), BLOCK_SIZE, raw_file) == BLOCK_SIZE)
     {
@@ -37,10 +37,10 @@ int main(int argc, char *argv[])
             start = 1;
             counter++;
 
-            sprintf(name, "00%i.jpg\0", counter);
+            sprintf(name, "%03d.jpg", counter);
 
-            output = fopen("name", "w");
-            if (output == NULL)
+            new_output = fopen(name, "w");
+            if (new_output == NULL)
             {
                 printf("Could not open file.\n");
                 return 1;
@@ -49,12 +49,13 @@ int main(int argc, char *argv[])
 
         if (start)
         {
-            // Create new output, and write to it
+            fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, new_output);
             start = 0;
         }
         else
         {
-            // Continue writing to the initial file
+            append_output = fopen(name, "a");
+            fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, append_output);
         }
     }
 }
