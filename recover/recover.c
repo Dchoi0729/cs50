@@ -31,10 +31,9 @@ int main(int argc, char *argv[])
     while (fread(buffer, sizeof(BYTE), BLOCK_SIZE, raw_file) == BLOCK_SIZE)
     {
         // If the block has the jpeg demarcator at start
-        if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff)
+        if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && )
         {
             sprintf(name, "%03d.jpg", counter);
-            printf("%03d.jpg\n", counter);
 
             new_output = fopen(name, "w");
             if (new_output == NULL)
@@ -52,4 +51,8 @@ int main(int argc, char *argv[])
             fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, append_output);
         }
     }
+
+    fclose(raw_file);
+    fclose(new_output);
+    fclose(append_output);
 }
