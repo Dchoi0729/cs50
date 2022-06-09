@@ -39,6 +39,7 @@ int main(int argc, char *argv[])
         if (start)
         {
             // Create new output, and write to it
+            start = false;
         }
         else
         {
