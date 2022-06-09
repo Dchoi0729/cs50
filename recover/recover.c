@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     while (fread(buffer, sizeof(BYTE), BLOCK_SIZE, raw_file) == BLOCK_SIZE)
     {
         // If the block has the jpeg demarcator at start
-        if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && )
+        if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] > 223) && (buffer[3] < 239))
         {
             sprintf(name, "%03d.jpg", counter);
 
