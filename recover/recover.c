@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    // Close
+    // Close input file
     fclose(raw_file);
 
     return 0;
