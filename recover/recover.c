@@ -21,11 +21,14 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    
+    BYTE buffer[BLOCK_SIZE];
+
     while (fread(buffer, sizeof(BYTE), BLOCK_SIZE, raw_file) == BLOCK_SIZE)
     {
-
-
+        if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff)
+        {
+            
+        }
     }
 
     // Creating files - should edit
