@@ -49,3 +49,34 @@ int main(int argc, char *argv[])
     fclose(input);
     fclose(output);
 }
+
+while (fread(buffer, sizeof(BYTE), BLOCK_SIZE, raw_file) == BLOCK_SIZE)
+    {
+        // If the block has the jpeg demarcator at start
+        if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] > 223) && (buffer[3] < 239))
+        {
+            start = 1;
+            sprintf(name, "%03d.jpg", counter);
+
+            FILE *new_output = fopen(name, "w");
+            if (new_output == NULL)
+            {
+                printf("Could not open file.\n");
+                return 1;
+            }
+
+            fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, new_output);
+            counter++;
+
+            fclose(new_output);
+        }
+        else
+        {
+            if (start)
+            {
+                FILE *append_output = fopen(name, "a");
+                fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, append_output);
+                fclose(append_output);
+            }
+        }
+    }
