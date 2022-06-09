@@ -29,38 +29,33 @@ int main(int argc, char *argv[])
 
     while (fread(buffer, sizeof(BYTE), BLOCK_SIZE, raw_file) == BLOCK_SIZE)
     {
-        FILE *output = NULL;
-
         // If the block has the jpeg demarcator at start
         if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] > 223) && (buffer[3] < 239))
         {
-            // Starting from the second jpeg file
-            if (start)
-            {
-                fclose(output);
-            }
-
+            start = 1;
             sprintf(name, "%03d.jpg", counter);
 
-            output = fopen(name, "w");
-            if (output == NULL)
+            FILE *new_output = fopen(name, "w");
+            if (new_output == NULL)
             {
                 printf("Could not open file.\n");
                 return 1;
             }
 
+            fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, new_output);
             counter++;
 
-            // First jpeg found - "started"
-            start = 1;
+            fclose(new_output);
         }
-
-        // If the first jpeg file was found
-        if (start)
+        else
         {
-            fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, output);
+            if (start)
+            {
+                FILE *append_output = fopen(name, "a");
+                fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, append_output);
+                fclose(append_output);
+            }
         }
-
     }
 
     // Close input file
