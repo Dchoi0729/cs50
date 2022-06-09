@@ -55,4 +55,5 @@ int main(int argc, char *argv[])
     fclose(raw_file);
     fclose(new_output);
     fclose(append_output);
+    return 0;
 }
