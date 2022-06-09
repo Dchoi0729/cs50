@@ -58,6 +58,7 @@ int main(int argc, char *argv[])
         }
     }
 
+    // Close
     fclose(raw_file);
 
     return 0;
