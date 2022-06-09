@@ -32,9 +32,11 @@ int main(int argc, char *argv[])
         // If the block has the jpeg demarcator at start
         if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] > 223) && (buffer[3] < 239))
         {
+            // The first jpeg file is found
             start = 1;
-            sprintf(name, "%03d.jpg", counter);
 
+            // Create new output file with correct name
+            sprintf(name, "%03d.jpg", counter);
             FILE *new_output = fopen(name, "w");
             if (new_output == NULL)
             {
@@ -42,6 +44,7 @@ int main(int argc, char *argv[])
                 return 1;
             }
 
+            // Write content to new file
             fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, new_output);
             counter++;
 
@@ -49,8 +52,10 @@ int main(int argc, char *argv[])
         }
         else
         {
+            // Once the first photo has been found, and the block isn't a starting block
             if (start)
             {
+                // Append content to existing file
                 FILE *append_output = fopen(name, "a");
                 fwrite(buffer, sizeof(BYTE), BLOCK_SIZE, append_output);
                 fclose(append_output);
