@@ -11,6 +11,7 @@ node;
 
 void end(node **head, int value);
 void display(node *head);
+void free_list(node *head);
 
 int main(void)
 {
@@ -22,7 +23,7 @@ int main(void)
     end(&list, 2);
 
     display(list);
-    free(list);
+    free_list(list);
 
     return 0;
 }
@@ -66,8 +67,8 @@ void display(node *head)
     }
 }
 
-// Frees all memory given by malloc
-void free_memory(node *head)
+// Frees all memory given by malloc for linked list
+void free_list(node *head)
 {
     while (head != NULL)
     {
