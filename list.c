@@ -9,7 +9,7 @@ typedef struct node
 }
 node;
 
-void add_node(node *list, int n);
+void end(node *head, int value);
 
 int main(void)
 {
@@ -17,7 +17,6 @@ int main(void)
     node *list = NULL;
 
     end(list, 1);
-    end(list, 2);
 
     // Print numbers;
     for (node *tmp = list; tmp != NULL; tmp = tmp -> next)
@@ -36,7 +35,7 @@ int main(void)
 }
 
 
-void end(node *head,int value)
+void end(node *head, int value)
 {
     node *tmp;
     tmp = malloc(sizeof(node));
