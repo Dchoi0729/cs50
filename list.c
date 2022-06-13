@@ -24,8 +24,14 @@ int main(void)
 
 void add_node(node *list, int n)
 {
-    int end = 1;
-    if (list == NULL)
+    if (list != NULL)
+    {
+        if (list -> next != NULL)
+        {
+            add_node(list -> next, n);
+        }
+    }
+    else
     {
         node *temp = malloc(sizeof(node));
         if (temp != NULL)
@@ -35,10 +41,6 @@ void add_node(node *list, int n)
         }
 
         list = temp;
-    }
-    else
-    {
-        add_node(list -> next, n);
     }
 }
 
