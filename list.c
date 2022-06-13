@@ -42,7 +42,7 @@ void end(node **head, int value)
     tmp -> number = value;
     tmp -> next = NULL;
 
-    if (head == NULL)
+    if (*head == NULL)
     {
         head = tmp;
     }
