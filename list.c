@@ -16,7 +16,6 @@ int main(void)
     // List of size NULL
     node *list = NULL;
 
-/***
     // Add a number to list
     node *n = malloc(sizeof(node));
     if (n == NULL)
@@ -50,18 +49,23 @@ int main(void)
     n -> next = NULL;
 
     list -> next -> next = n;
-    ***/
 
+   /***
     node *a = NULL;
     add_node(a, list, 1);
     add_node(a, list, 3);
     add_node(a, list, 2);
-
+    ***/
 
     // Print numbers;
     for (node *tmp = list; tmp != NULL; tmp = tmp -> next)
     {
         printf("%i\n", tmp -> number);
+    }
+
+    while (list != NULL)
+    {
+        node *tmp = list -> next;
     }
 }
 
