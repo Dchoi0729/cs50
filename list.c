@@ -78,22 +78,16 @@ int main(void)
 }
 
 
-void add_node(node *list, int n)
+void add_node(node *head,int value)
 {
-    node *curr = list;
-    node *tmp = (node *) malloc(sizeof(node));
-    tmp -> number = n;
-    tmp -> next = NULL;
-
-    if (curr != NULL)
+    struct node *p,*q;
+    p=malloc(sizeof(struct node));
+    p->data=value;
+    p->next=NULL;
+    q=head;
+    while(q->next!=NULL)
     {
-        while (curr->next != NULL) {
-            curr = curr->next;
-            curr->next = tmp;
-        }
+        q = q->next;
     }
-    else
-    {
-        curr = tmp;
-    }
+    q->next = p;
 }
