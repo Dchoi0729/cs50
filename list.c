@@ -10,6 +10,7 @@ typedef struct node
 node;
 
 void end(node **head, int value);
+void display(node *head);
 
 int main(void)
 {
@@ -17,24 +18,17 @@ int main(void)
     node *list = NULL;
 
     end(&list, 1);
+    end(&list, 3);
+    end(&list, 2);
 
-    // Print numbers;
-    for (node *tmp = list; tmp != NULL; tmp = tmp -> next)
-    {
-        printf("%i\n", tmp -> number);
-    }
-
-    while (list != NULL)
-    {
-        node *tmp = list -> next;
-        free(list);
-        list = tmp;
-    }
+    display(list);
+    free(list);
 
     return 0;
 }
 
-//
+// Adds a node at the end of a linked list
+// head --> list pointer --> first node ...
 void end(node **head, int value)
 {
     node *tmp, *last;
@@ -50,6 +44,35 @@ void end(node **head, int value)
     else
     {
         last = *head;
-        while()
+        while(last -> next != NULL)
+        {
+            last = last -> next;
+        }
+
+        last -> next = tmp;
+    }
+}
+
+// Prints each node of linked list
+void display(node *head)
+{
+    int count = 0;
+
+    // Print numbers;
+    for (node *tmp = head; tmp != NULL; tmp = tmp -> next)
+    {
+        printf("Node %i: %i\n", count, tmp -> number);
+        count++;
+    }
+}
+
+// Frees all memory given by malloc
+void free_memory(node *head)
+{
+    while (head != NULL)
+    {
+        node *tmp = head -> next;
+        free(head);
+        head = tmp;
     }
 }
