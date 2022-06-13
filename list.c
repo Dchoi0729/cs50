@@ -38,9 +38,12 @@ int main(void)
 
 void end(node *head,int value)
 {
-    node *p, *q;
+    node *tmp;
+    tmp = malloc(sizeof(node));
+    tmp -> number = value;
+    tmp -> next = NULL;
     if (head == NULL)
     {
-
+        head = tmp;
     }
 }
