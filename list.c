@@ -9,14 +9,14 @@ typedef struct node
 }
 node;
 
-void end(node *head, int value);
+void end(node **head, int value);
 
 int main(void)
 {
     // List of size NULL
     node *list = NULL;
 
-    end(list, 1);
+    end(&list, 1);
 
     // Print numbers;
     for (node *tmp = list; tmp != NULL; tmp = tmp -> next)
@@ -35,7 +35,7 @@ int main(void)
 }
 
 
-void end(node *head, int value)
+void end(node **head, int value)
 {
     node *tmp;
     tmp = malloc(sizeof(node));
