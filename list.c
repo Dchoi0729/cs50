@@ -82,7 +82,7 @@ void add_node(node *head,int value)
 {
     struct node *p,*q;
     p=malloc(sizeof(struct node));
-    p->data=value;
+    p->number=value;
     p->next=NULL;
     q=head;
     while(q->next!=NULL)
