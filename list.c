@@ -13,6 +13,38 @@ int main(void)
 {
     // List of size NULL
     node *list = NULL;
+
+    // Add a number to list
+    node *n = malloc(sizeof(node));
+    if (n == NULL)
+    {
+        return 1;
+    }
+    n -> number = 1;
+    n -> next = NULL;
+
+    list = n;
+
+    n = malloc(sizeof(node));
+    if (n == NULL)
+    {
+        free(list);
+        return 1;
+    }
+    n -> number = 2;
+    n -> next = NULL;
+
+    list -> next = n;
+
+    n = malloc(sizeof(node));
+    if (n == NULL)
+    {
+        free(list -> next);
+        free(list);
+        return 1;
+    }
+
+    (list -> next) -> next = n;
 }
 
 
