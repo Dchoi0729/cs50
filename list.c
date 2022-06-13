@@ -46,13 +46,16 @@ void add_node(node *list, int n)
 
 void print_list(node *list)
 {
-    if (list -> next == NULL)
+    if (list != NULL)
     {
-        printf("%i\n", list ->number);
+        if (list -> next != NULL)
+        {
+            print_list(list -> next);
+        }
     }
     else
     {
-        print_list(list -> next);
+        printf("%i\n", list -> number);
     }
 }
 
