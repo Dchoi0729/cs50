@@ -85,8 +85,11 @@ void add_node(node *list, int n)
     tmp -> number = n;
     tmp -> next = NULL;
 
-    while (curr->next != NULL) {
-        curr = curr->next;
+    if (curr != NULL)
+    {
+        while (curr->next != NULL) {
+            curr = curr->next;
+        }
     }
     curr->next = tmp;
 }
