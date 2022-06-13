@@ -47,7 +47,7 @@ void insert_pos(node **head, int pos, int value)
 
 
     node *beforeNode = *head;
-    for (int n = 0; n < pos, n ++)
+    for (int n = 0; n < pos, n++)
     {
         beforeNode = beforeNode -> next;
     }
