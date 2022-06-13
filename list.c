@@ -9,7 +9,8 @@ typedef struct node
 }
 node;
 
-void end(node **head, int value);
+void push(node **head, int value);
+void append(node **head, int value);
 void display(node *head);
 void free_list(node *head);
 
@@ -18,9 +19,10 @@ int main(void)
     // List of size NULL
     node *list = NULL;
 
-    end(&list, 1);
-    end(&list, 3);
-    end(&list, 2);
+    append(&list, 1);
+    append(&list, 3);
+    append(&list, 2);
+    push(&list, 500);
 
     display(list);
     free_list(list);
@@ -28,9 +30,28 @@ int main(void)
     return 0;
 }
 
+void push(node **head, int value)
+{
+    node *tmp = malloc(sizeof(node));
+    tmp -> number = value;
+
+    // If linked list contains nothing
+    if (*head == NULL)
+    {
+        tmp -> next = NULL;
+        *head = tmp;
+    }
+    else
+    {
+        tmp -> next = *head;
+        *head = tmp;
+    }
+}
+
+
 // Adds a node at the end of a linked list
 // head --> list pointer --> first node ...
-void end(node **head, int value)
+void append(node **head, int value)
 {
     node *tmp, *last;
     tmp = malloc(sizeof(node));
