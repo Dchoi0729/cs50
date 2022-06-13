@@ -59,6 +59,8 @@ int main(void)
     add_node(list, 2);
     ***/
 
+    printf("hi\n");
+
     // Print numbers;
     for (node *tmp = list; tmp != NULL; tmp = tmp -> next)
     {
@@ -83,4 +85,7 @@ void add_node(node *list, int n)
     tmp -> next = NULL;
 
     list = tmp;
+    printf("%i\n", list -> number);
+    printf("%i\n", tmp -> number);
+
 }
