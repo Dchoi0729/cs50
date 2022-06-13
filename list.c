@@ -24,29 +24,32 @@ int main(void)
 
 void add_node(node *list, int n)
 {
-    node *temp = malloc(sizeof(node));
-    if (temp != NULL)
+    if (list -> next == NULL)
     {
-        temp -> number = n;
-        temp -> next = NULL;
-    }
+        node *temp = malloc(sizeof(node));
+        if (temp != NULL)
+        {
+            temp -> number = n;
+            temp -> next = NULL;
+        }
 
-    list = temp;
+        list = temp;
+    }
+    else
+    {
+        add_node(list -> next, n);
+    }
 }
 
 void print_list(node *list)
 {
-    node current = NULL;
-    int counter = 0;
-    while(true)
+    if (list -> next == NULL)
     {
-        if (list == NULL)
-        {
-            break;
-        }
-        current = *list;
-        printf("Node %i is: %i\n", counter, current.number);
-        count++;
+        printf("%i\n", list ->number);
+    }
+    else
+    {
+        print_list(list -> next);
     }
 }
 
