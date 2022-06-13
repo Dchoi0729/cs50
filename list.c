@@ -16,50 +16,8 @@ int main(void)
     // List of size NULL
     node *list = NULL;
 
- /***
-    // Add a number to list
-    node *n = malloc(sizeof(node));
-    if (n == NULL)
-    {
-        return 1;
-    }
-    n -> number = 1;
-    n -> next = NULL;
-
-    list = n;
-
-    n = malloc(sizeof(node));
-    if (n == NULL)
-    {
-        free(list);
-        return 1;
-    }
-    n -> number = 2;
-    n -> next = NULL;
-
-    list -> next = n;
-
-    n = malloc(sizeof(node));
-    if (n == NULL)
-    {
-        free(list -> next);
-        free(list);
-        return 1;
-    }
-    n -> number = 3;
-    n -> next = NULL;
-
-    list -> next -> next = n;
-    ***/
-
-    add_node(list, 1);
-
-    /***
-    add_node(list, 3);
-    add_node(list, 2);
-    ***/
-
-    printf("hi\n");
+    end(list, 1);
+    end(list, 2);
 
     // Print numbers;
     for (node *tmp = list; tmp != NULL; tmp = tmp -> next)
@@ -78,16 +36,11 @@ int main(void)
 }
 
 
-void add_node(node *head,int value)
+void end(node *head,int value)
 {
-    struct node *p,*q;
-    p=malloc(sizeof(struct node));
-    p->number=value;
-    p->next=NULL;
-    q=head;
-    while(q->next!=NULL)
+    node *p, *q;
+    if (head == NULL)
     {
-        q = q->next;
+
     }
-    q->next = p;
 }
