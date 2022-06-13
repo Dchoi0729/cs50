@@ -17,6 +17,9 @@ int main(void)
 {
     node *list = NULL;
     add_node(list, 1);
+    add_node(list, 3);
+    add_node(list, 2);
+    print_list(list);
 }
 
 void add_node(node *list, int n)
@@ -33,10 +36,17 @@ void add_node(node *list, int n)
 
 void print_list(node *list)
 {
+    node current = NULL;
+    int counter = 0;
     while(true)
     {
-        node *go = list
-        if ()
+        if (list == NULL)
+        {
+            break;
+        }
+        current = *list;
+        printf("Node %i is: %i\n", counter, current.number);
+        count++;
     }
 }
 
