@@ -69,6 +69,8 @@ int main(void)
         free(list);
         list = tmp;
     }
+
+    return 0;
 }
 
 
