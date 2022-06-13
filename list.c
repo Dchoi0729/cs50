@@ -9,11 +9,14 @@ typedef struct node
 }
 node;
 
+void add_node(node *tmp, node *list, int n);
+
 int main(void)
 {
     // List of size NULL
     node *list = NULL;
 
+/***
     // Add a number to list
     node *n = malloc(sizeof(node));
     if (n == NULL)
@@ -47,6 +50,13 @@ int main(void)
     n -> next = NULL;
 
     list -> next -> next = n;
+    ***/
+
+    node *a = NULL;
+    add_node(a, list, 1);
+    add_node(a, list, 3);
+    add_node(a, list, 2);
+
 
     // Print numbers;
     for (node *tmp = list; tmp != NULL; tmp = tmp -> next)
@@ -56,3 +66,21 @@ int main(void)
 }
 
 
+void add_node(node *tmp, node *list, int n)
+{
+    if (list != NULL)
+    {
+        if (list -> next != NULL)
+        {
+             add_node(tmp, list->next, n);
+        }
+    }
+    else
+    {
+        tmp = malloc(sizeof(node));
+        tmp -> number = n;
+        tmp -> next = NULL;
+
+        list = tmp;
+    }
+}
