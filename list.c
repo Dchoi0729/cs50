@@ -24,7 +24,7 @@ int main(void)
     append(&list, 3);
     append(&list, 2);
     push(&list, 500);
-    insert_pos(&list, 2, 725);
+    insert_pos(&list, 6, 725);
 
     display(list);
     free_list(list);
@@ -39,7 +39,7 @@ void insert_pos(node **head, int pos, int value)
 {
     if (pos == 0)
     {
-        printf("Use push instead");
+        printf("Use push instead\n");
         return;
     }
 
@@ -48,8 +48,13 @@ void insert_pos(node **head, int pos, int value)
 
 
     node *beforeNode = *head;
-    for (int n = 0; n < pos; n++)
+    for (int n = 0; n < pos - 1; n++)
     {
+        if (beforeNode == NULL)
+        {
+            printf("Can't add %i to position %i \n", value, pos);
+            return;
+        }
         beforeNode = beforeNode -> next;
     }
 
