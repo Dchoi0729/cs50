@@ -11,6 +11,7 @@ node;
 
 void push(node **head, int value);
 void append(node **head, int value);
+void insert_pos(node **head, int pos, int value);
 void display(node *head);
 void free_list(node *head);
 
@@ -30,6 +31,31 @@ int main(void)
     return 0;
 }
 
+// Adds a node at given pos (zero indexing)
+// If list is 2 --> 7 --> 1 --> 4, adding 3 to pos 2 will give
+// 2 --> 7 --> 3 --> 1 --> 4
+void insert_pos(node **head, int pos, int value)
+{
+    if (pos == 0)
+    {
+        printf("Use push instead");
+        return;
+    }
+
+    node *tmp = malloc(sizeof(node));
+    tmp -> number = value;
+
+    node *beforeNode = *head;
+    for (int n = 0; n < pos, n ++)
+    {
+        beforeNode = beforeNode -> next;
+    }
+
+    
+}
+
+
+// Adds a node at the start of the linked list
 void push(node **head, int value)
 {
     node *tmp = malloc(sizeof(node));
