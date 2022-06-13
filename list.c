@@ -52,7 +52,7 @@ int main(void)
     list -> next -> next = n;
     ***/
 
-    add_node(list, 1);
+    add_node(&list, 1);
 
     /***
     add_node(list, 3);
