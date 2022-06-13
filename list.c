@@ -89,7 +89,11 @@ void add_node(node *list, int n)
     {
         while (curr->next != NULL) {
             curr = curr->next;
+            curr->next = tmp;
         }
     }
-    curr->next = tmp;
+    else
+    {
+        curr = tmp;
+    }
 }
