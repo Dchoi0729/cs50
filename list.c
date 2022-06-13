@@ -34,16 +34,22 @@ int main(void)
     return 0;
 }
 
-
+//
 void end(node **head, int value)
 {
-    node *tmp;
+    node *tmp, *last;
     tmp = malloc(sizeof(node));
     tmp -> number = value;
     tmp -> next = NULL;
 
+    // If linked list contains nothing
     if (*head == NULL)
     {
         *head = tmp;
+    }
+    else
+    {
+        last = *head;
+        while()
     }
 }
