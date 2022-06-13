@@ -43,8 +43,12 @@ int main(void)
         free(list);
         return 1;
     }
+    n -> number = 3;
+    n -> next = NULL;
 
-    (list -> next) -> next = n;
+    list -> next -> next = n;
+
+    for ()
 }
 
 
