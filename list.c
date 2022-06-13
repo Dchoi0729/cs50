@@ -52,7 +52,7 @@ int main(void)
     list -> next -> next = n;
     ***/
 
-    add_node(&list, 1);
+    add_node(list, 1);
 
     /***
     add_node(list, 3);
@@ -80,6 +80,7 @@ int main(void)
 
 void add_node(node *list, int n)
 {
+    node *curr = list;
     node *tmp = malloc(sizeof(node));
     tmp -> number = n;
     tmp -> next = NULL;
