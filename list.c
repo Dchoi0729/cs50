@@ -24,7 +24,8 @@ int main(void)
 
 void add_node(node *list, int n)
 {
-    if (list -> next == NULL)
+    int end = 1;
+    if (list == NULL)
     {
         node *temp = malloc(sizeof(node));
         if (temp != NULL)
