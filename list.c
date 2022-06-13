@@ -24,6 +24,7 @@ int main(void)
     append(&list, 3);
     append(&list, 2);
     push(&list, 500);
+    insert_pos(&list, 2, 3);
 
     display(list);
     free_list(list);
