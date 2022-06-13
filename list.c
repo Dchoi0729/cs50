@@ -44,6 +44,6 @@ void end(node **head, int value)
 
     if (*head == NULL)
     {
-        head = tmp;
+        *head = tmp;
     }
 }
