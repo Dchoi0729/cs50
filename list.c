@@ -81,12 +81,12 @@ int main(void)
 void add_node(node *list, int n)
 {
     node *curr = list;
-    node *tmp = malloc(sizeof(node));
+    node *tmp = (node *) malloc(sizeof(node));
     tmp -> number = n;
     tmp -> next = NULL;
 
-    list = tmp;
-    printf("%i\n", list -> number);
-    printf("%i\n", tmp -> number);
-
+    while (curr->next) {
+        curr = curr->next;
+    }
+    curr->next = tmp;
 }
