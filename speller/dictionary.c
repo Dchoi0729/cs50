@@ -14,6 +14,10 @@ typedef struct node
 }
 node;
 
+// Prototypes for helper functions
+void add(node **head, const char *s);
+void destroy(node *head);
+
 // TODO: Choose number of buckets in hash table
 const unsigned int N = 26;
 
