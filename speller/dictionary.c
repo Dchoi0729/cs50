@@ -68,7 +68,7 @@ bool load(const char *dictionary)
     char c;
     int index = 0;
 
-    while(fread(&c, sizeof(char), 1, file))
+    while (fread(&c, sizeof(char), 1, file))
     {
         // Stores characters into word
         if (c != '\n')
