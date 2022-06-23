@@ -3,6 +3,8 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <strings.h>
+#include <stdlib.h>
 
 #include "dictionary.h"
 
@@ -16,7 +18,7 @@ node;
 
 // Prototypes for helper functions
 void add(node **head, const char *s);
-void destroy(node *head);
+void destroy_list(node *head);
 
 // TODO: Choose number of buckets in hash table
 const unsigned int N = 26;
@@ -100,9 +102,9 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload(void)
 {
-    for (int i < 0; i < N; i++)
+    for (int i = 0; i < N; i++)
     {
-        destroy(table[i]);
+        destroy_list(table[i]);
     }
 
     return true;
@@ -119,13 +121,13 @@ void add(node **head, const char *s)
 }
 
 // Frees memory for linked list with head as first pointer node
-void destroy(node *head)
+void destroy_list(node *head)
 {
     if (head == NULL)
     {
         return;
     }
 
-    destory(head -> next);
+    destory_list(head -> next);
     free(head);
 }
