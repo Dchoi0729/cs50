@@ -31,7 +31,10 @@ bool check(const char *word)
     // Traversing linked list attached to the correct bucket for given word
     for (node *crawler = table[hash_code]; crawler != NULL; crawler = crawler -> next)
     {
-        if ()
+        if (strcasecmp(crawler -> word, word) == 0)
+        {
+            return true;
+        }
     }
 
     return false;
