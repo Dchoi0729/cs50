@@ -20,6 +20,9 @@ const unsigned int N = 26;
 // Hash table
 node *table[N];
 
+// Number of words in loaded dictionary
+unsigned int number = 0;
+
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
@@ -61,6 +64,7 @@ bool load(const char *dictionary)
         {
             // Add word to hashtable
             add(&table[hash(word)], word);
+            number++;
 
             // Reset index for next word
             index = 0;
@@ -76,8 +80,7 @@ bool load(const char *dictionary)
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded
 unsigned int size(void)
 {
-    // TODO
-    return 0;
+    return number;
 }
 
 // Unloads dictionary from memory, returning true if successful, else false
