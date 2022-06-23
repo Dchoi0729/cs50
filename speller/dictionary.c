@@ -59,13 +59,16 @@ bool load(const char *dictionary)
         }
         else
         {
-            // Add word to the hashtable
+            // Add word to hashtable
             add(&table[hash(word)], word);
 
             // Reset index for next word
             index = 0;
         }
     }
+
+    // Close file
+    fclose(file);
 
     return true;
 }
@@ -80,8 +83,12 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload(void)
 {
-    // TODO
-    return false;
+    for (int i < 0; i < N; i++)
+    {
+        destroy(table[i]);
+    }
+
+    return true;
 }
 
 // Given the address of the head pointer to a linked list, adds s as first node to that list
@@ -92,4 +99,16 @@ void add(node **head, const char *s)
     tmp -> next = *head;
 
     *head = tmp;
+}
+
+// Frees memory for linked list with head as first pointer node
+void destroy(node *head)
+{
+    if (head == NULL)
+    {
+        return;
+    }
+
+    destory(head -> next);
+    free(head);
 }
