@@ -51,6 +51,7 @@ bool load(const char *dictionary)
 
     while(fread(&c, sizeof(char), 1, file))
     {
+        // Stores characters into word
         if (c != '\n')
         {
             word[index] = c;
@@ -58,8 +59,11 @@ bool load(const char *dictionary)
         }
         else
         {
+            // Add word to the hashtable
+            add(&table[hash(word)], word);
+
+            // Reset index for next word
             index = 0;
-            //have complete word in word var, so store this in hash table!
         }
     }
 
