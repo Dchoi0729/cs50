@@ -83,6 +83,7 @@ bool load(const char *dictionary)
         else
         {
             // Add word to hashtable
+            printf("%s\n", word);
             add(&table[hash(word)], word);
             number++;
 
