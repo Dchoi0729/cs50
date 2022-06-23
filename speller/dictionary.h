@@ -15,6 +15,6 @@ unsigned int hash(const char *word);
 bool load(const char *dictionary);
 unsigned int size(void);
 bool unload(void);
-void add(node **head, const char *word);
+void add(node **head, const char *s);
 
 #endif // DICTIONARY_H

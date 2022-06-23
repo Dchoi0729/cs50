@@ -37,11 +37,7 @@ unsigned int hash(const char *word)
 // Loads dictionary into memory, returning true if successful, else false
 bool load(const char *dictionary)
 {
-    // first create file pointer and open file with name given
-    // go through each word (on each line)
-    //      run word through a hash function, and place in bucket
-    //      if bucket is not empty, attach (like linked list)
-
+    // Load dictionary file
     FILE *file = fopen(dictionary, "r");
     if (file == NULL)
     {
@@ -84,8 +80,12 @@ bool unload(void)
     return false;
 }
 
-// Helper function that adds word
-void add(node **head, const char *word)
+// Given the address of the head pointer to a linked list, adds s as first node to that list
+void add(node **head, const char *s)
 {
+    node *tmp = malloc(sizeof(node));
+    tmp -> word = s;
+    tmp -> next = *head;
 
+    *head = tmp;
 }
