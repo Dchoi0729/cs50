@@ -37,10 +37,6 @@ bool check(const char *word)
     // Traversing linked list attached to the correct bucket for given word
     for (node *crawler = table[hash_code]; crawler != NULL; crawler = crawler -> next)
     {
-
-        printf("In dictionary: %s\n", crawler -> word);
-        printf("What's handed: %s\n", word);
-
         if (strcasecmp(crawler -> word, word) == 0)
         {
             return true;
@@ -82,8 +78,10 @@ bool load(const char *dictionary)
         }
         else
         {
+            // Terminate current word
+            word[index] = '\0';
+
             // Add word to hashtable
-            printf("%s\n", word);
             add(&table[hash(word)], word);
             number++;
 
