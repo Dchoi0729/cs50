@@ -12,7 +12,7 @@
 typedef struct node
 {
     char word[LENGTH + 1];
-    struct node *;
+    struct node *next;
 }
 node;
 
