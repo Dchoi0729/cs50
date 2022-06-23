@@ -111,10 +111,16 @@ bool unload(void)
 }
 
 // Given the address of the head pointer to a linked list, adds s as first node to that list
-void add(node **head, const char *s)
+void add(node **head, const char *word)
 {
     node *tmp = malloc(sizeof(node));
-    tmp -> word = s;
+
+    // iterates through given word and adds character by character to node
+    for (int i = 0; i < LENGTH + 1; i++)
+    {
+        tmp -> word[i] = word[i];
+    }
+
     tmp -> next = *head;
 
     *head = tmp;
@@ -128,6 +134,6 @@ void destroy_list(node *head)
         return;
     }
 
-    destory_list(head -> next);
+    destroy_list(head -> next);
     free(head);
 }
