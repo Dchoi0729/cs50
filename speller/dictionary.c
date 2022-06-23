@@ -83,3 +83,9 @@ bool unload(void)
     // TODO
     return false;
 }
+
+// Helper function that adds word
+void add(node **head, const char *word)
+{
+
+}
