@@ -26,7 +26,14 @@ unsigned int number = 0;
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
-    // TODO
+    int hash_code = hash(word);
+
+    // Traversing linked list attached to the correct bucket for given word
+    for (node *crawler = table[hash_code]; crawler != NULL; crawler = crawler -> next)
+    {
+
+    }
+
     return false;
 }
 
