@@ -51,12 +51,12 @@ unsigned int hash(const char *word)
 {
     //return toupper(word[0]) - 'A' + 50;
 
-    int sum;
+    int sum = 0;
     for (int i = 0, n = strlen(word); i < n; i++)
     {
-        sum = sum + toupper(word[0]);
+        sum = 31 * sum + toupper(word[0]);
     }
-    return sum;
+    return sum % N;
 }
 
 // Loads dictionary into memory, returning true if successful, else false
