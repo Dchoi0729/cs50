@@ -1,4 +1,4 @@
-// Implements a dictionary's functionality
+// Speller using trie instead of hashtable
 
 #include <ctype.h>
 #include <stdbool.h>
@@ -8,7 +8,7 @@
 
 #include "dictionary.h"
 
-// Represents a node in a hash table
+// Represents a node in a trie
 typedef struct node
 {
     char word[LENGTH + 1];
