@@ -21,12 +21,13 @@ class CreditCard:
         if self.luhn_alg():
             n = self.number
             length = len(n)
+            first_two = int(n[0:2])
 
-            if length == 15 and (n[0:1] == 34 or n[0:1] == 37):
+            if length == 15 and (first_two == 34 or first_two == 37):
                 return "AMEX\n"
-            elif length == 16 and n[0:1] > 50 and n[0:1] < 56:
+            elif length == 16 and first_two > 50 and first_two < 56:
                 return "MASTERCARD\n"
-            elif (length == 13 or length == 16) and n[0:1] / 10 == 4:
+            elif (length == 13 or length == 16) and first_two / 10 == 4:
                 return "VISA\n"
             else:
                 return "INVALID\n"
@@ -47,7 +48,6 @@ class CreditCard:
         for j in n[start2::2]:
             sum += int(j)
 
-        print(sum)
         return sum % 10 == 0
 
 main()
