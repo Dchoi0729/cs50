@@ -1,6 +1,7 @@
 // Speller using trie instead of hashtable
 
 #include <ctype.h>
+#include <string.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <strings.h>
@@ -26,7 +27,7 @@ int char_to_int(char c);
 
 // Global pointer to the parent node of trie
 // Initiallized to null
-node *trie = new_node();
+node *trie;
 
 // Number of words in loaded trie
 unsigned int number = 0;
@@ -37,7 +38,7 @@ bool check(const char *word)
     node *crawler = trie;
     for (int i = 0, n = strlen(word); i < n; i++)
     {
-        int index = char_to_int(word[i])
+        int index = char_to_int(word[i]);
         crawler = crawler -> children[index];
         if (crawler == NULL)
         {
@@ -62,6 +63,9 @@ bool load(const char *dictionary)
     char word[LENGTH + 1];
     char c;
     int index = 0;
+
+    // Initialize node to NULL
+    trie = new_node();
 
     while (fread(&c, sizeof(char), 1, file))
     {
@@ -153,7 +157,7 @@ int char_to_int(char c)
 // Gives a new node initialized to null
 node *new_node(void)
 {
-    node *tmp = malloc(sizeof(node))
+    node *tmp = malloc(sizeof(node));
     if (tmp != NULL)
     {
         trie -> is_word = false;
