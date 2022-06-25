@@ -1,6 +1,7 @@
 def main():
     card_num = get_user_input()
     card = CreditCard(card_num)
+    card.luhn_alg()
     print(card.get_type())
 
 def get_user_input():
@@ -24,6 +25,6 @@ class CreditCard:
 
     def luhn_alg(self):
         n = self.number
-        
+        print("hi "+ n[-1:])
 
 main()
