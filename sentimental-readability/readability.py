@@ -20,7 +20,7 @@ def main():
     elif index > 16:
         print("Grade 16+\n", end="")
     else:
-        print(f"Grade {int(index)}\n", end="")
+        print(f"Grade {round(index)}\n", end="")
 
 
 # Counts number of letters in a text (a-z)
