@@ -21,7 +21,7 @@ node;
 void add(node **head, const char *s);
 void destroy_list(node *head);
 
-const unsigned int N = 5000;
+const unsigned int N = 1000;
 
 // Hash table
 node *table[N];
@@ -52,7 +52,7 @@ unsigned int hash(const char *word)
     int sum;
     for (int i = 0, n = strlen(word); i < n; i++)
     {
-        sum = 31*sum + toupper(word[i]);
+        sum = sum + toupper(word[i]) - 'A';
     }
 
     return sum;
