@@ -52,10 +52,8 @@ unsigned int hash(const char *word)
     int sum;
     for (int i = 0, n = strlen(word); i < n; i++)
     {
-        sum += sum;
+        sum = sum + toupper(word[i]);
     }
-
-    
 
     return sum;
 }
