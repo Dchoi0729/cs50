@@ -40,7 +40,9 @@ def count_words(text):
 
 # Counts number of sentences in a text (seperated by . ? !)
 def count_sentences(text):
-    word_list = text.split(".", "!", "?")
+    word_list = text.split(".")
+    word_list += text.split("?")
+    word_list += text.split("!")
     return len(word_list)
 
 
