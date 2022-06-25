@@ -66,11 +66,10 @@ def simulate_tournament(teams):
     rounds = int(log2(len(teams)))
 
     # For each rounds
-    remaining_teams = teams
     for round in range(rounds):
-        remaining_teams = simulate_round(remaining_teams)
+        teams = simulate_round(teams)
 
-    return remaining_teams[0].get("team")
+    return teams[0]["team"]
 
 
 if __name__ == "__main__":
