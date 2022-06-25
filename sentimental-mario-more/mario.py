@@ -4,7 +4,7 @@ while True:
     try:
         height = int(input("Height: "))
         if height > 8 or height < 1:
-             print("Please input an integer between 1 and 8")
+            print("Please input an integer between 1 and 8")
         else:
             break
     except ValueError:
