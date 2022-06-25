@@ -1,19 +1,21 @@
 def main():
-    card_num = #get_int()
+    card_num = get_user_input()
     card = CreditCard(card_num)
     print(card.get_type())
 
+def get_user_input():
+    while True:
+        number = input("Number ")
+    return number
 
 class CreditCard:
 
     def __init__(self, number):
         self.number = number
 
-    def check_card(self):
-        #logic logic logic
-        return true
-
     def get_type(self):
-        return 
+        # logic logic logic
+        return "HI\n"
+
 
 main()
