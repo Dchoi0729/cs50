@@ -37,7 +37,7 @@ bool check(const char *word)
     // Traversing linked list attached to the correct bucket for given word
     for (node *crawler = table[hash_code]; crawler != NULL; crawler = crawler -> next)
     {
-        if (strcasecmp(crawler -> word, word) == 0)
+        if (strcmp(crawler -> word, word) == 0)
         {
             return true;
         }
@@ -54,7 +54,7 @@ unsigned int hash(const char *word)
     int sum = 0;
     for (int i = 0, n = strlen(word); i < n; i++)
     {
-        sum = sum * toupper(word[0]);
+        sum = sum + toupper(word[0]);
     }
     return sum % N;
 }
