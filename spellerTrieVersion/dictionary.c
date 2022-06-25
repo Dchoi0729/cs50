@@ -21,19 +21,12 @@ node;
 // Prototypes for helper functions
 void add(node *head, const char *s);
 void destroy_list(node *head);
+node *new_node(void);
 int char_to_int(char c);
 
 // Global pointer to the parent node of trie
 // Initiallized to null
-node *trie = malloc(sizeof(node))
-if (trie != NULL)
-{
-    trie -> is_word = false;
-    for (int i = 0; i < ALPHABET_SIZE; i++)
-    {
-        trie -> children[i] = NULL;
-    }
-}
+node *trie = new_node();
 
 // Number of words in loaded trie
 unsigned int number = 0;
@@ -151,4 +144,19 @@ void destroy_list(node *head)
 int char_to_int(char c)
 {
     return tolower(c) - 'a';
+}
+
+// Gives a new node initializes to null
+node *new_node(void)
+{
+    node *tmp = malloc(sizeof(node))
+    if (tmp != NULL)
+    {
+        trie -> is_word = false;
+        for (int i = 0; i < ALPHABET_SIZE; i++)
+        {
+            trie -> children[i] = NULL;
+        }
+    }
+    return tmp;
 }
