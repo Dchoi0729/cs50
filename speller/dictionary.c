@@ -21,7 +21,7 @@ node;
 void add(node **head, const char *s);
 void destroy_list(node *head);
 
-const unsigned int N = 5000;
+const unsigned int N = 10000;
 
 // Hash table
 node *table[N];
@@ -49,24 +49,12 @@ bool check(const char *word)
 // Hashes word to a number
 unsigned int hash(const char *word)
 {
-    //return toupper(word[0]) - 'A' + 50;
-    int hash = 401;
-
-    while (*word != '\0') {
-        hash = ((hash << 4) + (int)(*word)) % N;
-        word++;
-    }
-
-    return hash % N;
-
-    /**
     int sum = 0;
     for (int i = 0, n = strlen(word); i < n; i++)
     {
-        sum = sum + toupper(word[0]);
+        sum = (sum + toupper(word[0])) << 7;
     }
-    return sum;
-    **/
+    return sum % N;
 }
 
 // Loads dictionary into memory, returning true if successful, else false
