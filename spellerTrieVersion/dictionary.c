@@ -21,6 +21,7 @@ node;
 // Prototypes for helper functions
 void add(node *head, const char *s);
 void destroy_list(node *head);
+int char_to_int(char c);
 
 // Global pointer to the parent node of trie
 // Initiallized to null
@@ -127,6 +128,11 @@ void add(node *head, const char *word)
 
     tmp -> next = *head;
 
+    for (int i = 0, n = strlen(word); i < n; i++)
+    {
+
+    }
+
     *head = tmp;
 }
 
@@ -140,4 +146,10 @@ void destroy_list(node *head)
 
     destroy_list(head -> next);
     free(head);
+}
+
+// Converts a-z to 0-25
+int char_to_int(char c)
+{
+    
 }
