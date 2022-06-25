@@ -50,13 +50,23 @@ bool check(const char *word)
 unsigned int hash(const char *word)
 {
     //return toupper(word[0]) - 'A' + 50;
+    int hash = 401;
 
+    while (*word != '\0') {
+        hash = ((hash << 4) + (int)(*word)) % N;
+        word++;
+    }
+
+    return hash % N;
+
+    /**
     int sum = 0;
     for (int i = 0, n = strlen(word); i < n; i++)
     {
         sum = sum + toupper(word[0]);
     }
-    return sum % N;
+    return sum;
+    **/
 }
 
 // Loads dictionary into memory, returning true if successful, else false
