@@ -7,6 +7,7 @@ def main():
     print(card.get_type())
 
 
+# Gets a valid user input that consists only of numbers
 def get_user_input():
     while True:
         try:
@@ -17,11 +18,12 @@ def get_user_input():
     return str(number)
 
 
+# Credit Card object
 class CreditCard:
-
     def __init__(self, number):
         self.number = number
 
+    # Returns the type of credit card
     def get_type(self):
         if self.luhn_alg():
             n = self.number
@@ -36,11 +38,13 @@ class CreditCard:
                 return "VISA\n"
         return "INVALID\n"
 
+    # Returns whether the credit card is a valid number using luhn's algorithm
     def luhn_alg(self):
         n = self.number
-        start1 = 0 if len(n) % 2 == 0 else 1
-
         sum = 0
+
+        # For every other number beginning from second to last digit
+        start1 = 0 if len(n) % 2 == 0 else 1
         for i in n[start1::2]:
             tmp = int(i)*2
             if tmp > 9:
@@ -48,6 +52,7 @@ class CreditCard:
             else:
                 sum += tmp
 
+        # Add remaining numbers
         start2 = 1 if len(n) % 2 == 0 else 0
         for j in n[start2::2]:
             sum += int(j)
