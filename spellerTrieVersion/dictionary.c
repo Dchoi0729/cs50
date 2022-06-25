@@ -126,11 +126,9 @@ void add(node *head, const char *word)
 
     // Marks the end of word
     crawler -> is_word = true;
-
-    *head = tmp;
 }
 
-// Frees memory for linked list with head as first pointer node
+// Frees memory for trie with head as first pointer node
 void destroy_list(node *head)
 {
     if (head == NULL)
