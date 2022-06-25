@@ -20,7 +20,7 @@ node;
 
 // Prototypes for helper functions
 void add(node *head, const char *s);
-void destroy_list(node *head);
+void destroy_trie(node *head);
 node *new_node(void);
 int char_to_int(char c);
 
@@ -34,18 +34,18 @@ unsigned int number = 0;
 // Returns true if word is in trie, else false
 bool check(const char *word)
 {
-    int hash_code = hash(word);
-
-    // Traversing linked list attached to the correct bucket for given word
-    for (node *crawler = table[hash_code]; crawler != NULL; crawler = crawler -> next)
+    node *crawler = trie;
+    for (int i = 0, n = strlen(word); i < n; i++)
     {
-        if (strcasecmp(crawler -> word, word) == 0)
+        int index = char_to_int(word[i])
+        crawler = crawler -> children[index];
+        if (crawler == NULL)
         {
-            return true;
+            return false;
         }
     }
 
-    return false;
+    return (crawler -> is_word);
 }
 
 // Loads trie into memory, returning true if successful, else false
@@ -100,10 +100,7 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload(void)
 {
-    for (int i = 0; i < N; i++)
-    {
-        destroy_list(table[i]);
-    }
+    destroy_trie(trie);
 
     return true;
 }
@@ -129,14 +126,21 @@ void add(node *head, const char *word)
 }
 
 // Frees memory for trie with head as first pointer node
-void destroy_list(node *head)
+void destroy_trie(node *head)
 {
+    // Base case
     if (head == NULL)
     {
         return;
     }
 
-    destroy_list(head -> next);
+    // Free all children
+    for (int i = 0; i < ALPHABET_SIZE; i++)
+    {
+        destroy_trie(head -> children[i]);
+    }
+
+    // Free itself
     free(head);
 }
 
