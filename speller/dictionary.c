@@ -50,9 +50,11 @@ bool check(const char *word)
 unsigned int hash(const char *word)
 {
     int sum = 0;
-    for (int i = 0, n = strlen(word); i < n; i++)
+
+    while(*word != '\0')
     {
-        sum = sum + toupper(word[i]);
+        sum = sum + toupper(*word);
+        word ++;
     }
     return sum;
 }
