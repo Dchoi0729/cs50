@@ -2,9 +2,12 @@
 
 from cs50 import get_string
 
+
 def main():
+    # Get user input using CS50 get_string
     text = get_string("Text: ")
 
+    # Create needed variables
     letters = count_letters(text)
     sentences = count_sentences(text)
 
@@ -14,7 +17,7 @@ def main():
     avg_sentences = sentences / words * 100
     index = 0.0588 * avg_letters - 0.296 * avg_sentences - 15.8
 
-    # Print grade leverl
+    # Print grade level
     if index < 1:
         print("Before Grade 1\n", end="")
     elif index > 16:
@@ -42,7 +45,7 @@ def count_words(text):
 def count_sentences(text):
     sum = 0
     for c in text:
-        if c == "." or c == "!" or c =="?":
+        if c == "." or c == "!" or c == "?":
             sum += 1
     return sum
 
