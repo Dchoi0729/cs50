@@ -17,11 +17,11 @@ typedef struct node
 node;
 
 // Prototypes for helper functions
-void add(node **head, const char *s);
+void add(const char *s);
 void destroy_list(node *head);
 
 // Global pointer to the parent node of trie
-node *table[N];
+node *trie = NULL;
 
 // Number of words in loaded dictionary
 unsigned int number = 0;
@@ -78,8 +78,8 @@ bool load(const char *dictionary)
             // Terminate current word
             word[index] = '\0';
 
-            // Add word to hashtable
-            add(&table[hash(word)], word);
+            // Add word to trie
+            add(&trie, word);
             number++;
 
             // Reset index for next word
@@ -110,8 +110,8 @@ bool unload(void)
     return true;
 }
 
-// Given the address of the head pointer to a linked list, adds s as first node to that list
-void add(node **head, const char *word)
+// Given the address of the head pointer to a trie, adds word to trie
+void add(node *head, const char *word)
 {
     node *tmp = malloc(sizeof(node));
 
