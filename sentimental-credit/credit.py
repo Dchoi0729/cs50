@@ -1,3 +1,6 @@
+# Determines whether a credit card number is valid
+# And if so, what type of card it is
+
 def main():
     card_num = get_user_input()
     card = CreditCard(card_num)
