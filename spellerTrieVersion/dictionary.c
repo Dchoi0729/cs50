@@ -160,10 +160,10 @@ node *new_node(void)
     node *tmp = malloc(sizeof(node));
     if (tmp != NULL)
     {
-        trie -> is_word = false;
+        tmp -> is_word = false;
         for (int i = 0; i < ALPHABET_SIZE; i++)
         {
-            trie -> children[i] = NULL;
+            tmp -> children[i] = NULL;
         }
     }
     return tmp;
