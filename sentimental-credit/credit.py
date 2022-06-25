@@ -18,8 +18,12 @@ class CreditCard:
         self.number = number
 
     def get_type(self):
-        # logic logic logic
+        str_n = str(self.number)
+
         return "HI\n"
+
+    def luhn_alg(self):
+        
 
 
 main()
