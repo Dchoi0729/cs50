@@ -9,7 +9,7 @@
 
 #include "dictionary.h"
 
-#define ALPHABET_SIZE 26
+#define ALPHABET_SIZE 27
 
 // Represents a node in a trie
 typedef struct node
@@ -148,10 +148,15 @@ void destroy_trie(node *head)
     free(head);
 }
 
-// Converts a-z to 0-25
+// Converts a-z to 0-25, ' to 26
 int char_to_int(char c)
 {
-    if (c == '\'')
+    // If c is an apostrophe
+    if (c == 39)
+    {
+        return 26;
+    }
+
     return tolower(c) - 'a';
 }
 
