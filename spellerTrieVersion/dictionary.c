@@ -21,7 +21,8 @@ void add(const char *s);
 void destroy_list(node *head);
 
 // Global pointer to the parent node of trie
-node *trie = NULL;
+// Initiallized to null
+node *trie = malloc()
 
 // Number of words in loaded dictionary
 unsigned int number = 0;
