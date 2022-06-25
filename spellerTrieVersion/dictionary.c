@@ -1,4 +1,4 @@
-// Speller using trie instead of hashtable
+// Speller using trie instead of hashtable - SUCCESS!
 
 #include <ctype.h>
 #include <string.h>
