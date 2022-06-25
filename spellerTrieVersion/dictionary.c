@@ -13,8 +13,6 @@ typedef struct node
 {
     bool is_word;
     struct node *children[26]
-    char word[LENGTH + 1];
-    struct node *;
 }
 node;
 
@@ -22,10 +20,7 @@ node;
 void add(node **head, const char *s);
 void destroy_list(node *head);
 
-// TODO: Choose number of buckets in hash table
-const unsigned int N = 26;
-
-// Hash table
+// Global pointer to the parent node of trie
 node *table[N];
 
 // Number of words in loaded dictionary
