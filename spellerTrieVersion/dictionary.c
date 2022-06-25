@@ -8,21 +8,30 @@
 
 #include "dictionary.h"
 
+#define ALPHABET_SIZE = 26
+
 // Represents a node in a trie
 typedef struct node
 {
     bool is_word;
-    struct node *children[26]
+    struct node *children[ALPHABET_SIZE]
 }
 node;
 
 // Prototypes for helper functions
-void add(const char *s);
+void add(node *head, const char *s);
 void destroy_list(node *head);
 
 // Global pointer to the parent node of trie
 // Initiallized to null
-node *trie = malloc()
+node *trie = malloc(sizeof(node))
+if (trie != NULL)
+{
+    for (int i = 0; i < ALPHABET_SIZE; i++)
+    {
+        
+    }
+}
 
 // Number of words in loaded dictionary
 unsigned int number = 0;
