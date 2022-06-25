@@ -151,6 +151,7 @@ void destroy_trie(node *head)
 // Converts a-z to 0-25
 int char_to_int(char c)
 {
+    if (c == '\'')
     return tolower(c) - 'a';
 }
 
