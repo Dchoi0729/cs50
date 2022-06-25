@@ -27,7 +27,7 @@ class CreditCard:
                 return "AMEX\n"
             elif length == 16 and first_two > 50 and first_two < 56:
                 return "MASTERCARD\n"
-            elif (length == 13 or length == 16) and first_two / 10 == 4:
+            elif (length == 13 or length == 16) and first_two // 10 == 4:
                 return "VISA\n"
         return "INVALID\n"
 
