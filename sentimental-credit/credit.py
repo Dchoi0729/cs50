@@ -10,7 +10,7 @@ def get_user_input():
             break
         except:
             pass
-    return number
+    return str(number)
 
 class CreditCard:
 
@@ -23,7 +23,7 @@ class CreditCard:
         return "HI\n"
 
     def luhn_alg(self):
+        n = self.number
         
-
 
 main()
