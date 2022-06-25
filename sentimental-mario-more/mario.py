@@ -11,5 +11,5 @@ while True:
         print("Please input an integer between 1 and 8")
 
 for i in range(height):
-    left_space = height - i + 1
+    left_space = height - i - 1
     print(" " * left_space + "#" * i + "  " + "#" * i)
