@@ -12,4 +12,7 @@ while True:
 
 for i in range(height):
     left_space = height - i - 1
-    print(" " * left_space + "#" * i + "  " + "#" * i)
+    hash_num = i + 1
+
+    # Print left space, then hashes, then middle gap, then right hashes
+    print(" " * left_space + "#" * hash_num + "  " + "#" * hash_num)
