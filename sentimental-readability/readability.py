@@ -10,6 +10,7 @@ def main():
 
     words = count_words(text)
 
+    print(f"{letters},{sentences},{words}")
     avg_letters = letters / words * 100
     avg_sentences = sentences / words * 100
     index = 0.0588 * avg_letters - 0.296 * avg_sentences - 15.8
@@ -41,8 +42,11 @@ def count_words(text):
 # Counts number of sentences in a text (seperated by . ? !)
 def count_sentences(text):
     word_list = text.split(".")
+    print(word_list)
     word_list += text.split("?")
+    print(word_list)
     word_list += text.split("!")
+    print(word_list)
     return len(word_list)
 
 
