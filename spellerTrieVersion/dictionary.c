@@ -112,18 +112,20 @@ bool unload(void)
 void add(node *head, const char *word)
 {
     node *crawler = head;
+
+    // Goes through trie, adding the word
     for (int i = 0, n = strlen(word); i < n; i++)
     {
         int index = char_to_int(word[i]);
-        if (crawler -> children[index] != NULL)
+        if (crawler -> children[index] == NULL)
         {
-            crawler = crawler -> children[index];
+            crawler -> children[index] = new_node();
         }
-        else
-        {
-            crawler -> children
-        }
+        crawler = crawler -> children[index];
     }
+
+    // Marks the end of word
+    crawler -> is_word = true;
 
     *head = tmp;
 }
