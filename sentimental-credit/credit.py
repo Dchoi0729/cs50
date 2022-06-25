@@ -29,8 +29,7 @@ class CreditCard:
                 return "MASTERCARD\n"
             elif (length == 13 or length == 16) and first_two / 10 == 4:
                 return "VISA\n"
-            else:
-                return "INVALID\n"
+        return "INVALID\n"
 
     def luhn_alg(self):
         n = self.number
