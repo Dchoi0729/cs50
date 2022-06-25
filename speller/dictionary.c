@@ -4,8 +4,8 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <strings.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "dictionary.h"
 
@@ -21,7 +21,7 @@ node;
 void add(node **head, const char *s);
 void destroy_list(node *head);
 
-const unsigned int N = 1000;
+const unsigned int N = 5000;
 
 // Hash table
 node *table[N];
@@ -49,12 +49,13 @@ bool check(const char *word)
 // Hashes word to a number
 unsigned int hash(const char *word)
 {
+    //return toupper(word[0]) - 'A' + 50;
+
     int sum;
     for (int i = 0, n = strlen(word); i < n; i++)
     {
-        sum = sum + toupper(word[i]) - 'A';
+        sum = sum + toupper(word[0]);
     }
-
     return sum;
 }
 
