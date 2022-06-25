@@ -52,9 +52,9 @@ unsigned int hash(const char *word)
     int sum = 0;
     for (int i = 0, n = strlen(word); i < n; i++)
     {
-        sum = (sum + toupper(word[0])) << 7;
+        sum = sum + toupper(word[0]);
     }
-    return sum % N;
+    return sum;
 }
 
 // Loads dictionary into memory, returning true if successful, else false
