@@ -115,13 +115,13 @@ void add(node *head, const char *word)
     for (int i = 0, n = strlen(word); i < n; i++)
     {
         int index = char_to_int(word[i]);
-        if (head -> children[index] != NULL)
+        if (crawler -> children[index] != NULL)
         {
-            node *tmp = malloc(sizeof(node));
+            crawler = crawler -> children[index];
         }
         else
         {
-
+            crawler -> children
         }
     }
 
@@ -146,7 +146,7 @@ int char_to_int(char c)
     return tolower(c) - 'a';
 }
 
-// Gives a new node initializes to null
+// Gives a new node initialized to null
 node *new_node(void)
 {
     node *tmp = malloc(sizeof(node))
