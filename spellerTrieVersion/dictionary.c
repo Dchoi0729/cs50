@@ -11,6 +11,8 @@
 // Represents a node in a trie
 typedef struct node
 {
+    bool is_word;
+    struct node *children[26]
     char word[LENGTH + 1];
     struct node *;
 }
