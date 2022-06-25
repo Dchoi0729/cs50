@@ -118,12 +118,13 @@ bool unload(void)
 // Given the address of the head pointer to a trie, adds word to trie
 void add(node *head, const char *word)
 {
+    node *crawler = head;
     for (int i = 0, n = strlen(word); i < n; i++)
     {
         int index = char_to_int(word[i]);
         if (head -> children[index] != NULL)
         {
-            
+            node *tmp = malloc(sizeof(node));
         }
         else
         {
