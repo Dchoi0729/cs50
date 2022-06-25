@@ -8,13 +8,13 @@
 
 #include "dictionary.h"
 
-#define ALPHABET_SIZE = 26
+#define ALPHABET_SIZE 26
 
 // Represents a node in a trie
 typedef struct node
 {
     bool is_word;
-    struct node *children[ALPHABET_SIZE]
+    struct node *children[ALPHABET_SIZE];
 }
 node;
 
