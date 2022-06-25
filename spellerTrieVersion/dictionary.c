@@ -34,10 +34,10 @@ if (trie != NULL)
     }
 }
 
-// Number of words in loaded dictionary
+// Number of words in loaded trie
 unsigned int number = 0;
 
-// Returns true if word is in dictionary, else false
+// Returns true if word is in trie, else false
 bool check(const char *word)
 {
     int hash_code = hash(word);
@@ -54,14 +54,7 @@ bool check(const char *word)
     return false;
 }
 
-// Hashes word to a number
-unsigned int hash(const char *word)
-{
-    // TODO: Improve this hash function
-    return toupper(word[0]) - 'A';
-}
-
-// Loads dictionary into memory, returning true if successful, else false
+// Loads trie into memory, returning true if successful, else false
 bool load(const char *dictionary)
 {
     // Load dictionary file
