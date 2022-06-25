@@ -27,9 +27,10 @@ void destroy_list(node *head);
 node *trie = malloc(sizeof(node))
 if (trie != NULL)
 {
+    trie -> is_word = false;
     for (int i = 0; i < ALPHABET_SIZE; i++)
     {
-        
+        trie -> children[i] = NULL;
     }
 }
 
