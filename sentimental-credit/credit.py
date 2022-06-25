@@ -4,7 +4,7 @@
 def main():
     card_num = get_user_input()
     card = CreditCard(card_num)
-    print(card.get_type())
+    print(card.get_type(), end="")
 
 
 # Gets a valid user input that consists only of numbers
