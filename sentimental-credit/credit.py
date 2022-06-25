@@ -3,6 +3,7 @@ def main():
     card = CreditCard(card_num)
     print(card.get_type())
 
+
 def get_user_input():
     while True:
         try:
@@ -11,6 +12,7 @@ def get_user_input():
         except:
             pass
     return str(number)
+
 
 class CreditCard:
 
@@ -33,7 +35,7 @@ class CreditCard:
 
     def luhn_alg(self):
         n = self.number
-        start1 = 0 if len(n)%2 == 0 else 1
+        start1 = 0 if len(n) % 2 == 0 else 1
 
         sum = 0
         for i in n[start1::2]:
@@ -43,10 +45,11 @@ class CreditCard:
             else:
                 sum += tmp
 
-        start2 = 1 if len(n)%2 == 0 else 0
+        start2 = 1 if len(n) % 2 == 0 else 0
         for j in n[start2::2]:
             sum += int(j)
 
         return sum % 10 == 0
+
 
 main()
