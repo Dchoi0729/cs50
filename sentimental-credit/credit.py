@@ -5,7 +5,11 @@ def main():
 
 def get_user_input():
     while True:
-        number = input("Number ")
+        try:
+            number = int(input("Number: "))
+            break
+        except:
+            pass
     return number
 
 class CreditCard:
