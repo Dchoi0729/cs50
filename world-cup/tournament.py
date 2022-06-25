@@ -3,6 +3,7 @@
 import csv
 import sys
 import random
+from math import log2
 
 # Number of simluations to run
 N = 1000
@@ -54,9 +55,16 @@ def simulate_round(teams):
 
 def simulate_tournament(teams):
     """Simulate a tournament. Return name of winning team."""
-    int number_of_teams = len(teams);
-    
 
+    # Number of rounds
+    rounds = log2(len(teams))
+
+    # For each rounds
+    remaining_teams = teams
+    for round in range(rounds):
+        remaining_teams = simulate_round(remaining_teams)
+
+    return remaining_teams
 
 
 if __name__ == "__main__":
