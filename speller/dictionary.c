@@ -51,12 +51,12 @@ unsigned int hash(const char *word)
 {
     int sum = 0;
 
-    while(*word != '\0')
+    while (*word != '\0')
     {
         sum = sum + toupper(*word);
         word ++;
     }
-    
+
     return sum;
 }
 
