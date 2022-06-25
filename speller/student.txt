@@ -33915,8 +33915,8 @@ WORDS MISSPELLED:     33909
 WORDS IN DICTIONARY:  143091
 WORDS IN TEXT:        265867
 TIME IN load:         0.06
-TIME IN check:        1.47
+TIME IN check:        0.73
 TIME IN size:         0.00
 TIME IN unload:       0.01
-TIME IN TOTAL:        1.54
+TIME IN TOTAL:        0.81
 
