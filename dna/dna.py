@@ -26,6 +26,8 @@ def main():
             dna_profile[str] = longest_match(dna_sequence, str)
 
     # Check database for matching profiles
+    for person in database:
+        
 
     return
 
