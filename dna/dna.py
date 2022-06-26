@@ -20,7 +20,7 @@ def main():
         dna_sequence = file.readline()
 
     # TODO: Find longest match of each STR in DNA sequence
-    for person in database:
+    for str in database[0][1:]:
         longest_match(dna_sequence, )
 
     # TODO: Check database for matching profiles
