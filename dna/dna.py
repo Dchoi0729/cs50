@@ -15,11 +15,13 @@ def main():
         for item in reader:
            database.append(dict(item))
 
-    # TODO: Read DNA sequence file into a variable
-    with open(sys.argv[2]) as file:
-        reader = 
+    # Read DNA sequence file into a variable
+    with open(sys.argv[2], "r") as file:
+        dna_sequence = file.readline()
 
     # TODO: Find longest match of each STR in DNA sequence
+    for person in database:
+        longest_match(dna_sequence, )
 
     # TODO: Check database for matching profiles
 
