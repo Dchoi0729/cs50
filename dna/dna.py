@@ -27,9 +27,13 @@ def main():
 
     # Check database for matching profiles
     for person in database:
-        
+        name = person["name"]
+        if person.pop("name") == dna_profile:
+            print(name)
+            sys.exit()
 
-    return
+    # If there are no matches
+    print("No match")
 
 
 def longest_match(sequence, subsequence):
