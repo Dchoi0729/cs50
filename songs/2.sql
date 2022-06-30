@@ -1,3 +1,4 @@
 -- List all the name of songs in increasing order of tempo
 
-SELECT name FROM songs ORDER BY tempo;
+SELECT songs.name FROM songs
+ ORDER BY tempo;
