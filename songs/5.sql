@@ -1,3 +1,4 @@
 -- Returns the average energy of all the songs
 
-SELECT AVG(energy) FROM songs;
+SELECT AVG(songs.energy)
+  FROM songs;
