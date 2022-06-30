@@ -3,4 +3,4 @@
 SELECT people.name FROM people
 
 
-stars.movie_id WHERE stars.person_id IN (people.id FROM people WHERE people.name = "Kevin Bacon" AND people.birth = 1958);
+stars.person_id IN (people.id FROM people WHERE people.name = "Kevin Bacon" AND people.birth = 1958);
