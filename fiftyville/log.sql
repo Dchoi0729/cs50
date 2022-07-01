@@ -30,7 +30,7 @@ SELECT people.name
           AND activity = "exit")
 
 -- Eugene: Thief withrew money from the atm on Leggett street earlier that day
-AND people.name in
+   AND people.name in
       (SELECT DISTINCT(people.name)
          FROM bank_accounts
              JOIN atm_transactions AS atm ON bank_accounts.account_number = atm.account_number
@@ -40,7 +40,7 @@ AND people.name in
           AND atm.atm_location = "Leggett Street" )
 
 -- Raymond: As thief left bakery, called someone for less than a min.
-AND people.name in
+   AND people.name in
       (SELECT people.name
          FROM people
               JOIN phone_calls AS pc ON pc.caller = people.phone_number
@@ -48,7 +48,7 @@ AND people.name in
           AND pc.year = 2021 AND pc.month = 7 AND pc.day = 28)
 
 -- Raymond: Take earliest flight out of Fiftyville on 7/29
-AND people.name in
+   AND people.name in
       (SELECT people.name
          FROM passengers JOIN people ON people.passport_number = passengers.passport_number
         WHERE passengers.flight_id =
@@ -62,6 +62,7 @@ AND people.name in
 );
 
 
+-- Find the city that the thief escaped to
 SELECT * FROM people WHERE people.name = "Bruce";
 /*
              crime scene reports
