@@ -61,6 +61,8 @@ AND people.name in
                 LIMIT 1)
 );
 
+
+SELECT * FROM people WHERE people.name = "Bruce";
 /*
              crime scene reports
 id | year | month | day | street | description
