@@ -62,8 +62,29 @@ SELECT people.name
 );
 
 
--- Find the city that the thief escaped to
-SELECT * FROM people WHERE people.name = "Bruce";
+-- Find the city that the thief escaped to through flight booking
+SELECT airports.city
+  FROM flights
+  JOIN airports ON airports.id = flights.destination_airport_id
+ WHERE flights.id =
+       (SELECT passengers.flight_id
+          FROM passengers
+               JOIN people ON people.passport_number = passengers.passport_number
+         WHERE people.name = "Bruce");
+
+
+-- Find the accomplice through phone call
+SELECT people.name
+  FROM people
+ WHERE people.phone_number =
+       (SELECT pc.receiver
+          FROM phone_calls AS pc
+               JOIN people ON pc.caller = people.phone_number
+        WHERE people.name = "Bruce"
+          AND pc.duration < 60
+          AND pc.year = 2021 AND pc.month = 7 AND pc.day = 28);
+
+
 /*
              crime scene reports
 id | year | month | day | street | description
@@ -95,4 +116,4 @@ id | name | phone_number | pasport_number | license_plate
                        bakery_security_logs
 id | year | month | day | hour | minute | activity | license_plate
 
-/*
+*/
