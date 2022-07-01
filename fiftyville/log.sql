@@ -7,6 +7,7 @@ SELECT description
  WHERE year = 2021 AND month = 7 AND day = 28
    AND street = "Humphrey Street";
 
+
 -- Theft detail: 10:15am at the Humphrey Street bakery. Examine interviews looking out for that time
 SELECT name, transcript
   FROM interviews
@@ -21,8 +22,12 @@ SELECT people.name
  WHERE bsl.year = 2021 AND month = 7 AND day = 28 AND hour = 10
    AND NOT(minute < 15) AND NOT (minute > 25)
    AND activity = "exit";
+-- Got a list of potential suspects
 
--- Eugene: Withrew money from the atm on Leggett street earlier that day
+
+-- Eugene: Thief withrew money from the atm on Leggett street earlier that day
+
+
 
 -- Raymond: As thief left bakery, called someone for less than a min. Take earliest flight out of Fiftyville on 7/29
 
