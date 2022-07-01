@@ -20,7 +20,7 @@ SELECT people.name
          ON bsl.license_plate = people.license_plate
  WHERE bsl.year = 2021 AND month = 7 AND day = 28 AND hour = 10
    AND NOT(minute < 15) AND NOT (minute > 25)
-   AND activity = "leave";
+   AND activity = "exit";
 
 -- Eugene: Withrew money from the atm on Leggett street earlier that day
 
