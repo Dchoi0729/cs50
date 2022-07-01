@@ -14,7 +14,13 @@ SELECT name, transcript
 
 
 -- Ruth: Criminal left the bakery 10:15 ~ 10:25am in a car
-SELECT 
+SELECT people.name
+  FROM people
+       JOIN bakery_security_logs AS bsl
+         ON bsl.license_plate = people.license_plate
+ WHERE bsl.year = 2021 AND month = 7 AND day = 28 AND hour = 10
+   AND NOT(minute < 15) AND NOT (minute > 25)
+   AND activity = "leave";
 
 -- Eugene: Withrew money from the atm on Leggett street earlier that day
 
