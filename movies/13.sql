@@ -1,5 +1,5 @@
 -- List the names of all people who starred in a movie in which Kevin bacon also starred
 
-SELECT people.name FROM people
- WHERE people.id IN
- (stars.person_id IN (people.id FROM people WHERE people.name = "Kevin Bacon" AND people.birth = 1958));
+SELECT people.name FROM stars JOIN people ON people.id = stars.person_id WHERE stars.movie_id =
+(SELECT stars.movie_id FROM stars WHERE stars.person_id = (SELECT people.id FROM people WHERE people.name = "Kevin Bacon" AND people.birth = 1958))
+AND people.name != "Kevin Bacon";
