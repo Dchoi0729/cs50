@@ -13,7 +13,13 @@ SELECT name, transcript
  WHERE year = 2021 AND month = 7 AND day = 28;
 
 
--- Criminal left the bakery plus minus ten minutes
+-- Ruth: Criminal left the bakery 10:15 ~ 10:25am in a car
+SELECT 
+
+-- Eugene: Withrew money from the atm on Leggett street earlier that day
+
+-- Raymond: As thief left bakery, called someone for less than a min. Take earliest flight out of Fiftyville on 7/29
+
 /*
              crime scene reports
 id | year | month | day | street | description
