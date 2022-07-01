@@ -7,6 +7,10 @@ SELECT description
  WHERE year = 2021 AND month = 7 AND day = 28
    AND street = "Humphrey Street";
 
+-- Theft detail: 10:15am at the Humphrey Street bakery. Examine interviews looking out for that time
+SELECT name, transcript
+  FROM interviews
+ WHERE year = 2021 AND month = 7 AND day = 28;
 
 /*
              crime scene reports
