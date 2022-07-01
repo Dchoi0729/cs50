@@ -26,7 +26,12 @@ SELECT people.name
 
 
 -- Eugene: Thief withrew money from the atm on Leggett street earlier that day
+SELECT people.name
+  FROM people
+       JOIN bank_accounts ON bank_accounts.account_number = atm_transactions.account_number
+       JOIN atm_transactions ON atm_transactions.
 
+       WHERE transaction_type = "withdraw";
 
 
 -- Raymond: As thief left bakery, called someone for less than a min. Take earliest flight out of Fiftyville on 7/29
