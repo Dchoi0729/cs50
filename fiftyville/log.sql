@@ -12,6 +12,8 @@ SELECT name, transcript
   FROM interviews
  WHERE year = 2021 AND month = 7 AND day = 28;
 
+
+-- Criminal left the bakery plus minus ten minutes
 /*
              crime scene reports
 id | year | month | day | street | description
