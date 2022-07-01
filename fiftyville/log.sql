@@ -16,48 +16,50 @@ SELECT name, transcript
  WHERE year = 2021 AND month = 7 AND day = 28;
 
 
--- Ruth: Criminal left the bakery 10:15 ~ 10:25am in a car
+-- GET THE THIEF
 SELECT people.name
   FROM people
-       JOIN bakery_security_logs AS bsl
-         ON bsl.license_plate = people.license_plate
- WHERE bsl.year = 2021 AND month = 7 AND day = 28 AND hour = 10
-   AND NOT(minute < 15) AND NOT (minute > 25)
-   AND activity = "exit";
--- Got a list of potential suspects
-
+ WHERE people.name in
+-- Ruth: Criminal left the bakery 10:15 ~ 10:25am in a car
+      (SELECT people.name
+         FROM people
+             JOIN bakery_security_logs AS bsl
+               ON bsl.license_plate = people.license_plate
+        WHERE bsl.year = 2021 AND month = 7 AND day = 28 AND hour = 10
+          AND NOT(minute < 15) AND NOT (minute > 25)
+          AND activity = "exit")
 
 -- Eugene: Thief withrew money from the atm on Leggett street earlier that day
-SELECT DISTINCT(people.name)
-  FROM bank_accounts
-       JOIN atm_transactions AS atm ON bank_accounts.account_number = atm.account_number
-       JOIN people ON bank_accounts.person_id = people.id
- WHERE atm.transaction_type = "withdraw"
-   AND atm.year = 2021 AND atm.month = 7 AND atm.day = 28
-   AND atm.atm_location = "Leggett Street";
---Got another list of potential suspects
-
+AND people.name in
+      (SELECT DISTINCT(people.name)
+         FROM bank_accounts
+             JOIN atm_transactions AS atm ON bank_accounts.account_number = atm.account_number
+             JOIN people ON bank_accounts.person_id = people.id
+        WHERE atm.transaction_type = "withdraw"
+          AND atm.year = 2021 AND atm.month = 7 AND atm.day = 28
+          AND atm.atm_location = "Leggett Street" )
 
 -- Raymond: As thief left bakery, called someone for less than a min.
-SELECT people.name
-  FROM people
-       JOIN phone_calls AS pc ON pc.caller = people.phone_number
- WHERE pc.duration < 60
-   AND pc.year = 2021 AND pc.month = 7 AND pc.day = 28;
--- Got another list of potential suspects
-
+AND people.name in
+      (SELECT people.name
+         FROM people
+              JOIN phone_calls AS pc ON pc.caller = people.phone_number
+        WHERE pc.duration < 60
+          AND pc.year = 2021 AND pc.month = 7 AND pc.day = 28)
 
 -- Raymond: Take earliest flight out of Fiftyville on 7/29
-SELECT people.name
-  FROM passengers JOIN people ON people.passport_number = passengers.passport_number
- WHERE passengers.flight_id =
-       (SELECT flights.id
-          FROM airports
-             JOIN flights ON airports.id = origin_airport_id
-         WHERE airports.city = "Fiftyville"
-           AND flights.year = 2021 AND month = 7 AND day = 29
-         ORDER BY hour, minute
-         LIMIT 1);
+AND people.name in
+      (SELECT people.name
+         FROM passengers JOIN people ON people.passport_number = passengers.passport_number
+        WHERE passengers.flight_id =
+              (SELECT flights.id
+                 FROM airports
+                      JOIN flights ON airports.id = origin_airport_id
+                WHERE airports.city = "Fiftyville"
+                  AND flights.year = 2021 AND month = 7 AND day = 29
+                ORDER BY hour, minute
+                LIMIT 1)
+);
 
 /*
              crime scene reports
