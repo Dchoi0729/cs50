@@ -19,7 +19,7 @@
                     });
                 }
 
-                h = document.querySelector("ol").querySelectorAll("li");
+                let h = document.querySelector("ol").querySelectorAll("li");
                 for(let i = 0; i < h.length; i++){
                     console.log(h[i].querySelector("h3").innerHTML);
                     console.log(h[i].querySelector("button").innerHTML);
@@ -28,9 +28,10 @@
 
                 let q1 = 0, q2 = 0; q3 = 0;
 
-                mcqList = document.querySelector("ol").querySelectorAll("li");
-                for (let q = 0; q < mcqList.length; q++){
-
+                let mcqList = document.querySelector("ol").querySelectorAll("li");
+                let mcqs = document.querySelector("button")
+                for (let q = 0; q < mcqs.length; q++){
+                    console.log(mcqs[q])
                 }
 
             });
