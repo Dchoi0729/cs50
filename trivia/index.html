@@ -16,6 +16,13 @@
                     correct.style.backgroundColor = "green";
                     document.querySelector("#feedback1").innerHTML = "Correct!";
                 })
+
+                // When incorrect answer is clicked, change answer to red
+                let incorrects = document.querySelector(".incorrect");
+                incorrect.addEventListener('click', function() {
+                    incorrect.style.backgroundColor = "red";
+                    document.querySelector("#feedback1").innerHTML = "Incorrect!"
+                })
             });
         </script>
     </head>
