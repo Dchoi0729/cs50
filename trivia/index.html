@@ -13,6 +13,7 @@
                 // When correct answer is clicked, change answer to green
                 let correct = document.querySelector(".correct");
                 correct.addEventListener('click', function() {
+                    console.log("hi");
                     correct.style.backgroundColor = "green";
                     document.querySelector("#feedback1").innerHTML = "Correct!";
                 });
@@ -68,7 +69,7 @@
 
                 <h3> How many bits are in four bytes?</h3>
                 <input type="text"></input>
-                <button id="check" >Check Answer</button>
+                <button id="check">Check Answer</button>
 
                 <p id="feedback2"></p>
             </div>
