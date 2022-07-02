@@ -21,10 +21,16 @@
                 let incorrects = document.querySelectorAll(".incorrect");
                 for (let i = 0; i < incorrects.length; i++) {
                     incorrects[i].addEventListener('click', function() {
-                    incorrects[i].style.backgroundColor = "red";
-                    document.querySelector("#feedback1").innerHTML = "Incorrect!"
+                        incorrects[i].style.backgroundColor = "red";
+                        document.querySelector("#feedback1").innerHTML = "Incorrect!"
                     })
                 }
+
+                // Check free response submission
+                document.querySelector("#check").addEventListener('click', function() {
+                    let answer = document.querySelector("input");
+                    
+                })
             });
         </script>
     </head>
