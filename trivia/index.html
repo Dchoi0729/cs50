@@ -15,7 +15,7 @@
                 correct.addEventListener('click', function() {
                     correct.style.backgroundColor = "green";
                     document.querySelector("#feedback1").innerHTML = "Correct!";
-                })
+                });
 
                 // When incorrect answer is clicked, change answer to red
                 let incorrects = document.querySelectorAll(".incorrect");
@@ -23,7 +23,7 @@
                     incorrects[i].addEventListener('click', function() {
                         incorrects[i].style.backgroundColor = "red";
                         document.querySelector("#feedback1").innerHTML = "Incorrect!"
-                    })
+                    });
                 }
 
                 // Check free response submission
@@ -31,14 +31,14 @@
                     let answer = document.querySelector("input");
                     if (answer.value == 32 || answer.value.toLowerCase() === "four") {
                         input.style.backgroundColor == "green";
-                        document.querySelector("#feedback2").innerHTML = "Correct!"
+                        document.querySelector("#feedback2").innerHTML = "Correct!";
                     }
                     else {
                         input.style.backgroundColor == "red";
-                        document.querySelector("#feedback2").innerHTML = "Incorrect!"
+                        document.querySelector("#feedback2").innerHTML = "Incorrect!";
                     }
-                })
-                
+                });
+
             });
         </script>
     </head>
