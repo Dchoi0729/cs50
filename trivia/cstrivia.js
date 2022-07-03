@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Add selected answer choice to answer array
             mcqAns[mcqAnsChoice[i].className[1]-1] = mcqAnsChoice[i];
+            hi();
         })
     }
 
