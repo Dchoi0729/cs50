@@ -5,7 +5,7 @@ let MCQANSWER = ["RAM","IBM","MS excel"];
 let MCQNUM = MCQANSWER.length;
 
 // Answers for frq questions
-let FRQANSWER = ["universal serial bus","macos"];
+let FRQANSWER = ["universalserialbus","macos"];
 let FRQNUM = FRQANSWER.length;
 
 // Run script when document is loaded
@@ -64,8 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let count = 0;
 
         for (let i = 0; i < frqAns.length; i++){
-            console.log(frqAns[i].value);
-            if (FRQANSWER[i] === frqAns[i].value.trim().toLowerCase()){
+            if (FRQANSWER[i] === frqAns[i].value.toLowerCase().replace(/\s/g, "")){
                 count++;
                 frqAns[i].style.backgroundColor = "#90EE90";
             }
