@@ -7,6 +7,9 @@
         <title>Trivia!</title>
         <script>
 
+            // Answer key for mcq questions
+            let MCQANSWER = ["RAM","IBM","MS excel"];
+
             // Run script when document is loaded
             document.addEventListener('DOMContentLoaded', function() {
 
@@ -56,7 +59,7 @@
                         document.querySelector("#feedback1").innerHTML = "Answer all the questions first"
                     }
                     else {
-
+                        if (mcqAns == MCQANSWER)
                     }
                 })
 
