@@ -40,7 +40,7 @@
                 checkMcq.addEventListener("click", function() {
                     let count = 0;
                     if (mcqAns.length != 3) {
-                        document.querySelector("#feedback1").innerHTML = "Answer all the questions first";
+                        setTimeout(function() {document.querySelector("#feedback1").innerHTML = "Answer all the questions first";}, 3000);
                     }
                     else {
                         for (let i = 0; i < mcqAns.length; i++){
