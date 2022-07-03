@@ -8,47 +8,28 @@
         <script>
 
             // Answer key for mcq questions
+            let MCQNUM = 3;
             let MCQANSWER = ["RAM","IBM","MS excel"];
 
             // Run script when document is loaded
             document.addEventListener('DOMContentLoaded', function() {
 
-                // When incorrect answer is clicked, change answer to red
-                let incorrects = document.querySelectorAll(".incorrect");
-                for (let i = 0; i < incorrects.length; i++) {
-                    incorrects[i].addEventListener('click', function() {
-                        incorrects[i].style.backgroundColor = "red";
-                        document.querySelector("#feedback1").innerHTML = "Incorrect!"
-                    });
-                }
-
-                let h = document.querySelector("ol").querySelectorAll("li");
-                for(let i = 0; i < h.length; i++){
-                    console.log(h[i].querySelector("h3").innerHTML);
-                    console.log(h[i].querySelector("button").innerHTML);
-                }
-
                 let mcqAns = [];
+                let mcqAnsChoice = document.querySelectorAll("#mcq");
+                for (let i = 0; i < mcqAnsChoice.length; i++){
+                    mcqAnsChoice[i].addEventListener('click', function() {
 
-                let mcqs = document.querySelectorAll("#mcq");
-                for (let i = 0; i < mcqs.length; i++){
-                    mcqs[i].addEventListener('click', function() {
+                        mcqAnsChoice[i].style.borderColor = "blue";
 
-                        console.log(mcqs[i].className[1]);
-                        mcqs[i].style.borderColor = "blue";
-
-                        let sameNumQues = document.querySelectorAll("."+mcqs[i].className);
+                        let sameNumQues = document.querySelectorAll("."+mcqAnsChoice[i].className);
                         for (let j = 0; j < sameNumQues.length; j++){
-                            console.log(sameNumQues[j].innerHTML);
-
-                            if (sameNumQues[j] != mcqs[i]){
+                            if (sameNumQues[j] != mcqAnsChoice[i]){
                                 sameNumQues[j].style.borderColor = "";
                             }
-
                         }
 
                         // Add selected answer choice to answer array
-                        mcqAns[mcqs[i].className[1]-1] = mcqs[i].innerHTML;
+                        mcqAns[mcqAnsChoice[i].className[1]-1] = mcqAnsChoice[i].innerHTML;
                     })
                 }
 
