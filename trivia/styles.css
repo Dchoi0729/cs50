@@ -21,7 +21,6 @@ body {
     margin-bottom: 2rem;
     padding: 2rem 1rem;
     text-align: center;
-    display: inline-block;
 }
 
 .section {
@@ -36,6 +35,15 @@ body {
 h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 48px;
+}
+
+h2 {
+    display: inline-block;
+}
+
+h5 {
+    display: inline-block;
+    font-size: 15px;
 }
 
 button, input[type="submit"] {
