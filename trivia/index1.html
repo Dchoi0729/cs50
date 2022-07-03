@@ -7,7 +7,7 @@
         <title>Trivia!</title>
         <script>
 
-            // Answer key for mcq questions
+            // Question number and answer key for mcq questions
             let MCQNUM = 3;
             let MCQANSWER = ["RAM","IBM","MS excel"];
 
@@ -16,6 +16,8 @@
 
                 let mcqAns = [];
                 let mcqAnsChoice = document.querySelectorAll("#mcq");
+
+                // If MCQ answer choice is clicked
                 for (let i = 0; i < mcqAnsChoice.length; i++){
                     mcqAnsChoice[i].addEventListener('click', function() {
 
