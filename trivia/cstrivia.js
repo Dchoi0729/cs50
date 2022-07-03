@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Add selected answer choice to answer array
             mcqAns[mcqAnsChoice[i].className[1]-1] = mcqAnsChoice[i];
-            hi();
         })
     }
 
@@ -83,6 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Retry button
     let retry = document.querySelector("#retry");
     retry.addEventListener("click", function(){
-        document.load.reload(true);
+        document.location.reload(true);
     })
 })
