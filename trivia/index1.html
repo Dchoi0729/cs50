@@ -25,14 +25,14 @@
                     console.log(h[i].querySelector("button").innerHTML);
                 }
 
-                let mcqAns = 
+                let mcqAns = [];
 
                 let mcqList = document.querySelector("ol").querySelectorAll("li");
                 let mcqs = document.querySelectorAll("button");
                 for (let i = 0; i < mcqs.length; i++){
                     mcqs[i].addEventListener('click', function() {
 
-                        console.log(mcqs[i].className);
+                        console.log(mcqs[i].className[1]);
                         mcqs[i].style.borderColor = "blue";
 
                         let sameNumQues = document.querySelectorAll("."+mcqs[i].className);
@@ -42,9 +42,19 @@
                             if (sameNumQues[j] != mcqs[i]){
                                 sameNumQues[j].style.borderColor = "";
                             }
+
                         }
+
+                        // Add selected answer choice to answer array
+                        mcqAns[mcqs[i].className[1]] = mcqs[i].innerHTML;
+                        for (let i = 0; i < mcqAns.length; i++){
+                    console.log(mcqAns[i]);
+                }
                     })
                 }
+
+
+
 
             });
         </script>
