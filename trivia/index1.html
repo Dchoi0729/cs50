@@ -31,7 +31,7 @@
                         }
 
                         // Add selected answer choice to answer array
-                        mcqAns[mcqAnsChoice[i].className[1]-1] = mcqAnsChoice[i].innerHTML;
+                        mcqAns[mcqAnsChoice[i].className[1]-1] = mcqAnsChoice[i];
                     })
                 }
 
@@ -39,12 +39,20 @@
                 let checkMcq = document.querySelector("#checkMcq");
                 checkMcq.addEventListener("click", function() {
                     let count = 0;
-                    if (mcqAns.length != 3) {
-                        setTimeout(function() {document.querySelector("#feedback1").innerHTML = "Answer all the questions first";}, 3000);
+                    if (mcqAns.length != MCQNUM) {
+                        document.querySelector("#feedback1").innerHTML = "Answer all the questions first";
+                        setTimeout(function() {document.querySelector("#feedback1").innerHTML = "";}, 3000);
                     }
                     else {
-                        for (let i = 0; i < mcqAns.length; i++){
-                            count = MCQANSWER[i] === mcqAns[i].trim() ? count + 1:count;
+                        for (let i = 0; i < MCQNUM; i++){
+                            //count = MCQANSWER[i] === mcqAns[i].innerHTML.trim() ? count + 1:count;
+                            if (MCQANSWER[i] === mcqAns[i].innerHTML.trim()){
+                                count++;
+                                mcqAns[i].style.backgroundColor = "#90EE90";
+                            }
+                            else{
+                                mcqAns[i].style.backgroundColor = "#ffcccb";
+                            }
                         }
 
                         document.querySelector("#feedback1").innerHTML = count + " questions correct!";
