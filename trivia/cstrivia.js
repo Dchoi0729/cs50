@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let checkMcq = document.querySelector("#checkMcq");
     checkMcq.addEventListener("click", function() {
         let count = 0;
+        console.log(mcqAns.length);
         if (mcqAns.length != MCQNUM) {
             document.querySelector("#feedback1").innerHTML = "Answer all the questions first";
             setTimeout(function() {document.querySelector("#feedback1").innerHTML = "";}, 3000);
