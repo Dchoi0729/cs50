@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         else {
             for (let i = 0; i < MCQNUM; i++){
                 //count = MCQANSWER[i] === mcqAns[i].innerHTML.trim() ? count + 1:count;
+                console.log(mcqAns[i]);
                 if (MCQANSWER[i] === mcqAns[i].innerHTML.trim()){
                     count++;
                     mcqAns[i].style.backgroundColor = "#90EE90";
