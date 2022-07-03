@@ -23,7 +23,6 @@
                 for(let i = 0; i < h.length; i++){
                     console.log(h[i].querySelector("h3").innerHTML);
                     console.log(h[i].querySelector("button").innerHTML);
-                    console.log(h[i].count)
                 }
 
                 let q1 = 0, q2 = 0; q3 = 0;
@@ -31,7 +30,10 @@
                 let mcqList = document.querySelector("ol").querySelectorAll("li");
                 let mcqs = document.querySelectorAll("button");
                 for (let q = 0; q < mcqs.length; q++){
-                    console.log(mcqs[q].innerHTML)
+                    mcqs[q].addEventListener('click', function() {
+
+                        
+                    })
                 }
 
             });
