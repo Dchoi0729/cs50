@@ -29,11 +29,18 @@
 
                 let mcqList = document.querySelector("ol").querySelectorAll("li");
                 let mcqs = document.querySelectorAll("button");
-                for (let q = 0; q < mcqs.length; q++){
-                    mcqs[q].addEventListener('click', function() {
+                for (let i = 0; i < mcqs.length; i++){
+                    mcqs[i].addEventListener('click', function() {
 
-                        console.log(mcqs[q].className);
-                        mcqs[q].style.backgroundColor = 
+                        console.log(mcqs[i].className);
+                        mcqs[i].style.borderColor = "blue";
+
+                        let sameNumQues = document.querySelectorAll("."+mcqs[i].className);
+                        for (let j = 0; j < sameNumQues.length; j++){
+                            console.log(sameNumQues[j].innerHTML);
+
+                            sameNumQues[j].borderColor = "none";
+                        }
                     })
                 }
 
