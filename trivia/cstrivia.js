@@ -11,11 +11,13 @@ let FRQNUM = FRQANSWER.length;
 // Run script when document is loaded
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Array containing all the selected anwer buttons
+    // Array containing all answers given by user for mcq and frq
     let mcqAns = [];
-    let mcqAnsChoice = document.querySelectorAll("#mcq");
+    let frqAns = document.querySelectorAll("input");
+
 
     // If MCQ answer choice is clicked
+    let mcqAnsChoice = document.querySelectorAll("#mcq");
     for (let i = 0; i < mcqAnsChoice.length; i++){
         mcqAnsChoice[i].addEventListener('click', function() {
 
@@ -59,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })
 
-    let frqAns = document.querySelectorAll("input");
+    // Check FRQquestions
     let checkFrq = document.querySelector("#checkFrq");
     checkFrq.addEventListener("click", function() {
         let count = 0;
@@ -78,4 +80,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector("#feedback2").innerHTML = percent + "%";
     })
 
+    // Retry button
+    let retry = document.querySelector("#retry");
+    retry.addEventListener("click", function(){
+        document.load.reload(true);
+    })
 })
