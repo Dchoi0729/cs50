@@ -1,8 +1,12 @@
 // Javascript code for CS trivia
 
 // Question number and answer key for mcq questions
-let MCQNUM = 3;
 let MCQANSWER = ["RAM","IBM","MS excel"];
+let MCQNUM = MCQANSWER.length;
+
+// Answers for frq questions
+let FRQANSWER = ["universal serial bus","macos"];
+let FRQNUM = FRQANSWER.length;
 
 // Run script when document is loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -54,5 +58,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })
 
-    
+    let frqAns = document.querySelectorAll("input");
+    let checkFrq = document.querySelector("#checkFrq");
+    checkFrq.addEventListener("click", function() {
+        let count = 0;
+
+        for (let i = 0; i < frqAns.length; i++){
+            console.log(frqAns[i].value);
+            if (FRQANSWER[i] === frqAns[i].value.trim().toLowerCase()){
+                count++;
+                frqAns[i].style.backgroundColor = "#90EE90";
+            }
+            else{
+                frqAns[i].style.backgroundColor = "#ffcccb";
+            }
+        }
+
+        let percent = Number((count / FRQNUM * 100).toPrecision(4));
+        document.querySelector("#feedback2").innerHTML = percent + "%";
+    })
+
 })
