@@ -25,7 +25,7 @@
                     console.log(h[i].querySelector("button").innerHTML);
                 }
 
-                let q1 = 0, q2 = 0; q3 = 0;
+                let mcqAns = 
 
                 let mcqList = document.querySelector("ol").querySelectorAll("li");
                 let mcqs = document.querySelectorAll("button");
@@ -39,7 +39,9 @@
                         for (let j = 0; j < sameNumQues.length; j++){
                             console.log(sameNumQues[j].innerHTML);
 
-                            sameNumQues[j].borderColor = #FFFFFF;
+                            if (sameNumQues[j] != mcqs[i]){
+                                sameNumQues[j].style.borderColor = "";
+                            }
                         }
                     })
                 }
