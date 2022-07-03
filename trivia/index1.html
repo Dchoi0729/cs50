@@ -55,11 +55,17 @@
                 // Check MCQ questions
                 let checkMcq = document.querySelector("#checkMcq");
                 checkMcq.addEventListener("click", function() {
+                    let count = 0;
                     if (mcqAns.length != 3) {
                         document.querySelector("#feedback1").innerHTML = "Answer all the questions first"
                     }
                     else {
-                        if (mcqAns == MCQANSWER)
+                        for (let i = 0; i < mcqAns.length; i++){
+                            if (MCQANS[i] == mcqAns[i])
+                            {
+                                count++;
+                            }
+                        }
                     }
                 })
 
