@@ -56,7 +56,7 @@
                             }
                         }
 
-                        document.querySelector("#feedback1").innerHTML = count + " questions correct!";
+                        document.querySelector("#feedback1").innerHTML = (count/MCQNUM) * 100 + "%";
                     }
                 })
 
