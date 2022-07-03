@@ -28,7 +28,8 @@
                 let mcqAns = [];
 
                 let mcqList = document.querySelector("ol").querySelectorAll("li");
-                let mcqs = document.querySelectorAll("button");
+                
+                let mcqs = document.querySelectorAll("#mcq");
                 for (let i = 0; i < mcqs.length; i++){
                     mcqs[i].addEventListener('click', function() {
 
@@ -46,10 +47,7 @@
                         }
 
                         // Add selected answer choice to answer array
-                        mcqAns[mcqs[i].className[1]] = mcqs[i].innerHTML;
-                        for (let i = 0; i < mcqAns.length; i++){
-                    console.log(mcqAns[i]);
-                }
+                        mcqAns[mcqs[i].className[1]-1] = mcqs[i].innerHTML;
                     })
                 }
 
@@ -73,28 +71,28 @@
                     <!-- MCQ1-->
                     <li>
                         <h3> Which information storage is used to store short-term running programs and data in a computer ?</h3>
-                        <button class = "q1"> RAM </button>
-                        <button class = "q1"> ROM </button>
-                        <button class = "q1"> CPU </button>
-                        <button class = "q1"> HDD/SSD </button>
+                        <button class = "q1" id = "mcq"> RAM </button>
+                        <button class = "q1" id = "mcq"> ROM </button>
+                        <button class = "q1" id = "mcq"> CPU </button>
+                        <button class = "q1" id = "mcq"> HDD/SSD </button>
                     </li>
 
                     <!-- MCQ2-->
                     <li>
                         <h3> Which computer company invented the first floppy disks, hard disk drives, and DRAMS?</h3>
-                        <button class = "q2"> Apple </button>
-                        <button class = "q2"> IBM </button>
-                        <button class = "q2"> Google </button>
-                        <button class = "q2"> Microsoft </button>
+                        <button class = "q2" id = "mcq"> Apple </button>
+                        <button class = "q2" id = "mcq"> IBM </button>
+                        <button class = "q2" id = "mcq"> Google </button>
+                        <button class = "q2" id = "mcq"> Microsoft </button>
                     </li>
 
                     <!-- MCQ3-->
                     <li>
                         <h3> '.xls' is a file extension used in which application? </h3>
-                        <button class = "q3"> MS word </button>
-                        <button class = "q3"> MS powerpoint </button>
-                        <button class = "q3"> Google spreadsheet </button>
-                        <button class = "q3"> MS excel </button>
+                        <button class = "q3" id = "mcq"> MS word </button>
+                        <button class = "q3" id = "mcq"> MS powerpoint </button>
+                        <button class = "q3" id = "mcq"> Google spreadsheet </button>
+                        <button class = "q3" id = "mcq"> MS excel </button>
                     </li>
                 </ol>
 
