@@ -1,5 +1,9 @@
-let navItems = document.querySelectorAll('.nav-item');
+let navItems = document.querySelectorAll(".nav-item");
 console.log(navItems.length);
+
+
+
+document.querySelector(")
 
 for (let i = 0; i < navItems.length; i++) {
     console.log(navItems[i]);
