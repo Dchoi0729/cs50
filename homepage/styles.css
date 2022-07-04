@@ -11,7 +11,7 @@ body, html {
 }
 
 .nav-item.current {
-    background: #000;
+    background-color: "green";
 }
 
 /* Back ground for main page*/
