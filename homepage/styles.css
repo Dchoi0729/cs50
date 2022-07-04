@@ -11,7 +11,7 @@ body, html {
 }
 
 .nav-item.current {
-    visibility: visible;
+    border-bottom: 3px solid white;
 }
 
 /* Back ground for main page*/
