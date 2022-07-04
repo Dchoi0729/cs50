@@ -10,6 +10,10 @@ body, html {
     line-height: 35px;
 }
 
+.nav-item.current {
+    background: #000;
+}
+
 /* Back ground for main page*/
 .bg {
     /* The image used */
