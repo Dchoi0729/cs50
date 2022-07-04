@@ -3,6 +3,13 @@ body, html {
     margin: 0;
 }
 
+/* Nav bar settings */
+.navbar-brand {
+    padding: 0px;
+    line-height: 35px;
+}
+
+/* Back ground for main page*/
 .bg {
     /* The image used */
     background-image: url("https://images.unsplash.com/photo-1506816561089-5cc37b3aa9b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1575&q=80");
@@ -16,12 +23,3 @@ body, html {
     background-size: cover;
 }
 
-.navbar {
-    min-height: 80px;
-}
-
-.navbar-brand {
-    padding: 5px;
-    height: 80px;
-    line-height: 35px;
-}
