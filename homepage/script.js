@@ -1,5 +1,6 @@
 let navItems = document.querySelectorAll('.nav-item');
 console.log(navItems.length);
+
 for (let i = 0; i < navItems.length; i++) {
     console.log(navItems[i]);
     navItems[i].addEventListener("click", function() {
