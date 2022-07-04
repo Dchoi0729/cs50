@@ -16,6 +16,12 @@ body, html {
     background-size: cover;
 }
 
-.nav-item{
-    
+.navbar {
+    min-height: 80px;
+}
+
+.navbar-brand {
+    padding: 5px;
+    height: 80px;
+    line-height: 35px;
 }
