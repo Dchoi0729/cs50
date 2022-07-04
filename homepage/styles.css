@@ -4,6 +4,9 @@ body, html {
 }
 
 /* Nav bar settings */
+.navbar {
+    height: 100px;
+}
 .navbar-brand {
     padding: 0px;
     margin-right: 8px;
