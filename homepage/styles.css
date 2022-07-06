@@ -42,3 +42,15 @@ body, html {
     color:white;
     font-size:80px
 }
+
+.maindiv{
+    margin: 1rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1px;
+    color: inherit;
+    background-color: currentColor;
+    border: 0;
+    opacity: 1;
+}
