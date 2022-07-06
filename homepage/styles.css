@@ -32,10 +32,11 @@ body, html {
 /* Body text for main page*/
 .main{
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
     /*border-style: ridge;*/
     background-Color: rgba(0, 0, 0, 0.5);
+    text-align: center;
 }
