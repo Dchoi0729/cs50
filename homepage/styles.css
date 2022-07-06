@@ -36,7 +36,9 @@ body, html {
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-    /*border-style: ridge;*/
-    background-Color: rgba(0, 0, 0, 0.5);
+    border-style: ridge;
+    /*background-Color: rgba(0, 0, 0, 0.5);*/
     text-align: center;
+    color:white;
+    font-size:80px
 }
