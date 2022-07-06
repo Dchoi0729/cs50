@@ -20,7 +20,7 @@ body, html {
     /* The image used *//*
     background-image: url("https://images.unsplash.com/photo-1506816561089-5cc37b3aa9b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1575&q=80");*/
 
-    background-image: url("https://cdn.pixabay.com/photo/2018/05/04/20/01/website-3374825_960_720.jpg");
+    background-image: url("https://images.unsplash.com/photo-1506816561089-5cc37b3aa9b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1575&q=80");
 
     /* Full height */
     height: 100%;
@@ -33,16 +33,17 @@ body, html {
 
 /* Body text for main page*/
 .main{
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 90vh;
+
+
     border-style: solid;
     border-width: thick;
     background-Color: rgba(0, 0, 0, 0.25);
     text-align: center;
-    width: 500px;
     color:white;
     font-size:80px
 }
