@@ -36,9 +36,10 @@ body, html {
     border-style: ridge;
     align-items: center;
     vertical-align: middle;
-    min-height: 95mv;
 
-    margin-left: auto;
     width: 400px;
     height: 200px;
+
+    margin-top:2%;
+    margin-left: 5%;
 }
