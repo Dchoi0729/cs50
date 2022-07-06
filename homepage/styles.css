@@ -34,8 +34,11 @@ body, html {
 .main{
     display: flex;
     justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 90vh;
     border-style: ridge;
+    align-items: center;
+    vertical-align: middle;
+
+
+    width: 200px;
+    height: 200px;
 }
