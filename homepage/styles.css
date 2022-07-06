@@ -37,7 +37,8 @@ body, html {
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 90vh;
+    /*min-height: 90vh;*/
+    margin-top: 20%;
 
 
     border-style: solid;
