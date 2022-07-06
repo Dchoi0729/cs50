@@ -37,4 +37,7 @@ body, html {
     align-items: center;
     text-align: center;
     min-height: 90vh;
+    border-style: ridge;
+    width: 200px;
+    height: 200px;
 }
