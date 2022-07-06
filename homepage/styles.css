@@ -39,6 +39,8 @@ body, html {
     text-align: center;
     /*min-height: 90vh;*/
     margin-top: 25vh;
+    margin-left: 10%;
+    width: 500px;
 
 
     border-style: solid;
