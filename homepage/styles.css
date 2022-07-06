@@ -31,15 +31,11 @@ body, html {
 
 /* Body text for main page*/
 .main{
-    display: flex;
-    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
     border-style: ridge;
-    align-items: center;
-    vertical-align: middle;
-
-    width: 400px;
-    height: 200px;
-
-    margin-top:2%;
-    margin-left: 5%;
+    background-Color: white;
 }
