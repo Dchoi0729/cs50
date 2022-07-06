@@ -1,6 +1,5 @@
 body, html {
     height: 100%;
-    margin: 0;
 }
 
 /* Nav bar settings */
@@ -37,8 +36,9 @@ body, html {
     border-style: ridge;
     align-items: center;
     vertical-align: middle;
+    min-height: 95mv;
 
-    margin-left: 50%;
+    margin-left: auto;
     width: 400px;
     height: 200px;
 }
