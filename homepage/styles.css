@@ -32,17 +32,10 @@ body, html {
 
 /* Body text for main page*/
 .main{
-    /*
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     min-height: 90vh;
     border-style: ridge;
-    width: 400px;
-    height: 200px;*/
-
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
