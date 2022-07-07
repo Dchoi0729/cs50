@@ -31,59 +31,15 @@ body, html {
     background-size: cover;
 }
 
-/* Body text for main page* https://codepen.io/john-hu/pen/MWgrEdV//
-.main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    /*min-height: 90vh;*/
-    margin-bottom: 1vh;
-    margin-left: 33vw;
-
-
-    border-style: solid;
-    border-width: thick;
-    background-Color: rgba(0, 0, 0, 0.25);
-    color:white;
-    font-size:80px
-}
-
-.maindiv{
-    margin: 1rem;
-    margin-top: 0.5rem;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-    margin-left: 1rem;
-    color: inherit;
-    background-color: currentColor;
-    border: 0;
-    opacity: 1;
-}
-
-
-.container {
+/*Body text for main page*/
+.maindiv {
     width: 100%;
-    height:80%;
+    height:90%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
-/*
-.square {
-position: relative;
-width: 65vmin;
-height: 30vmin;
-border: solid white 5px;
-box-sizing: border-box;
-}
-
-.square:after {
-content: "";
-display: block;
-padding-bottom: 100%;
-}*/
 
 .content {
 position: relative;
@@ -92,8 +48,4 @@ height: 100%;
 color:white;
 font-size:5vw;
 border-style: solid;
-}
-
-.content:after {
-    padding-bottom: 100%;
 }
