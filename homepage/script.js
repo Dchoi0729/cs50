@@ -1,8 +1,11 @@
 // When document is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Center the maindiv text height
+    // Center the maindiv text height when window is resized
     window.addEventListener("resize", centerText);
+
+    // Center the maindiv text for the first time
+    centerText();
 
     // Mark the current page the user is on
     let navbarItems = document.querySelectorAll("#navitem");
@@ -25,9 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
             highlightCurrent(navbarItems);
         })
     })
-
-    centerText();
-
 })
 
 function highlightCurrent(navbarlist){
@@ -47,7 +47,7 @@ function centerText(){
 
     console.log(vh);
     console.log(mainDivHeight);
-    console.log(document.querySelector(".maindiv").scrollHeight);
+    console.log(document.querySelector(".maindiv").style.height);
     console.log((vh- mainDivHeight)/2);
 
     // Set the top edge location for the maindiv container
