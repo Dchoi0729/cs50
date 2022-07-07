@@ -33,11 +33,13 @@ body, html {
 
 /*Body text for main page*/
 .maindiv {
+    position: absolute;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    top = 150px;
 }
 
 .content {
