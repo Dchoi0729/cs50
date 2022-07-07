@@ -44,6 +44,7 @@ function centerTextHeight(){
     let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
     let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
+
     let mainDivHeight = document.querySelector(".maindiv").offsetHeight;
 
     // Set the top edge location for the maindiv container
@@ -58,5 +59,5 @@ function centerTextHeight(){
         document.querySelector(".content").style.fontSize = "30px";
     }
 
-    console.log("hi");
+    console.log(document.documentElement.clientWidth);
 }
