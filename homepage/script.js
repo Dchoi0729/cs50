@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // Center the maindiv text height
-    window.addEventListener("resize", centerTextHeight());
+    window.addEventListener("resize", centerTextHeight);
 
     centerTextHeight();
 
@@ -58,7 +58,4 @@ function centerTextHeight(){
         document.querySelector(".content").style.width =  "250px";
         document.querySelector(".content").style.fontSize = "30px";
     }
-
-    console.log(document.documentElement.clientWidth);
-    document.getElementById("result").innerHTML = "Width: " + document.documentElement.clientWidth;
 }
