@@ -60,4 +60,5 @@ function centerTextHeight(){
     }
 
     console.log(document.documentElement.clientWidth);
+    document.getElementById("result").innerHTML = "Width: " + document.documentElement.clientWidth;
 }
