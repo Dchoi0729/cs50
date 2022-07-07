@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Center the maindiv text for the first time
     centerText();
+    console.log("HM");
 
     // Mark the current page the user is on
     let navbarItems = document.querySelectorAll("#navitem");
@@ -51,8 +52,8 @@ function centerText(){
     console.log((vh- mainDivHeight)/2);
 
     setTimeout(() => {
-
-    }, 50);
+        console.log(document.querySelector(".maindiv").offsetHeight);
+    }, 1);
 
     // Set the top edge location for the maindiv container
     document.querySelector(".maindiv").style.top = (vh- mainDivHeight)/2 + "px";
