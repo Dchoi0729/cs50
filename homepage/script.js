@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     centerTextHeight();
+
     // Center the maindiv text height
     window.addEventListener("resize", centerTextHeight);
 
@@ -44,9 +45,12 @@ function centerTextHeight(){
     let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
 
-    let mainDivHeight = document.querySelector(".maindiv").offsetHeight;
+    let mainDivHeight = document.querySelector(".content").offsetHeight;
 
     // Set the top edge location for the maindiv container
+    console.log(vh);
+    console.log(mainDivHeight);
+    console.log((vh- mainDivHeight)/2);
     document.querySelector(".maindiv").style.top = (vh- mainDivHeight)/2 + "px";
 
     let contentWidth = Math.max(250 , 0.3*vw);
