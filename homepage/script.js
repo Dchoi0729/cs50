@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(document.querySelector("#navbar").offsetHeight);
     let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
     console.log(vh - document.querySelector("#navbar").offsetHeight);
-    document.querySelector(".maindiv").style.top = document.querySelector("#navbar").offsetHeight + 10;
+    document.querySelector(".maindiv").style.top = document.querySelector("#navbar").offsetHeight + 100;
     document.querySelector(".maindiv").style.height = vh - document.querySelector("#navbar").offsetHeight;
 })
 
