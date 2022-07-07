@@ -47,8 +47,14 @@ function centerTextHeight(){
     // Set the top edge location for the maindiv container
     document.querySelector(".maindiv").style.top = (vh- mainDivHeight)/2 + "px";
 
-    let
-    document.querySelector(".maindiv").style.top = (vh-mainDivh)/2 + "px";
+    let contentWidth = Math.max(250 , 0.3*vw);
+    if (0.3*vw > 250){
+        document.querySelector(".content").style.width =  "30vw";
+    }
+    else{
+        document.querySelector(".content").style.width =  "250px";
+        document.querySelector(".content").style.fontSize = "30px";
+    }
 
     console.log(vw);
 }
