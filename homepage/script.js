@@ -1,6 +1,9 @@
 // When document is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
 
+    // Center the maindiv text height
+    centerTextHeight();
+
     // Mark the current page the user is on
     let navbarItems = document.querySelectorAll("#navitem");
     navbarItems.forEach(function(item){
@@ -23,11 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     })
 
-    console.log(document.querySelector("#navbar").offsetHeight);
-    let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-    console.log(vh - document.querySelector("#navbar").offsetHeight);
-    document.querySelector(".maindiv").style.top = document.querySelector("#navbar").offsetHeight + 100;
-    document.querySelector(".maindiv").style.height = vh - document.querySelector("#navbar").offsetHeight;
+
 })
 
 function highlightCurrent(navbarlist){
@@ -37,4 +36,11 @@ function highlightCurrent(navbarlist){
             item.style.color = "rgba(255,255,255,1)";
         }
     })
+}
+
+function centerTextHeight(){
+    let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+    let mainDivh = document.querySelector(".maindiv").offsetHeight;
+
+    document.querySelector(".maindiv").style.top = (vh-mainDivh)/2 + "px";
 }
