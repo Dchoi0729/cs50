@@ -53,6 +53,7 @@ function centerTextHeight(){
     let contentWidth = Math.max(250 , 0.3*vw);
     if (0.3*vw > 250){
         document.querySelector(".content").style.width =  "30vw";
+        document.querySelector(".content").style.fontSize = "5vw";
     }
     else{
         document.querySelector(".content").style.width =  "250px";
