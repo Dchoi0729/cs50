@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // Center the maindiv text height
-    window.addEventListener("resize", centerTextHeight);
+    window.addEventListener("resize", centerText);
 
     // Mark the current page the user is on
     let navbarItems = document.querySelectorAll("#navitem");
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     })
 
-    centerTextHeight();
+    centerText();
 
 })
 
@@ -39,19 +39,21 @@ function highlightCurrent(navbarlist){
     })
 }
 
-function centerTextHeight(){
+function centerText(){
     let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
     let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
     let mainDivHeight = document.querySelector(".maindiv").offsetHeight;
 
-    // Set the top edge location for the maindiv container
     console.log(vh);
     console.log(mainDivHeight);
     console.log(document.querySelector(".maindiv").scrollHeight);
     console.log((vh- mainDivHeight)/2);
+
+    // Set the top edge location for the maindiv container
     document.querySelector(".maindiv").style.top = (vh- mainDivHeight)/2 + "px";
 
+    // Set appropriate width and font size for the content div
     let contentWidth = Math.max(250 , 0.3*vw);
     if (0.3*vw > 250){
         document.querySelector(".content").style.width =  "30vw";
