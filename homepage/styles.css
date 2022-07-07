@@ -64,7 +64,7 @@ body, html {
 
 .container {
     width: 100%;
-    height: 83vmin;
+    height:80%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,11 +86,14 @@ padding-bottom: 100%;
 }*/
 
 .content {
-position: absolute;
-width: 100%;
+position: relative;
+width: 30vw;
 height: 100%;
 color:white;
 font-size:5vw;
-padding-bottom:1vw;
 border-style: solid;
+}
+
+.content:after {
+    padding-bottom: 100%;
 }
