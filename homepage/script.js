@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // Center the maindiv text height
-    window.onresize =  centerTextHeight();
+    window.onresize = centerTextHeight();
 
     // Mark the current page the user is on
     let navbarItems = document.querySelectorAll("#navitem");
