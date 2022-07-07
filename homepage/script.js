@@ -22,6 +22,11 @@ document.addEventListener('DOMContentLoaded', function() {
             highlightCurrent(navbarItems);
         })
     })
+
+    console.log(document.querySelector("#navbar").offsetHeight);
+    let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+    console.log()
+    document.querySelector(".maindiv").style.height = vh - document.querySelector("#navbar").offsetHeight;
 })
 
 function highlightCurrent(navbarlist){
