@@ -68,6 +68,7 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 .square {
@@ -87,4 +88,6 @@ padding-bottom: 100%;
 position: absolute;
 width: 100%;
 height: 100%;
+color:white;
+font-size:80px
 }
