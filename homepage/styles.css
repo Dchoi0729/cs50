@@ -73,9 +73,9 @@ body, html {
 
 .square {
 position: relative;
-width: 80vmin;
-height: 40vmin;
-border: solid black 5px;
+width: 65vmin;
+height: 30vmin;
+border: solid white 5px;
 box-sizing: border-box;
 }
 
