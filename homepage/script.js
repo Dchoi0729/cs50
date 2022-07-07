@@ -39,8 +39,16 @@ function highlightCurrent(navbarlist){
 }
 
 function centerTextHeight(){
-    let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-    let mainDivh = document.querySelector(".maindiv").offsetHeight;
+    let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+    let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
+    let mainDivHeight = document.querySelector(".maindiv").offsetHeight;
+
+    // Set the top edge location for the maindiv container
+    document.querySelector(".maindiv").style.top = (vh- mainDivHeight)/2 + "px";
+
+    let
     document.querySelector(".maindiv").style.top = (vh-mainDivh)/2 + "px";
+
+    console.log(vw);
 }
