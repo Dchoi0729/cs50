@@ -47,8 +47,12 @@ function centerText(){
 
     console.log(vh);
     console.log(mainDivHeight);
-    console.log(document.querySelector(".maindiv").style.height);
+    console.log(document.querySelector(".maindiv").offsetHeight);
     console.log((vh- mainDivHeight)/2);
+
+    setTimeout(() => {
+        console.log(document.querySelector(".maindiv").offsetHeight);
+    }, 300);
 
     // Set the top edge location for the maindiv container
     document.querySelector(".maindiv").style.top = (vh- mainDivHeight)/2 + "px";
