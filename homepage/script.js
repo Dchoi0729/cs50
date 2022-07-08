@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener("resize", centerText);
 
     // Center the maindiv text for the first time
-    centerText();
+    //centerText();
 
     // Mark the current page the user is on
     let navbarItems = document.querySelectorAll("#navitem");
