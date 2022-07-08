@@ -7,11 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Center the maindiv text for the first time
     centerText();
 
-    setTimeout(() => {
-        centerText();
-    }, 1);
-
-
     // Mark the current page the user is on
     let navbarItems = document.querySelectorAll("#navitem");
     navbarItems.forEach(function(item){
