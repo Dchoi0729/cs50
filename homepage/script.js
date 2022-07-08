@@ -3,7 +3,7 @@ let vh, vw;
 // When document is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Center the maindiv text height when window is resized
+    // Center the maindiv top height and content element when window is resized
     window.addEventListener("resize", centerText);
 
     // Center the content element(and hence, maindiv) when document is first loaded
@@ -45,30 +45,18 @@ function underlineCurrent(navbarlist){
 // Centers the maindiv text in index.html
 function centerText(){
     let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-    let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-
     let mainDivHeight = document.querySelector(".maindiv").offsetHeight;
 
     // Set the top edge location for the maindiv container
     document.querySelector(".maindiv").style.top = (vh- mainDivHeight)/2 + "px";
 
-    // Set appropriate width and font size for the content div
-    let contentWidth = Math.max(250 , 0.3*vw);
-    if (0.3*vw > 250){
-        document.querySelector(".content").style.width =  "30vw";
-        document.querySelector(".content").style.fontSize = "5vw";
-    }
-    else{
-        document.querySelector(".content").style.width =  "250px";
-        document.querySelector(".content").style.fontSize = "41.6px";
-    }
+    resizeContent();
 }
 
 // Correctly sizes the content element
 function resizeContent(){
     let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
-    let contentWidth = Math.max(250 , 0.3*vw);
     if (0.3*vw > 250){
         document.querySelector(".content").style.width =  "30vw";
         document.querySelector(".content").style.fontSize = "5vw";
