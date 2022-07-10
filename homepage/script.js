@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
             underlineCurrent(navbarItems);
         })
     })
+
+    
 })
 
 // Underlines current item of navbar
