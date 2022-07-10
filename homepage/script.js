@@ -1,17 +1,17 @@
+// JS script for homepage website
+
+let currentPage = "";
+
 // When document is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Center the maindiv top height and content element when window is resized
-    window.addEventListener("resize", centerText);
 
-    // Center the content element(and hence, maindiv) when document is first loaded
-    resizeContent();
-
-    // Mark the current page the user is on
+    // Nav-bar related code (marks the current page of user + when hovered)
     let navbarItems = document.querySelectorAll(".nav-link");
+
+    underlineCurrent(navbarItems);
+
     navbarItems.forEach(function(item){
-
-
         item.addEventListener("mouseover", function(){
             navbarItems.forEach(function(tmpItem){
                 tmpItem.style.borderBottom = "";
@@ -28,15 +28,22 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     })
 
+    // If current page is the home page
+    if(currentPage == "Home"){
+        // Center the maindiv top height and content element when window is resized
+        window.addEventListener("resize", centerText);
+
+        // Center the content element(and hence, maindiv) when document is first loaded
+        resizeContent();
+    }
 
 })
 
 // Underlines current item of navbar
 function underlineCurrent(navbarlist){
     navbarlist.forEach(function(item){
-        console.log(item);
         if (item.ariaCurrent == "page"){
-            console.log(item.innerHTML);
+            currentPage = item.innerHTML;
             item.style.borderBottom = "3px solid white";
             item.style.color = "rgba(255,255,255,1)";
         }
