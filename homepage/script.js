@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let navbarItems = document.querySelectorAll(".nav-link");
     navbarItems.forEach(function(item){
 
-        underlineCurrent(navbarItems);
 
         item.addEventListener("mouseover", function(){
             navbarItems.forEach(function(tmpItem){
@@ -29,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     })
 
-    
+
 })
 
 // Underlines current item of navbar
@@ -37,6 +36,7 @@ function underlineCurrent(navbarlist){
     navbarlist.forEach(function(item){
         console.log(item);
         if (item.ariaCurrent == "page"){
+            console.log(item.innerHTML);
             item.style.borderBottom = "3px solid white";
             item.style.color = "rgba(255,255,255,1)";
         }
