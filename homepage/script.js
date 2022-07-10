@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Underlines current item of navbar
 function underlineCurrent(navbarlist){
     navbarlist.forEach(function(item){
+        console.log(item);
         if (item.ariaCurrent == "page"){
             item.style.borderBottom = "3px solid white";
             item.style.color = "rgba(255,255,255,1)";
