@@ -64,9 +64,10 @@ function underlineCurrent(navbarlist){
 // Vertically centers the name object by manually setting top edge location
 function vcenterElement(name){
     let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-    let mainDivHeight = document.querySelector(name).offsetHeight;
+    let elementHeight = document.querySelector(name).offsetHeight;
+    console.log(elementHeight);
 
-    document.querySelector(name).style.top = (vh- mainDivHeight)/2 + "px";
+    document.querySelector(name).style.top = (vh- elementHeight)/2 + "px";
 }
 
 // Correctly sizes the content element
