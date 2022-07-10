@@ -5,8 +5,21 @@ let currentPage = "";
 // When document is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
 
+    setNavbar();
 
-    // Nav-bar related code (marks the current page of user + when hovered)
+    // If current page is the home page
+    if(currentPage == "Home"){
+        // Center the maindiv top height and content element when window is resized
+        window.addEventListener("resize", centerText);
+
+        // Center the content element(and hence, maindiv) when document is first loaded
+        resizeContent();
+    }
+
+})
+
+// Nav-bar related code (marks the current page of user + when hovered)
+function setNavbar(){
     let navbarItems = document.querySelectorAll(".nav-link");
 
     underlineCurrent(navbarItems);
@@ -27,17 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
             underlineCurrent(navbarItems);
         })
     })
-
-    // If current page is the home page
-    if(currentPage == "Home"){
-        // Center the maindiv top height and content element when window is resized
-        window.addEventListener("resize", centerText);
-
-        // Center the content element(and hence, maindiv) when document is first loaded
-        resizeContent();
-    }
-
-})
+}
 
 // Underlines current item of navbar
 function underlineCurrent(navbarlist){
