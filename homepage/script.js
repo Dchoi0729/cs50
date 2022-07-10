@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     /*
     if(currentPage == "About"){
-        vcenterElement(".map-cont");
+        vcenterElement(".a");
     }*/
 
 })
