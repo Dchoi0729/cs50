@@ -2,6 +2,7 @@ body, html {
     height: 100%;
 }
 
+
 /* Nav bar settings */
 #navbarSupportedContent {
     padding: 10px;
@@ -17,9 +18,7 @@ body, html {
 
 /* Background for main page*/
 .bg {
-    /* The image used *//*
-    background-image: url("https://images.unsplash.com/photo-1506816561089-5cc37b3aa9b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1575&q=80");*/
-
+    /* The image used */
     background-image: url("https://images.unsplash.com/photo-1506816561089-5cc37b3aa9b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1575&q=80");
 
     /* Full height */
@@ -30,6 +29,7 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 
 /*Body text for main page*/
 .maindiv {
@@ -46,6 +46,5 @@ body, html {
 position: relative;
 color:white;
 border-style: solid;
-/*font-size: 5vw;*/
 }
 
