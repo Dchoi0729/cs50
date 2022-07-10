@@ -67,5 +67,6 @@ body, html {
     position: absolute;
     display: flex;
     justify-content: center;
+    height: 50%;
     width: 100%;
 }
