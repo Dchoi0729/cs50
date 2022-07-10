@@ -20,9 +20,10 @@ document.addEventListener('DOMContentLoaded', function() {
         resizeContent();
     }
 
+    /*
     if(currentPage == "About"){
         vcenterElement(".map-cont");
-    }
+    }*/
 
 })
 
