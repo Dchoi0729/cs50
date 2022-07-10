@@ -64,7 +64,9 @@ body, html {
 
 /*about page image*/
 .map-cont{
+    position: absolute;
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
