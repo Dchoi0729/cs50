@@ -10,10 +10,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // If current page is the home page
     if(currentPage == "Home"){
         // Center the maindiv top height and content element when window is resized
-        window.addEventListener("resize", centerText);
+        window.addEventListener("resize", function(){
+            vcenterElement(".maindiv");
+            resizeContent();
+        });
 
         // Center the content element(and hence, maindiv) when document is first loaded
+        vcenterElement(".maindiv");
         resizeContent();
+    }
+
+    if(currentPage == "About"){
+        vcenterElement(".map-cont");
     }
 
 })
@@ -53,15 +61,12 @@ function underlineCurrent(navbarlist){
     })
 }
 
-// Centers the maindiv text in index.html
-function centerText(){
+// Vertically centers the name object by manually setting top edge location
+function vcenterElement(name){
     let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-    let mainDivHeight = document.querySelector(".maindiv").offsetHeight;
+    let mainDivHeight = document.querySelector(name).offsetHeight;
 
-    // Set the top edge location for the maindiv container
-    document.querySelector(".maindiv").style.top = (vh- mainDivHeight)/2 + "px";
-
-    resizeContent();
+    document.querySelector(name).style.top = (vh- mainDivHeight)/2 + "px";
 }
 
 // Correctly sizes the content element

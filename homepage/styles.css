@@ -43,9 +43,9 @@ body, html {
 }
 
 .content {
-position: relative;
-color:white;
-border-style: solid;
+    position: relative;
+    color:white;
+    border-style: solid;
 }
 
 /* Background for about page*/
