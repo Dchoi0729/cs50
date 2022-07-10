@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     resizeContent();
 
     // Mark the current page the user is on
-    let navbarItems = document.querySelectorAll("#navitem");
+    let navbarItems = document.querySelectorAll(".nav-link");
     navbarItems.forEach(function(item){
 
         underlineCurrent(navbarItems);
