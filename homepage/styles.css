@@ -63,7 +63,8 @@ border-style: solid;
 }
 
 /*about page image*/
-#map{
-    width:
+.map-cont{
+    display: flex;
+    justify-content: center;
 }
 

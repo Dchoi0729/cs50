@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // If current page is the home page
     if(currentPage == "Home"){
-
         // Center the maindiv top height and content element when window is resized
         window.addEventListener("resize", centerText);
 
