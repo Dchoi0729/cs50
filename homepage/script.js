@@ -66,9 +66,6 @@ function vcenterElement(name){
     let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
     let elementHeight = Math.max(document.querySelector(name).offsetHeight, document.querySelector(name).scrollHeight);
 
-    console.log(vh);
-    console.log(elementHeight);
-
     document.querySelector(name).style.top = (vh- elementHeight)/2 + "px";
 }
 
