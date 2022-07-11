@@ -70,14 +70,18 @@ body, html {
   }
 
 .my-container{
+    position:absolute;
     border: 1px solid green;
-    height: 300px;
+    height: 30vh;
+
 }
 
 .my-row{
     border: 3px solid red;
+    height: 30vh;
 }
 
 .my-col{
     border: 3px dotted blue;
+    height: 30vh;
 }

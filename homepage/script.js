@@ -23,15 +23,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if(currentPage == "About"){
 
-        window.addEventListener("resize", function(){
-            let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        resizeGrid();
+        vcenterElement(".my-container");
 
-            let cont = document.querySelector(".my-container");
-            cont.style.maxWidth = 1*vw + "px";
+        window.addEventListener("resize", function(){
+            resizeGrid();
         });
     }
 
 })
+
+// Resizes the grid in about page
+function resizeGrid(){
+    let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+
+    let cont = document.querySelector(".my-container");
+    cont.style.maxWidth = 0.9*vw + "px";
+}
 
 // Nav-bar related code (marks the current page of user + when hovered)
 function setNavbar(){
