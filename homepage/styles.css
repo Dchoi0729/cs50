@@ -68,13 +68,13 @@ body, html {
 
 .my-container{
     position:absolute;
-    border: 1px solid green;
+    border: 0px solid green;
 }
 
 .my-row{
-    border: 3px solid red;
+    border: 0px solid red;
 }
 
 .my-col{
-    border: 3px dotted blue;
+    border: 0px dotted blue;
 }
