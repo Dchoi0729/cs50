@@ -1,5 +1,10 @@
 // JS script for homepage website
 
+// 1. Add JS script that resizes background for VH
+// 2. Make all the hlper functions more userfriendly
+// 3. Clean up the about.html format
+// 4. Create the container for indiv carousel
+
 let currentPage = "";
 
 // When document is fully loaded
@@ -94,8 +99,10 @@ function vcenterElement(name){
     if(elementHeight > 1000){
         document.querySelector(name).style.top = "200px";
     }
+    else{
+        document.querySelector(name).style.top = (vh- elementHeight)/2 + "px";
 
-    document.querySelector(name).style.top = (vh- elementHeight)/2 + "px";
+    }
 }
 
 // Horizontally centers the name object by manually setting left edge location
