@@ -81,3 +81,7 @@ body, html {
 .my-col{
     border: 3px dotted blue;
 }
+
+.grid-container {
+    display: inline-grid;
+  }
