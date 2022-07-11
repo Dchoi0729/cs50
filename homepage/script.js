@@ -20,11 +20,17 @@ document.addEventListener('DOMContentLoaded', function() {
         resizeContent();
     }
 
-    /*
+
     if(currentPage == "About"){
-        vcenterElement(".a");
-    }*/
-    
+
+        window.addEventListener("resize", function(){
+            let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+
+            let cont = document.querySelector(".my-container");
+            cont.style.width = 0.8*vw;
+        });
+    }
+
 })
 
 // Nav-bar related code (marks the current page of user + when hovered)
