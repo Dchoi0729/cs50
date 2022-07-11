@@ -25,9 +25,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         resizeGrid();
         vcenterElement(".my-container");
+        hcenterElement(".my-container");
 
         window.addEventListener("resize", function(){
             resizeGrid();
+            vcenterElement(".my-container");
+            hcenterElement(".my-container");
         });
     }
 
@@ -85,11 +88,11 @@ function vcenterElement(name){
 }
 
 // Horizontally centers the name object by manually setting left edge location
-function vcenterElement(name){
+function hcenterElement(name){
     let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-    let elementHeight = Math.max(document.querySelector(name).offsetHeight, document.querySelector(name).scrollHeight);
+    let elementWidth = Math.max(document.querySelector(name).offsetWidth);
 
-    document.querySelector(name).style.top = (vh- elementHeight)/2 + "px";
+    document.querySelector(name).style.left = (vw- elementWidth)/2 + "px";
 }
 
 // Correctly sizes the content element
