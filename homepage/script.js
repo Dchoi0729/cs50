@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if(currentPage == "About"){
         vcenterElement(".a");
     }*/
-
+    
 })
 
 // Nav-bar related code (marks the current page of user + when hovered)
