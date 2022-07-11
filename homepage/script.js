@@ -91,6 +91,10 @@ function vcenterElement(name){
         elementHeight = 340;
     }
 
+    if(elementHeight > 1000){
+        document.querySelector(name).style.top = "200px";
+    }
+
     document.querySelector(name).style.top = (vh- elementHeight)/2 + "px";
 }
 
