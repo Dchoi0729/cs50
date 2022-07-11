@@ -71,17 +71,16 @@ body, html {
 
 .my-container{
     width: 90vw;
+    grid-gap: 20px;
     border: 1px solid green;
 }
 
 .my-row{
     border: 3px solid red;
+    height: 300px;
+    width: 90vw;
 }
 
 .my-col{
     border: 3px dotted blue;
 }
-
-.grid-container {
-    display: inline-grid;
-  }
