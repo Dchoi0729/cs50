@@ -69,6 +69,8 @@ body, html {
 .my-container{
     position:absolute;
     border: 1px solid green;
+    height: 30vh;
+    display: flex;
 }
 
 .my-row{
