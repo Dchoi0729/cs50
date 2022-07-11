@@ -71,12 +71,11 @@ body, html {
 
 .my-container{
     border: 1px solid green;
-    width: ;
+    height: 300px;
 }
 
 .my-row{
     border: 3px solid red;
-    height: 300px;
 }
 
 .my-col{
