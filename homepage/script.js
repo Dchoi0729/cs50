@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
             let cont = document.querySelector(".my-container");
-            cont.style.width = 1*vw + "px";
+            cont.style.maxWidth = 1*vw + "px";
         });
     }
 
