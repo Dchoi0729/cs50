@@ -63,8 +63,8 @@ body, html {
 }
 
 /*about page image*/
-
-
-  .carousel img {
-    width: 100%;
+  #carouselExampleIndicators{
+    width:30vw;
+    position: absolute;
+    top: 300px;
   }
