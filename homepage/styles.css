@@ -79,6 +79,6 @@ body, html {
     border: 0px dotted blue;
 }
 
-.a{
-    border: 3px dotted blue;
+.col-item{
+    border: 3px solid blue;
 }
