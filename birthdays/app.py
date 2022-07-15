@@ -28,8 +28,11 @@ def index():
         name = request.form.get("name")
         month = request.form.get("month")
         day = request.form.get("day")
-        if name 
-        db.execute("INSERT INTO birthdays(name,month,day) VALUES (?,?,?)", name, month, day)
+
+        #User validation, has to give input for all three
+        if name and month and day:
+            db.execute("INSERT INTO birthdays(name,month,day) VALUES (?,?,?)", name, month, day)
+
         return redirect("/")
 
     else:
