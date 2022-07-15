@@ -17,13 +17,13 @@
 
                 <form action="/" method="post">
                     <input autocomplete="off" name="name" placeholder="Name" type="text">
-                    <select>
+                    <select name="month">
                         <option disable selected>Month</option>
                         {% for i in range(12)%}
                             <option>{{i+1}}</option>
                         {% endfor %}
                     </select>
-                    <select>
+                    <select name="day">
                         <option disable selected>Day</option>
                         {% for i in range(31)%}
                             <option>{{i+1}}</option>
