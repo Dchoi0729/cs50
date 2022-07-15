@@ -27,8 +27,8 @@ def index():
     if request.method == "POST":
         name = request.form.get("name")
         month = request.form.get("month")
-        day = request.form.get("")
-        db.execute("INSERT INTO birthday VALUES (name, month, day)")
+        day = request.form.get("day")
+        db.execute("INSERT INTO birthday VALUES (?,?,?)", name, month, day)
         return redirect("/")
 
     else:
