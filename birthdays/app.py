@@ -21,7 +21,7 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
-@app.route("/", methods=["GET"])
+@app.route("/", methods=["GET","POST"])
 def index():
 
     if request.method == "POST":
