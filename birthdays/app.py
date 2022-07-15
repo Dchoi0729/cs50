@@ -5,10 +5,10 @@ from flask import Flask, flash, jsonify, redirect, render_template, request, ses
 
 # Configure application
 app = Flask(__name__)
-
+'''
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
-
+'''
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///birthdays.db")
 
@@ -22,7 +22,7 @@ def after_request(response):
     return response
 '''
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["GET"])
 def index():
 
     #if request.method == "POST":
