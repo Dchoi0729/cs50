@@ -28,15 +28,14 @@ def index():
         name = request.form.get("name")
         month = request.form.get("month")
         day = request.form.get("day")
+        error = 1
 
         # User validation, has to give input for all three
         if name and validate_birthday(month,day):
             db.execute("INSERT INTO birthdays(name,month,day) VALUES (?,?,?)", name, month, day)
-            return redirect("/")
-        else:
-            
+            error = 0
 
-
+        return redirect("/", error_status = error)
 
     else:
         birthday_list = db.execute("SELECT * FROM birthdays")
