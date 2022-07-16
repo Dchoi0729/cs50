@@ -121,25 +121,30 @@ def register():
 
     # If user sent a register post request
     if request.method == "POST":
-        error_message = ""
-
-        # Get username and password
-        user = request.form.get("username")
-        pwd = request.form.get("password")
-        pwd_confirm = request.form.get("confirmation")
-
-        db_user = db.execute("SELECT * FROM users WHERE username=?",usr)
 
         # Check to see if username was provided
+        user = request.form.get("username")
         if not user:
             flash("Please provide a username")
+            return redirect("/register")
 
         # Check to see if username already exists in database
+        db_user = db.execute("SELECT * FROM users WHERE username=?",user)
         if db_user:
             flash("Username already exists")
+            return redirect("/register")
 
+        # Check to see if password and confirmation password was provided
+        pwd = request.form.get("password")
+        pwd_confirm = request.form.get("confirmation")
         if not pwd or not pwd_confirm:
             flash("Please provide a password")
+            return redirect("/register")
+
+        # Check to see if password and confirmation password are equal
+        if pwd != pwd_confirm:
+            flash("Password and confirmation password do not match")
+            return redirect("/register")
 
         return redirect("/register")
 
