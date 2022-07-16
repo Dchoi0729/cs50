@@ -147,7 +147,8 @@ def register():
             return redirect("/register")
 
         db.execute("INSERT INTO users(username,hash) VALUES (?,?)", user, generate_password_hash(pwd))
-        return redirect("/login")
+        flash("Registered!")
+        return redirect("/")
 
     # If user wants to register
     if request.method == "GET":
