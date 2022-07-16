@@ -4,6 +4,7 @@ import datetime
 from cs50 import SQL
 from flask import Flask, flash, jsonify, redirect, render_template, request, session
 
+
 # Configure application
 app = Flask(__name__)
 
@@ -23,6 +24,7 @@ def after_request(response):
     return response
 
 
+
 @app.route("/", methods=["GET","POST"])
 def index():
     if request.method == "POST":
@@ -38,6 +40,7 @@ def index():
 
     else:
         birthday_list = db.execute("SELECT * FROM birthdays")
+        error = error + 1
 
         return render_template("index.html", birthdays=birthday_list)
 
