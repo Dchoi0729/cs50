@@ -90,7 +90,7 @@ def login():
         session["user_id"] = rows[0]["id"]
 
         # Redirect user to home page
-        return redirect("/")
+        return redirect("/register")
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
@@ -146,8 +146,8 @@ def register():
             flash("Password and confirmation password do not match")
             return redirect("/register")
 
-        db.execute("INSERT INTO users(username,hash) VALUES (?,?)", user, pwd)
-        return redirect("/register")
+        db.execute("INSERT INTO users(username,hash) VALUES (?,?)", user, generate_password_hash(pwd))
+        return redirect("/")
 
     # If user wants to register
     if request.method == "GET":
