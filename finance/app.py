@@ -118,15 +118,20 @@ def quote():
 def register():
     """Register user"""
 
+    # If user sent a register post request
     if request.method == "POST":
         usr = request.form.get("username")
         pwd = request.form.get("password")
-        pwd_confirm = request.form.get("confirm")
+        pwd_confirm = request.form.get("confirmation")
 
+        db.execute("SELECT ")
+
+        # Check to see if username is valid
+        if not usr or
+
+    # If user wants to register
     if request.method == "GET":
         return render_template("register.html")
-
-    return apology("TODO")
 
 
 @app.route("/sell", methods=["GET", "POST"])
