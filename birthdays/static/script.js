@@ -2,6 +2,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     let error = document.getElementById("error")
     if(error != null){
-        setTimeout(function(){ document.getElementById("error").innerHTML = "" }, 2000);
+        setTimeout(function(){ document.getElementById("error").innerHTML = "" }, 5000);
     }
 })

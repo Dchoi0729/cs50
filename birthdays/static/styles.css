@@ -83,5 +83,6 @@ tbody tr:nth-of-type(odd) {
 }
 
 #error{
-
+    color: red;
+    font-weight: bold;
 }
