@@ -24,7 +24,6 @@ def after_request(response):
 
 @app.route("/", methods=["GET","POST"])
 def index():
-
     if request.method == "POST":
         name = request.form.get("name")
         month = request.form.get("month")
@@ -44,7 +43,9 @@ def index():
 
 @app.route("/delete", methods=["POST"])
 def delete():
-    
+    id = request.form.get("id")
+    db.execute("DELETE FROM birthdays WHERE id=?",id)
+    return redirect("/")
 
 
 # Validates birthday
