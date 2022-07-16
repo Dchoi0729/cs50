@@ -130,17 +130,15 @@ def register():
 
         db_usr = db.execute("SELECT * FROM users WHERE username=?",usr)
 
-        # Check to see if username is valid
-        if not db_usr:
-            flash("Please provide a valid username")
-            return render_template("register.html")
-
+        # Check to see if username was provided
         if not usr:
-            
+            flash("Please provide a username")
+
+        return redirect("/register")
 
     # If user wants to register
     if request.method == "GET":
-        return render_template("register.html",error_message="")
+        return render_template("register.html")
 
 
 @app.route("/sell", methods=["GET", "POST"])
