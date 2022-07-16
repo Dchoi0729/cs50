@@ -44,7 +44,7 @@ def index():
 # Validates birthday
 def validate_birthday(month, day):
     try:
-        date = datetime.datetime(2024, int(month,day)
+        date = datetime.datetime(2024,int(month),int(day))
     except:
         print("false")
         return False
