@@ -2,7 +2,7 @@ import os
 import datetime
 
 from cs50 import SQL
-from flask import Flask, flash, jsonify, redirect, render_template, request, session, url_for
+from flask import Flask, flash, jsonify, redirect, render_template, request, session
 
 # Configure application
 app = Flask(__name__)
@@ -23,24 +23,26 @@ def after_request(response):
     return response
 
 @app.route("/", methods=["GET","POST"])
-def index(error_status=0):
+def index():
+    error = 0
+
     if request.method == "POST":
         name = request.form.get("name")
         month = request.form.get("month")
         day = request.form.get("day")
-        error = 1
 
         # User validation, has to give input for all three
         if name and validate_birthday(month,day):
             db.execute("INSERT INTO birthdays(name,month,day) VALUES (?,?,?)", name, month, day)
-            error = 0
+        else:
+            error = 1
 
-        return redirect(url_for("/", error_status = error))
+        return redirect("/")
 
     else:
         birthday_list = db.execute("SELECT * FROM birthdays")
-
-        return render_template("index.html", birthdays=birthday_list, err = error_status)
+        
+        return render_template("index.html", birthdays=birthday_list, err = error)
 
 
 @app.route("/delete", methods=["POST"])
