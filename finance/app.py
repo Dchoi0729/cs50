@@ -124,15 +124,22 @@ def register():
         error_message = ""
 
         # Get username and password
-        usr = request.form.get("username")
+        user = request.form.get("username")
         pwd = request.form.get("password")
         pwd_confirm = request.form.get("confirmation")
 
-        db_usr = db.execute("SELECT * FROM users WHERE username=?",usr)
+        db_user = db.execute("SELECT * FROM users WHERE username=?",usr)
 
         # Check to see if username was provided
-        if not usr:
+        if not user:
             flash("Please provide a username")
+
+        # Check to see if username already exists in database
+        if db_user:
+            flash("Username already exists")
+
+        if not pwd or not pwd_confirm:
+            flash("Please provide a password")
 
         return redirect("/register")
 
