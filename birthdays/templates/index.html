@@ -16,20 +16,10 @@
                 <h2>Add a Birthday</h2>
 
                 <form action="/" method="post">
-                    <input autocomplete="off" name="name" placeholder="Name" type="text">
-                    <select name="month">
-                        <option disable selected>Month</option>
-                        {% for i in range(12)%}
-                            <option>{{i+1}}</option>
-                        {% endfor %}
-                    </select>
-                    <select name="day">
-                        <option disable selected>Day</option>
-                        {% for i in range(31)%}
-                            <option>{{i+1}}</option>
-                        {% endfor %}
-                    </select>
-                    <button type="submit" value="Submit">Add birthday</button>
+                    <input name="name" placeholder="Name" type="text">
+                    <input name="month" placeholder="Month" type="number">
+                    <input name="day" placeholder="Day" type="number">
+                    <input type="submit" value="Add Birthday">
                 </form>
 
             </div>
