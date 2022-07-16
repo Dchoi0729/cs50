@@ -37,14 +37,14 @@ def index():
             db.execute("INSERT INTO birthdays(name,month,day) VALUES (?,?,?)", name, month, day)
             return redirect("/")
         else:
-            return redirect(url_for("error", code=307))
+            return redirect("/error")
 
     else:
         birthday_list = db.execute("SELECT * FROM birthdays")
 
         return render_template("index.html", birthdays=birthday_list, error = 0)
 
-@app.route("/error", methods=["POST"])
+@app.route("/error")
 def error():
     birthday_list = db.execute("SELECT * FROM birthdays")
 
