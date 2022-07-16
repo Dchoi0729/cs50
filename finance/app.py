@@ -124,10 +124,11 @@ def register():
         pwd = request.form.get("password")
         pwd_confirm = request.form.get("confirmation")
 
-        db.execute("SELECT ")
+        db_usr = db.execute("SELECT * FROM users WHERE username=?",usr)
 
         # Check to see if username is valid
-        if not usr or
+        if not db_usr:
+            
 
     # If user wants to register
     if request.method == "GET":
