@@ -8,7 +8,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from helpers import apology, login_required, lookup, usd
 
-# Configure application
+# Configure application export API_KEY=pk_01c5fa2829cb450e91de45efa0669518
 app = Flask(__name__)
 
 # Ensure templates are auto-reloaded
