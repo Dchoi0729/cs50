@@ -22,7 +22,6 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
-error = 0
 
 @app.route("/", methods=["GET","POST"])
 def index():
@@ -35,15 +34,13 @@ def index():
         # User validation, has to give input for all three
         if name and validate_birthday(month,day):
             db.execute("INSERT INTO birthdays(name,month,day) VALUES (?,?,?)", name, month, day)
-        else:
-            error = 1
 
         return redirect("/")
 
     else:
         birthday_list = db.execute("SELECT * FROM birthdays")
 
-        return render_template("index.html", birthdays=birthday_list, err = error)
+        return render_template("index.html", birthdays=birthday_list)
 
 
 @app.route("/delete", methods=["POST"])
