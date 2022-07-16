@@ -40,7 +40,7 @@ def index(error_status=0):
     else:
         birthday_list = db.execute("SELECT * FROM birthdays")
 
-        return render_template("index.html", birthdays=birthday_list)
+        return render_template("index.html", birthdays=birthday_list, err = error_status)
 
 
 @app.route("/delete", methods=["POST"])
