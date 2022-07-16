@@ -29,7 +29,7 @@ def index():
         month = request.form.get("month")
         day = request.form.get("day")
 
-        #User validation, has to give input for all three
+        # User validation, has to give input for all three
         if name and month.isnumeric() and day.isnumeric():
             db.execute("INSERT INTO birthdays(name,month,day) VALUES (?,?,?)", name, month, day)
 
@@ -39,3 +39,9 @@ def index():
         birthday_list = db.execute("SELECT * FROM birthdays")
 
         return render_template("index.html", birthdays=birthday_list)
+
+# Validates birthday
+def validate_birthday(month, day):
+    if month > 12 or month < 1:
+        return false
+    if month
