@@ -17,4 +17,30 @@
         </div>
         <button class="btn btn-primary" type="submit">Log In</button>
     </form>
+
+    <script>
+        function check () {
+          // (B1) INIT
+          var error = "", field = "";
+
+          // (B2) NAME
+          field = document.getElementById("fname");
+          if (!field.checkValidity()) {
+            error += "Name must be 2-4 characters\r\n";
+          }
+
+          // (B3) NUMBER
+          field = document.getElementById("fnumber");
+          if (!field.checkValidity()) {
+            error += "Num must be between 1-12\r\n";
+          }
+
+          // (B4) RESULT
+          if (error=="") { return true; }
+          else {
+            alert(error);
+            return false;
+          }
+        }
+    </script>
 {% endblock %}
