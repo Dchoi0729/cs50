@@ -22,9 +22,10 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
+error = 0
+
 @app.route("/", methods=["GET","POST"])
 def index():
-    error = 0
 
     if request.method == "POST":
         name = request.form.get("name")
@@ -41,7 +42,7 @@ def index():
 
     else:
         birthday_list = db.execute("SELECT * FROM birthdays")
-        
+
         return render_template("index.html", birthdays=birthday_list, err = error)
 
 
