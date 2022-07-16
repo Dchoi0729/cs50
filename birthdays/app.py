@@ -42,6 +42,11 @@ def index():
         return render_template("index.html", birthdays=birthday_list)
 
 
+@app.route("/delete", methods=["POST"])
+def delete():
+    
+
+
 # Validates birthday
 def validate_birthday(month, day):
     try:
