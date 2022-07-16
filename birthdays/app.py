@@ -23,7 +23,7 @@ def after_request(response):
     return response
 
 @app.route("/", methods=["GET","POST"])
-def index():
+def index(error_status=0):
     if request.method == "POST":
         name = request.form.get("name")
         month = request.form.get("month")
