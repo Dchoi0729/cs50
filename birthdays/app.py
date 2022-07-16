@@ -25,7 +25,6 @@ def after_request(response):
 
 @app.route("/", methods=["GET","POST"])
 def index():
-
     if request.method == "POST":
         name = request.form.get("name")
         month = request.form.get("month")
@@ -34,7 +33,6 @@ def index():
         # User validation, has to give input for all three
         if name and validate_birthday(month,day):
             db.execute("INSERT INTO birthdays(name,month,day) VALUES (?,?,?)", name, month, day)
-        
 
         return redirect("/")
 
