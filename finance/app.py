@@ -93,7 +93,6 @@ def login():
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
-        flash('You were successfully logged in')
         return render_template("login.html")
 
 
