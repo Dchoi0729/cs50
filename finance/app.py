@@ -120,6 +120,9 @@ def register():
 
     # If user sent a register post request
     if request.method == "POST":
+        error_message = ""
+
+        # Get username and password
         usr = request.form.get("username")
         pwd = request.form.get("password")
         pwd_confirm = request.form.get("confirmation")
@@ -128,11 +131,12 @@ def register():
 
         # Check to see if username is valid
         if not db_usr:
+            return render_template("register.html",error_message=error_message)
 
 
     # If user wants to register
     if request.method == "GET":
-        return render_template("register.html"), code
+        return render_template("register.html",error_message="")
 
 
 @app.route("/sell", methods=["GET", "POST"])
