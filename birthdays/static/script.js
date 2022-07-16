@@ -2,10 +2,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     let error = console.log(document.getElementById("error"))
     if(error != null){
-        let myTimeout = setTimeout(myGreeting, 5000);
+        setTimeout(function(){ document.getElementById("error").innerHTML = "" }, 2000);
     }
 })
-
-function myStopFunction() {
-    clearTimeout(myTimeout);
-}
