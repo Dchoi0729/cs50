@@ -26,24 +26,22 @@ def after_request(response):
 
 
 @app.route("/", methods=["GET","POST"])
-def index(error=0):
+def index():
     if request.method == "POST":
         name = request.form.get("name")
         month = request.form.get("month")
         day = request.form.get("day")
-        error = 1
 
         # User validation, has to give input for all three
         if name and validate_birthday(month,day):
             db.execute("INSERT INTO birthdays(name,month,day) VALUES (?,?,?)", name, month, day)
-            error = 0
 
-        return redirect(url_for("/", error = error))
+        return redirect("/")
 
     else:
         birthday_list = db.execute("SELECT * FROM birthdays")
 
-        return render_template("index.html", birthdays=birthday_list, error=error)
+        return render_template("index.html", birthdays=birthday_list)
 
 
 @app.route("/delete", methods=["POST"])
