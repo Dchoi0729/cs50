@@ -1,4 +1,5 @@
 import os
+import datetime
 
 from cs50 import SQL
 from flask import Flask, flash, jsonify, redirect, render_template, request, session
@@ -30,7 +31,7 @@ def index():
         day = request.form.get("day")
 
         # User validation, has to give input for all three
-        if name and month.isnumeric() and day.isnumeric():
+        if name and validate_birthday(month,day):
             db.execute("INSERT INTO birthdays(name,month,day) VALUES (?,?,?)", name, month, day)
 
         return redirect("/")
@@ -42,6 +43,9 @@ def index():
 
 # Validates birthday
 def validate_birthday(month, day):
-    if month > 12 or month < 1:
-        return false
-    if month
+    try:
+        date = datetime.datetime(2024, month,day)
+    except:
+        return False
+    return True
+
