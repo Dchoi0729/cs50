@@ -122,6 +122,10 @@ def register():
         usr = request.form.get("username")
         pwd = request.form.get("password")
         pwd_confirm = request.form.get("confirm")
+
+    if request.method == "GET":
+        return render_template("register.html")
+
     return apology("TODO")
 
 
