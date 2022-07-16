@@ -128,11 +128,11 @@ def register():
 
         # Check to see if username is valid
         if not db_usr:
-            
+
 
     # If user wants to register
     if request.method == "GET":
-        return render_template("register.html")
+        return render_template("register.html"), code
 
 
 @app.route("/sell", methods=["GET", "POST"])
