@@ -31,7 +31,7 @@ def index():
         day = request.form.get("day")
 
         # User validation, has to give input for all three
-        if name and validate_birthday(month,day):
+        if name:
             db.execute("INSERT INTO birthdays(name,month,day) VALUES (?,?,?)", name, month, day)
 
         return redirect("/")
@@ -41,6 +41,7 @@ def index():
 
         return render_template("index.html", birthdays=birthday_list)
 
+'''
 # Validates birthday
 def validate_birthday(month, day):
     try:
@@ -48,4 +49,4 @@ def validate_birthday(month, day):
     except:
         return False
     return True
-
+'''
