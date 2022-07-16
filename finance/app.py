@@ -146,11 +146,7 @@ def register():
             flash("Password and confirmation password do not match")
             return redirect("/register")
 
-        flash(generate_password_hash(pwd))
-        db.execute("INSERT")
-        
-                    db.execute("INSERT INTO birthdays(name,month,day) VALUES (?,?,?)", name, month, day)
-
+        db.execute("INSERT INTO users(username,hash) VALUES (?,?)", user, pwd)
         return redirect("/register")
 
     # If user wants to register
