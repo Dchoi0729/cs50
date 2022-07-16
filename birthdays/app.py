@@ -37,7 +37,7 @@ def index():
             db.execute("INSERT INTO birthdays(name,month,day) VALUES (?,?,?)", name, month, day)
             return redirect("/")
         else:
-            return redirect(url_for("/error", code=307))
+            return redirect(url_for("error", code=307))
 
     else:
         birthday_list = db.execute("SELECT * FROM birthdays")
