@@ -35,13 +35,20 @@ def index():
         # User validation, has to give input for all three
         if name and validate_birthday(month,day):
             db.execute("INSERT INTO birthdays(name,month,day) VALUES (?,?,?)", name, month, day)
-
-        return redirect("/")
+            return redirect("/")
+        else:
+            return redirect("/error")
 
     else:
         birthday_list = db.execute("SELECT * FROM birthdays")
 
-        return render_template("index.html", birthdays=birthday_list)
+        return render_template("index.html", birthdays=birthday_list, error = 0)
+
+@app.route("/error")
+def error():
+    birthday_list = db.execute("SELECT * FROM birthdays")
+
+    return render_template("index.html", birthdays=birthday_list, error = 1)
 
 
 @app.route("/delete", methods=["POST"])
