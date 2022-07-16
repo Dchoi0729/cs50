@@ -46,8 +46,6 @@ def validate_birthday(month, day):
     try:
         date = datetime.datetime(2024,int(month),int(day))
     except:
-        print("false")
         return False
-    print("true")
     return True
 
