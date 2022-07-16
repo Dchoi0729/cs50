@@ -34,6 +34,7 @@ def index():
         # User validation, has to give input for all three
         if name and validate_birthday(month,day):
             db.execute("INSERT INTO birthdays(name,month,day) VALUES (?,?,?)", name, month, day)
+        
 
         return redirect("/")
 
