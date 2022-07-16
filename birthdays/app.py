@@ -2,7 +2,7 @@ import os
 import datetime
 
 from cs50 import SQL
-from flask import Flask, flash, jsonify, redirect, render_template, request, session
+from flask import Flask, flash, jsonify, redirect, render_template, request, session, url_for
 
 
 # Configure application
@@ -38,7 +38,7 @@ def index(error=0):
             db.execute("INSERT INTO birthdays(name,month,day) VALUES (?,?,?)", name, month, day)
             error = 0
 
-        return redirect("/", error = error)
+        return redirect(url_for("/", error = error))
 
     else:
         birthday_list = db.execute("SELECT * FROM birthdays")
