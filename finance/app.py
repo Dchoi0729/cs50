@@ -119,7 +119,7 @@ def quote():
 
     # User clicked on quote tab on navbar
     if request.method == "GET":
-        render_template("quote.html")
+        return render_template("quote.html")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
