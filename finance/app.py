@@ -146,8 +146,14 @@ def register():
             flash("Password and confirmation password do not match")
             return redirect("/register")
 
+        # Adds username and password to database
         db.execute("INSERT INTO users(username,hash) VALUES (?,?)", user, generate_password_hash(pwd))
-        flash("Registered!")
+
+        rows = db.execute("SELECT * FROM users WHERE username = ?", user)
+
+        # Remember which user has logged in
+        session["user_id"] = rows[0]["id"]
+
         return redirect("/")
 
     # If user wants to register
