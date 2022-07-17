@@ -76,10 +76,13 @@ def buy():
 
         # Check if user has enough money
         desired = data["price"] * int(shares)
-        balance = db.execute("SELECT cash FROM users WHERE username=?", session["user_id"])["cash"]
-        print(balance)
+        balance = db.execute("SELECT cash FROM users WHERE id=?", session["user_id"])
+        flash(balance)
+
+        '''
         if desired > balance:
             return apology("Not enough money")
+        '''
 
         # Record purchase to database!!!
         # db.execute("INSERT INTO transactions(username,symbol,type,shares,time) Values (?,?,buy,?,?)", session["user_id"], symbol, shares, )
