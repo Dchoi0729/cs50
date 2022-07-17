@@ -84,10 +84,11 @@ def buy():
         now = datetime.now()
         date_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
-        # Record purchase to database
-        db.execute("INSERT INTO transactions(username,symbol,type,shares,time) Values (?,?,buy,?,?)", session["user_id"], symbol, shares, date_time)
+        # Record purchase to database (transactions table)
+        db.execute("INSERT INTO transactions(username,symbol,type,shares,time) Values (?,?,?,?,?)", session["user_id"], symbol, "buy", shares, date_time)
 
-        
+        # Change remaining balance (users table)
+        db.execute("UPDATE users SET cash = ? WHERE id = ?", balance - desired, session["user_id"])
 
         flash('Bought!')
         return redirect("/")
