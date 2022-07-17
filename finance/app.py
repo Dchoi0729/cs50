@@ -71,11 +71,11 @@ def buy():
             return apology("Missing shares")
 
         # If user inputted a negative amount of shares
-        if shares < 0:
+        if int(shares) < 0:
             return apology("Negative shares")
 
         # Check if user has enough money
-        desired = data["price"] * shares
+        desired = data["price"] * int(shares)
         balance = db.execute("SELECT cash FROM users WHERE username=?", session["user_id"])["cash"]
         print(balance)
         if desired > balance:
