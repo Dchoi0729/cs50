@@ -80,8 +80,8 @@ def buy():
         if desired > balance:
             return apology("Not enough money")
 
-        
-
+        # Record purchase to database
+        db.execute("INSERT INTO transactions(username,symbol,type,shares,time) Values (?,?,buy,?,?)", session["user_id"], symbol, shares, )
         return apology("TODO")
 
     if request.method == "GET":
