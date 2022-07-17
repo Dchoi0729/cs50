@@ -66,23 +66,26 @@ def buy():
             return apology("Invalid Symbol")
 
         # If user didn't provide a share number
-        shares = request.form.get("shares")
-        if not shares:
+        if not request.form.get("shares"):
             return apology("Missing shares")
 
         # If user inputted a negative amount of shares
-        if int(shares) < 0:
+        shares = int(request.form.get("shares"))
+        if shares < 0:
             return apology("Negative shares")
 
         # Check if user has enough money
-        desired = data["price"] * int(shares)
+        desired = data["price"] * shares
         balance = db.execute("SELECT cash FROM users WHERE id=?", session["user_id"])[0]["cash"]
         if desired > balance:
             return apology("Not enough money")
 
+        # Get current time
+        now = datetime.now()
+        date_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
         # Record purchase to database
-        db.execute("INSERT INTO transactions(username,symbol,type,shares,time) Values (?,?,buy,?,?)", session["user_id"], symbol, shares, )
+        db.execute("INSERT INTO transactions(username,symbol,type,shares,time) Values (?,?,buy,?,?)", session["user_id"], symbol, shares, date_time)
         return apology("TODO")
 
     if request.method == "GET":
