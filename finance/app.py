@@ -73,6 +73,10 @@ def buy():
         if shares < 0:
             return apology("Negative shares")
 
+        # Check if user has enough money
+        desired = data["price"] * shares
+        balance = db.execute("SELECT ")
+
         return apology("TODO")
 
     if request.method == "GET":
