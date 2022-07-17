@@ -45,7 +45,6 @@ def after_request(response):
 @login_required
 def index():
     """Show portfolio of stocks"""
-    flash(session)
     return apology("TODO")
 
 
@@ -131,6 +130,7 @@ def login():
 
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
+        session["username"] = request.form.get("username")
 
         # Redirect user to home page
         return redirect("/")
