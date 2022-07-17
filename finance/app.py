@@ -51,8 +51,12 @@ def index():
 @login_required
 def buy():
     """Buy shares of stock"""
-    return apology("TODO")
 
+    if request.method == "POST":
+        return apology("TODO")
+
+    if request.method == "GET":
+        return render_template("buy.html")
 
 @app.route("/history")
 @login_required
@@ -121,6 +125,7 @@ def quote():
     # User clicked on quote tab on navbar
     if request.method == "GET":
         return render_template("quote.html")
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
