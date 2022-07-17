@@ -112,8 +112,14 @@ def logout():
 @login_required
 def quote():
     """Get stock quote."""
-    return apology("TODO")
 
+    # User sent a post request with symbol
+    if request.method == "POST":
+        return apology("TODO")
+
+    # User clicked on quote tab on navbar
+    if request.method == "GET":
+        render_template("quote.html")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
