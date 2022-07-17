@@ -115,7 +115,8 @@ def quote():
 
     # User sent a post request with symbol
     if request.method == "POST":
-        return apology("TODO")
+        symbol = request.form.get("symbol")
+        return render_template("quoted.html",name,symbol=symbol,price)
 
     # User clicked on quote tab on navbar
     if request.method == "GET":
