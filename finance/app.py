@@ -86,7 +86,11 @@ def buy():
 
         # Record purchase to database
         db.execute("INSERT INTO transactions(username,symbol,type,shares,time) Values (?,?,buy,?,?)", session["user_id"], symbol, shares, date_time)
-        return apology("TODO")
+
+        
+
+        flash('Bought!')
+        return redirect("/")
 
     if request.method == "GET":
         return render_template("buy.html")
