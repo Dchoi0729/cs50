@@ -75,7 +75,12 @@ def buy():
 
         # Check if user has enough money
         desired = data["price"] * shares
-        balance = db.execute("SELECT ")
+        balance = db.execute("SELECT cash FROM users WHERE username=?", session["user_id"])["cash"]
+        print(balance)
+        if desired > balance:
+            return apology("Not enough money")
+
+        
 
         return apology("TODO")
 
