@@ -149,11 +149,11 @@ def register():
         # Adds username and password to database
         db.execute("INSERT INTO users(username,hash) VALUES (?,?)", user, generate_password_hash(pwd))
 
-        rows = db.execute("SELECT * FROM users WHERE username = ?", user)
-
         # Remember which user has logged in
+        rows = db.execute("SELECT * FROM users WHERE username = ?", user)
         session["user_id"] = rows[0]["id"]
 
+        flash('Registered!')
         return redirect("/")
 
     # If user wants to register
