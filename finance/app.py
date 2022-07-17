@@ -5,6 +5,7 @@ from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
+from datetime import datetime
 
 from helpers import apology, login_required, lookup, usd
 
@@ -80,7 +81,7 @@ def buy():
         if desired > balance:
             return apology("Not enough money")
 
-        # Record purchase to database
+        # Record purchase to database!!!
         db.execute("INSERT INTO transactions(username,symbol,type,shares,time) Values (?,?,buy,?,?)", session["user_id"], symbol, shares, )
         return apology("TODO")
 
