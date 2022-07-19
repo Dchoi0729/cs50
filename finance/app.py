@@ -48,7 +48,7 @@ def index():
 
     cash = db.select("SELECT cash FROM users")
 
-    # "SELECT SUM(shares) FROM transactions WHERE user_id=5 GROUP BY symbol=?", symbol
+    # "SELECT symbol, SUM(shares) FROM transactions WHERE user_id=? GROUP BY symbol", user_id
 
     return render_template("index.html", cash=value(cash))
 
