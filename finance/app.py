@@ -48,7 +48,8 @@ def index():
 
     cash = db.select("SELECT cash FROM users")
 
-    # "SELECT symbol, SUM(shares) FROM transactions WHERE user_id=? GROUP BY symbol", user_id
+    # Returns symbol, the total share for that symbol, the average price bought for that symbol
+    # "SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? AND type = "buy" GROUP BY symbol", user_id
 
     return render_template("index.html", cash=value(cash))
 
