@@ -46,8 +46,9 @@ def after_request(response):
 def index():
     """Show portfolio of stocks"""
 
+    cash = db.select("SELECT cash FROM users")
 
-    return render_template("index.html")
+    return render_template("index.html", cash=cash)
 
 
 @app.route("/buy", methods=["GET", "POST"])
