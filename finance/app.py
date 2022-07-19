@@ -48,7 +48,7 @@ def index():
 
     cash = db.select("SELECT cash FROM users")
 
-    "SELECT SUM(shares) FROM transactions WHERE user_id=5 GROUP BY symbol=?", symbol
+    # "SELECT SUM(shares) FROM transactions WHERE user_id=5 GROUP BY symbol=?", symbol
 
     return render_template("index.html", cash=value(cash))
 
@@ -90,7 +90,7 @@ def buy():
         date_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
         # Record purchase to database (transactions table)
-        db.execute("INSERT INTO transactions(user_id,symbol,type,shares,time) Values (?,?,?,?,?)", session["user_id"], symbol, "buy", shares, date_time)
+        db.execute("INSERT INTO transactions(user_id,symbol,type,shares,price,time) Values (?,?,?,?,?)", session["user_id"], symbol, "buy", shares, data["price"], date_time)
 
         # Change remaining balance (users table)
         db.execute("UPDATE users SET cash = ? WHERE id = ?", balance - desired, session["user_id"])
