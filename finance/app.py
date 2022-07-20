@@ -46,7 +46,7 @@ def after_request(response):
 def index():
     """Show portfolio of stocks"""
 
-    cash = db.select("SELECT cash FROM users")
+    cash = db.execute("SELECT cash FROM users")
 
     # Returns symbol, the total share for that symbol, the average price bought for that symbol
     # "SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? AND type = "buy" GROUP BY symbol", user_id
