@@ -7,7 +7,7 @@ from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
 
-from helpers import apology, login_required, lookup, usd
+from helpers import apology, login_required, lookup, usd, percent
 
 # export API_KEY=pk_01c5fa2829cb450e91de45efa0669518
 # Configure application
@@ -57,12 +57,13 @@ def index():
         symbol = stock["symbol"]
         name = lookup(symbol)["name"]
         curr_price = lookup(symbol)["price"]
+        avg_price = stock["AVG(total_price)"] / stock["SUM(shares)"]
         temp_dict = {
             "symbol" : symbol,
             "name" : name,
             "shares" : stock["SUM(shares)"],
             "curr_price" : usd(curr_price),
-            "avg_price" : usd(stock["AVG(total_price)"] / stock["SUM(shares)"]),
+            "percent_change" : percent((curr_price - avg_price) / avg_price * 100),
             "total_price" : usd(stock["SUM(shares)"]*curr_price)
         }
         portfolio.append(temp_dict)
