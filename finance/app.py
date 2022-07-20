@@ -65,7 +65,7 @@ def index():
         }
         portfolio.append(temp_dict)
 
-    return render_template("index.html", portfolio=portfolio, cash=portfolio)
+    return render_template("index.html", portfolio=portfolio, cash=cash)
 
 
 @app.route("/buy", methods=["GET", "POST"])
@@ -223,6 +223,7 @@ def register():
         # Remember which user has logged in
         rows = db.execute("SELECT * FROM users WHERE username = ?", user)
         session["user_id"] = rows[0]["id"]
+        session["username"] = user
 
         flash('Registered!')
         return redirect("/")
