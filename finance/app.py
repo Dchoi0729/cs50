@@ -165,7 +165,7 @@ def quote():
     # User sent a post request with symbol
     if request.method == "POST":
         data = lookup(request.form.get("symbol"))
-        return render_template("quoted.html",name=data["name"],symbol=data["symbol"],price=usd(data["price"])
+        return render_template("quoted.html",name=data["name"],symbol=data["symbol"],price=usd(data["price"]))
 
     # User clicked on quote tab on navbar
     if request.method == "GET":
