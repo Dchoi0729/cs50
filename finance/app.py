@@ -242,7 +242,38 @@ def register():
 def sell():
     """Sell shares of stock"""
 
+    # Returns symbol, the total share for that symbol, the total price bought for that symbol from data base
+    db_data = db.execute("SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? AND type = 'buy' GROUP BY symbol", session["user_id"])
+
     if request.method == "GET":
         return render_template("sell.html")
 
     return apology("TODO")
+
+# Returns a list of dictionary for each type of stock owned
+# Dict has keys symbol, name, shares, curr_price, percent_change, total_price
+def get_portfolio():
+
+    # Returns symbol, the total share for that symbol, the total price bought for that symbol from data base
+    db_data = db.execute("SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? AND type = 'buy' GROUP BY symbol", session["user_id"])
+
+    portfolio = []
+    stock_sum = cash
+    for stock in db_data:
+        symbol = stock["symbol"]
+        name = lookup(symbol)["name"]
+        curr_price = lookup(symbol)["price"]
+        avg_price = stock["AVG(total_price)"] / stock["SUM(shares)"]
+
+        temp_dict = {
+            "symbol" : symbol,
+            "name" : name,
+            "shares" : stock["SUM(shares)"],
+            "curr_price" : usd(curr_price),
+            "percent_change" : percent((curr_price - avg_price) / avg_price * 100),
+            "total_price" : usd(stock["SUM(shares)"]*curr_price)
+        }
+
+        portfolio.append(temp_dict)
+
+    return portfolio
