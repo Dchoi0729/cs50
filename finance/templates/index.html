@@ -40,12 +40,18 @@
     </table>
 
     <script>
+        function parsePercent(number){
+            number = number + 1;
+        }
+
+
         let entries = document.querySelectorAll("#end")
 
         for(let i = 0; i < entries.length; i++){
             entry = entries[i]
-
             entry.parentNode.style.background = "#90EE90";
+            entry.parentNode.style.background = "#FFCCCB";
+            console.log(parsePercent(2));
         }
 
     </script>
