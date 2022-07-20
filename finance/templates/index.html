@@ -23,7 +23,7 @@
                     <td class="text-start">{{ stock["name"] }}</th>
                     <td class="text-end">{{ stock["shares"] }}</th>
                     <td class="text-end">{{ stock["curr_price"] }}</th>
-                    <td class="text-end">{{ stock["total_price"] }} {{ stock["percent_change"] }} </th>
+                    <td id ="end" class="text-end">{{ stock["total_price"] }} {{ stock["percent_change"] }} </th>
                 </tr>
             {% endfor %}
         </tbody>
