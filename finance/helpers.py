@@ -63,9 +63,7 @@ def usd(value):
     """Format value as USD."""
     return f"${value:,.2f}"
 
-def usd(value):
-    """Format value as USD."""
-    sign = "+"
-    if value < 0:
-        sign = "-"
-    return f"({value:,.2f}%)"
+def percent(value):
+    """Format value as percentage."""
+    value = '{0:+}'.foramt(value)
+    return f"({value}%)"
