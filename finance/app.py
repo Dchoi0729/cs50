@@ -49,7 +49,17 @@ def index():
     cash = db.execute("SELECT cash FROM users")[0]["cash"]
 
     # Returns symbol, the total share for that symbol, the average price bought for that symbol
-    portfolio = db.execute("SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? AND type = 'buy' GROUP BY symbol", session["user_id"])
+    db_data = db.execute("SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? AND type = 'buy' GROUP BY symbol", session["user_id"])
+
+    portfolio = []
+    for stock in db_data:
+        symbol = stock["symbol"]
+        name = lookup(symbol)["name"]
+        curr_price = lookup(symbol)["price"]
+        temp_dict = {
+            
+        }
+        portfolio.append()
 
     return render_template("index.html", portfolio=portfolio, cash=portfolio)
 
@@ -91,7 +101,7 @@ def buy():
         date_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
         # Record purchase to database (transactions table)
-        db.execute("INSERT INTO transactions(user_id,symbol,type,shares,total_price,time) Values (?,?,?,?,?)", session["user_id"], symbol, "buy", shares, desired, date_time)
+        db.execute("INSERT INTO transactions(user_id,symbol,type,shares,total_price,time) Values (?,?,?,?,?,?)", session["user_id"], symbol, "buy", shares, desired, date_time)
 
         # Change remaining balance (users table)
         db.execute("UPDATE users SET cash = ? WHERE id = ?", balance - desired, session["user_id"])
