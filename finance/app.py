@@ -46,7 +46,7 @@ def after_request(response):
 def index():
     """Show portfolio of stocks"""
 
-    cash = db.execute("SELECT cash FROM users")
+    cash = db.execute("SELECT cash FROM users")[0]["cash"]
 
     # Returns symbol, the total share for that symbol, the average price bought for that symbol
     # "SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? AND type = "buy" GROUP BY symbol", user_id
@@ -165,7 +165,7 @@ def quote():
     # User sent a post request with symbol
     if request.method == "POST":
         data = lookup(request.form.get("symbol"))
-        return render_template("quoted.html",name=data["name"],symbol=data["symbol"],price=data["price"])
+        return render_template("quoted.html",name=data["name"],symbol=data["symbol"],price=usd(data["price"])
 
     # User clicked on quote tab on navbar
     if request.method == "GET":
