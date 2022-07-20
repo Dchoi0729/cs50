@@ -40,11 +40,11 @@
     </table>
 
     <script>
-        let rows = document.querySelectorAll("table > tbody > tr")
+        let rows = document.querySelectorAll("#end")
 
         for(let i = 0; i < rows.length; i++){
             row = rows[i];
-            console.log(row.firstChild);
+            console.log(row.parentNode);
         }
 
     </script>
