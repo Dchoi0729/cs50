@@ -41,9 +41,18 @@
 
     <script>
         function parsePercent(number){
-            number = number + 1;
-        }
+            let i = 0;
+            let found = false;
+            while(!found){
+                found = number[i] == " ";
+                i++;
+            }
+            i--;
 
+            number = number[i:];
+
+            return number;
+        }
 
         let entries = document.querySelectorAll("#end")
 
@@ -51,7 +60,8 @@
             entry = entries[i]
             entry.parentNode.style.background = "#90EE90";
             entry.parentNode.style.background = "#FFCCCB";
-            console.log(parsePercent(2));
+            console.log(entry.innerHTML);
+            console.log(parsePercent(entry.innerHTML));
         }
 
     </script>
