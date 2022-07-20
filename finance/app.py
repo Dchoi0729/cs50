@@ -46,12 +46,13 @@ def after_request(response):
 def index():
     """Show portfolio of stocks"""
 
-    cash = db.execute("SELECT cash FROM users")[0]["cash"]
+    cash = db.execute("SELECT cash FROM users WHERE id=?",session["user_id"])[0]["cash"]
 
     # Returns symbol, the total share for that symbol, the total price bought for that symbol from data base
     db_data = db.execute("SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? AND type = 'buy' GROUP BY symbol", session["user_id"])
 
     portfolio = []
+    stock_sum = cash
     for stock in db_data:
         symbol = stock["symbol"]
         name = lookup(symbol)["name"]
@@ -60,12 +61,14 @@ def index():
             "symbol" : symbol,
             "name" : name,
             "shares" : stock["SUM(shares)"],
-            "curr_price" : curr_price,
-            "avg_price" : stock["AVG(total_price)"] / stock["SUM(shares)"]
+            "curr_price" : usd(curr_price),
+            "avg_price" : usd(stock["AVG(total_price)"] / stock["SUM(shares)"]),
+            "total_price" : usd(stock["SUM(shares)"]*curr_price)
         }
         portfolio.append(temp_dict)
+        stock_sum = stock_sum + stock["SUM(shares)"]*curr_price
 
-    return render_template("index.html", portfolio=portfolio, cash=cash)
+    return render_template("index.html", portfolio=portfolio, cash=usd(cash), total = usd(stock_sum))
 
 
 @app.route("/buy", methods=["GET", "POST"])
