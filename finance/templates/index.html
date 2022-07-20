@@ -16,13 +16,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class="text-start"> </th>
-                <td class="text-start"> </th>
-                <td class="text-end"> </th>
-                <td class="text-end"> </th>
-                <td class="text-end"> </th>
-            </tr>
+
+            {% for stock in portfolio %}
+                <tr>
+                    <td class="text-start"> {{ stock }}</th>
+                    <td class="text-start"> </th>
+                    <td class="text-end"> </th>
+                    <td class="text-end"> </th>
+                    <td class="text-end"> </th>
+                </tr>
+            {% endfor %}
         </tbody>
         <tfoot>
             <tr>
