@@ -51,7 +51,7 @@ def index():
     # Returns symbol, the total share for that symbol, the average price bought for that symbol
     # "SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? AND type = "buy" GROUP BY symbol", user_id
 
-    return render_template("index.html", cash=value(cash))
+    return render_template("index.html", cash=usd(cash))
 
 
 @app.route("/buy", methods=["GET", "POST"])
