@@ -65,5 +65,4 @@ def usd(value):
 
 def percent(value):
     """Format value as percentage."""
-    value = '{0:+}'.foramt(value)
-    return f"({value}%)"
+    return f"({value:+,.2f}%)"
