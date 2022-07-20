@@ -49,9 +49,9 @@ def index():
     cash = db.execute("SELECT cash FROM users")[0]["cash"]
 
     # Returns symbol, the total share for that symbol, the average price bought for that symbol
-    # "SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? AND type = "buy" GROUP BY symbol", user_id
+    portfolio = db.execute("SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? AND type = 'buy' GROUP BY symbol", session["user_id"])
 
-    return render_template("index.html", cash=usd(cash))
+    return render_template("index.html", portfolio=portfolio, cash=usd(cash))
 
 
 @app.route("/buy", methods=["GET", "POST"])
