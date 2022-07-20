@@ -258,7 +258,6 @@ def get_portfolio():
     db_data = db.execute("SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? AND type = 'buy' GROUP BY symbol", session["user_id"])
 
     portfolio = []
-    stock_sum = cash
     for stock in db_data:
         symbol = stock["symbol"]
         name = lookup(symbol)["name"]
