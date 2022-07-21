@@ -259,7 +259,7 @@ def sell():
     if request.method == "GET":
         return render_template("sell.html", stocklist=curr_data)
 
-    # User clicked on sell tab on navbar
+    # User sent a sell post request
     if request.method == "POST":
 
         # Check to see if symbol was provided
@@ -274,6 +274,10 @@ def sell():
         # Check to see if shares was provided
         shares = request.form.get("shares")
         if not shares:
+            return apology("Choose shares")
+
+        # Check to see if user has enough shares
+        if shares > curr_data:
             return apology("Choose shares")
 
         # Get current time
