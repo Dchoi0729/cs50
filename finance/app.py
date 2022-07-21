@@ -253,6 +253,7 @@ def sell():
         if stock["SUM(shares)"] > 0:
             temp_dict={"symbol":stock["symbol"],"shares":stock["SUM(shares)"]}
             curr_data.append(temp_dict)
+            list_of_symbol.append(stock["symbol"])
 
     # User clicked on sell tab on navbar
     if request.method == "GET":
