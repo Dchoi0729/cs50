@@ -23,8 +23,12 @@
     </form>
 
     <script>
-        document.querySelector('.form-select mx-auto w-auto').addEventListener('change', function() {
+        let input = document.querySelector('.form-select mx-auto w-auto');
+        input.addEventListener('change', function() {
             console.log('You selected: ', this.value);
+            let response = await fetch("/selloption?stock=" + input.value);
+
+            
         });
     </script>
 {% endblock %}
