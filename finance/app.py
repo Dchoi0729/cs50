@@ -46,6 +46,7 @@ def after_request(response):
 def index():
     """Show portfolio of stocks"""
 
+    # Returns cash owned by user
     cash = db.execute("SELECT cash FROM users WHERE id=?",session["user_id"])[0]["cash"]
 
     # Returns symbol, the total share for that symbol, the total price bought for that symbol from data base
