@@ -28,9 +28,10 @@
         input.addEventListener('change', async function() {
             console.log('You selected: ', this.value);
             let response = await fetch("/selloption?stock=" + input.value);
+            let value = response.text();
 
             shares = document.querySelector("#shares");
-            shares.max = response;
+            shares.max = value;
         });
 
     </script>
