@@ -23,14 +23,15 @@
     </form>
 
     <script>
+
         let input = document.querySelector(".form-select mx-auto w-auto");
         input.addEventListener('change', function() {
             console.log('You selected: ', this.value);
             let response = await fetch("/selloption?stock=" + input.value);
-            let stock = await response.json();
 
             shares = document.querySelector(".form-control mx-auto w-auto");
-            shares.max = stock[0]
+            shares.max = response;
         });
+
     </script>
 {% endblock %}

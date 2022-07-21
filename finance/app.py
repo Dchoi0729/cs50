@@ -298,14 +298,7 @@ def sell():
 @login_required
 def sell_data():
     symbol = request.args.get("stock")
-    price = lookup(symbol)["price"]
-
-    data = []
-
-    if symbol:
-        data.append({symbol:price})
-
-    return jsonify(data)
+    return lookup(symbol)["price"]
 
 '''
 @app.route("/search")
