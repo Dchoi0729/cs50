@@ -249,7 +249,7 @@ def sell():
 
     # User clicked on sell tab on navbar
     if request.method == "GET":
-        return render_template("sell.html", stocklist=db_data)
+        return render_template("sell.html", stocklist=list_of_symbol)
 
     # User clicked on sell tab on navbar
     if request.method == "POST":
@@ -259,8 +259,12 @@ def sell():
         if not symbol:
             return apology("Choose stock")
 
+        # Check to see if user owns symbol
+        if symbol not in list_of_symbol:
+            return apology("You do not own that stock")
+
         shares = request.form.get("shares")
-        if
+
 
     return apology("TODO")
 
