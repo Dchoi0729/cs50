@@ -194,7 +194,7 @@ def quote():
 def register():
     """Register user"""
 
-    # If user sent a register post request
+    # Rser sent a register post request
     if request.method == "POST":
 
         # Check to see if username was provided
@@ -232,7 +232,7 @@ def register():
         flash('Registered!')
         return redirect("/")
 
-    # If user wants to register
+    # User wants to register via the reigster nav tab
     if request.method == "GET":
         return render_template("register.html")
 
