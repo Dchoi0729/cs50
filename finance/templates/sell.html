@@ -11,13 +11,13 @@
                 <option disabled="" selected="">Symbol</option>
 
                 {% for stock in stocklist %}
-                    <option value="symbol">{{stock}}</option>
+                    <option value="symbol">{{stock["symbol"]}}</option>
                 {% endfor %}
 
             </select>
         </div>
         <div class="mb-3">
-            <input autocomplete="off" class="form-control mx-auto w-auto" name="shares" placeholder="Shares" min="0" type="number">
+            <input autocomplete="off" class="form-control mx-auto w-auto" name="shares" placeholder="Shares" min="0" max = "{{stock['shares']}}"type="number">
         </div>
         <button class="btn btn-primary" type="submit">Sell</button>
     </form>
