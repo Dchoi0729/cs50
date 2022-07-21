@@ -278,7 +278,7 @@ def sell():
 
         # Check to see if user has enough shares
         if shares > curr_data:
-            return apology("Choose shares")
+            return apology("Not Enough Shares")
 
         # Get current time
         now = datetime.now()
