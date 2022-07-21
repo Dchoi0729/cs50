@@ -276,10 +276,6 @@ def sell():
         if not shares:
             return apology("Choose shares")
 
-        # Check to see if user has enough shares
-        if shares > curr_data:
-            return apology("Not Enough Shares")
-
         # Get current time
         now = datetime.now()
         date_time = now.strftime("%Y-%m-%d %H:%M:%S")
