@@ -242,7 +242,7 @@ def register():
 def sell():
     """Sell shares of stock"""
 
-    # Returns symbol of stocks and number of shares owned by user from data base
+    # Returns symbol of stocks and number of shares traded by user from data base
     db_data = db.execute("SELECT symbol, SUM(shares) FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
 
     list_of_symbol = []
@@ -253,7 +253,6 @@ def sell():
 
     # User clicked on sell tab on navbar
     if request.method == "GET":
-
         return render_template("sell.html", stocklist=list_of_symbol)
 
     # User clicked on sell tab on navbar
