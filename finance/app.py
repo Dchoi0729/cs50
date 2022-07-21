@@ -282,12 +282,18 @@ def sell():
         date_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
         # Get current price
+        shares = int(shares)
         curr_price = -1 * lookup(symbol)["price"]
-        
+        total_price = shares * curr_price
+        shares = -1 * shares
 
 
         # Record purchase to database (transactions table)
-        db.execute("INSERT INTO transactions(user_id,symbol,shares,total_price,time) Values (?,?,?,?,?)", session["user_id"], symbol, -1 * int(shares), int(shares) * curr_price, date_time)
+        db.execute("INSERT INTO transactions(user_id,symbol,shares,total_price,time) Values (?,?,?,?,?)", session["user_id"], symbol, shares, total_price, date_time)
+
+        # Add cash to user
+        init_cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"]
+        db.execute("UPDATE users SET cash = ? WHERE id = ?",  init_cash+-1*total_price, session["user_id"])
 
         flash('Sold!')
         return redirect("/")
