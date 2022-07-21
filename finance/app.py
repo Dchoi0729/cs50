@@ -342,8 +342,6 @@ def sell_data():
     return jsonify(shares[0]["SUM(shares)"])
 
 
-
-
 # Returns a list of of symbols of stocks currently owned by user
 def currently_owned():
     # Returns symbol of stocks and number of shares traded by user from data base
@@ -357,6 +355,13 @@ def currently_owned():
             list_of_symbol.append(stock["symbol"])
 
     return list_of_symbol
+
+
+
+
+
+
+
 
 # Returns a list of dictionary for each type of stock owned
 # Dict has keys symbol, name, shares, curr_price, percent_change, total_price
