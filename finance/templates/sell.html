@@ -28,7 +28,9 @@
         input.addEventListener('change', async function() {
             console.log('You selected: ', this.value);
             let response = await fetch("/selloption?stock=" + input.value);
-            let value = response.text();
+            console.log(response);
+            let value = await response.json();
+            console.log(value);
 
             shares = document.querySelector("#shares");
             shares.max = value;

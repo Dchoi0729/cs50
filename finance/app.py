@@ -1,7 +1,7 @@
 import os
 
 from cs50 import SQL
-from flask import Flask, flash, redirect, render_template, request, session
+from flask import Flask, flash, redirect, render_template, request, session, jsonify
 from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -298,7 +298,22 @@ def sell():
 @login_required
 def sell_data():
     symbol = request.args.get("stock")
-    return str(lookup(symbol)["price"])
+
+    # Returns symbol of stocks and number of shares traded by user from data base
+    db_data = db.execute("SELECT symbol, SUM(shares) FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
+
+    # List of symbol and shares of stocks currently owned by user
+    curr_data = []
+    list_of_symbol = []
+
+    for stock in db_data:
+        if stock["SUM(shares)"] > 0:
+            temp_dict={"symbol":stock["symbol"],"shares":stock["SUM(shares)"]}
+            curr_data.append(temp_dict)
+            list_of_symbol.append(stock["symbol"])
+
+
+    return jsonify(lookup(symbol)["price"])
 
 
 # Returns a list of dictionary for each type of stock owned
