@@ -108,6 +108,14 @@ def index():
     return render_template("index.html", portfolio=portfolio, cash=usd(cash), total = usd(stock_sum))
 
 
+@app.route("/account")
+@login_required
+def account():
+    """Add cash, change password and show overall profitability"""
+
+    return apology("TODO")
+
+
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
 def buy():
