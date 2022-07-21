@@ -298,18 +298,8 @@ def sell():
 @login_required
 def sell_data():
     symbol = request.args.get("stock")
-    return lookup(symbol)["price"]
+    return str(lookup(symbol)["price"])
 
-'''
-@app.route("/search")
-def search():
-    q = request.args.get("q")
-    if q:
-        shows = db.execute("SELECT * FROM shows WHERE title LIKE ? LIMIT 50", "%" + q + "%")
-    else:
-        shows = []
-    return jsonify(shows)
-'''
 
 # Returns a list of dictionary for each type of stock owned
 # Dict has keys symbol, name, shares, curr_price, percent_change, total_price

@@ -7,7 +7,7 @@
 {% block main %}
     <form action="/sell" method="post">
         <div class="mb-3">
-            <select class="form-select mx-auto w-auto" name="symbol">
+            <select id="symb" class="form-select mx-auto w-auto" name="symbol">
                 <option disabled="" selected="">Symbol</option>
 
                 {% for stock in stocklist %}
@@ -17,19 +17,19 @@
             </select>
         </div>
         <div class="mb-3">
-            <input autocomplete="off" class="form-control mx-auto w-auto" name="shares" placeholder="Shares" min="0" type="number">
+            <input id="shares" autocomplete="off" class="form-control mx-auto w-auto" name="shares" placeholder="Shares" min="0" type="number">
         </div>
         <button class="btn btn-primary" type="submit">Sell</button>
     </form>
 
     <script>
 
-        let input = document.querySelector(".form-select mx-auto w-auto");
-        input.addEventListener('change', function() {
+        let input = document.querySelector("#symb");
+        input.addEventListener('change', async function() {
             console.log('You selected: ', this.value);
             let response = await fetch("/selloption?stock=" + input.value);
 
-            shares = document.querySelector(".form-control mx-auto w-auto");
+            shares = document.querySelector("#shares");
             shares.max = response;
         });
 
