@@ -49,7 +49,7 @@ def index():
     cash = db.execute("SELECT cash FROM users WHERE id=?",session["user_id"])[0]["cash"]
 
     # Returns symbol, the total share for that symbol, the total price bought for that symbol from data base
-    db_data = db.execute("SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
+    db_data = db.execute("SELECT symbol, SUM(shares), SUM(total_price) FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
 
     portfolio = []
     stock_sum = cash
@@ -57,7 +57,7 @@ def index():
         symbol = stock["symbol"]
         name = lookup(symbol)["name"]
         curr_price = lookup(symbol)["price"]
-        avg_price = stock["AVG(total_price)"] / stock["SUM(shares)"]
+        avg_price = stock["SUM(total_price)"] / stock["SUM(shares)"]
         temp_dict = {
             "symbol" : symbol,
             "name" : name,
