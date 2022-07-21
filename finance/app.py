@@ -52,13 +52,20 @@ def index():
     # Returns symbol, the total share for that symbol, the total price bought for that symbol from data base
     db_data = db.execute("SELECT symbol, SUM(shares), SUM(total_price) FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
 
-    '''
+
     curr_owned = currently_owned()
     portfolio = []
 
     for stock in curr_owned:
-        last_emptied = db.execute("SELECT ")
-    '''
+
+        last_emptied = db.execute("SELECT sold_id FROM no_stock WHERE user_id=? AND symbol=? ORDER BY id DESC LIMIT 1",session["user_id"],stock)
+        start_id = 0
+
+        # If the stock was all sold and bought again, reset starting id point to calculate all values
+        if len(last_emptied) > 0:
+            start_id = last_emptied[0]["sold_id"]
+
+        
 
     portfolio = []
     stock_sum = cash
