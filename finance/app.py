@@ -55,6 +55,7 @@ def index():
 
     curr_owned = currently_owned()
     portfolio = []
+    stock_sum = cash
 
     for stock in curr_owned:
 
@@ -65,9 +66,25 @@ def index():
         if len(last_emptied) > 0:
             start_id = last_emptied[0]["sold_id"]
 
-        db2 = db.execute("SELECT SUM(shares), SUM(total_price) FROM transactions WHERE user_id=? AND symbol=? AND id > ?", session["user_id"],stock,start_id)
+        db_data = db.execute("SELECT SUM(shares), SUM(total_price) FROM transactions WHERE user_id=? AND symbol=? AND id > ?", session["user_id"],stock,start_id)
+
+        shares = db_data[0]["SUM(shares)"]
+        avg_price = db_data[0]["SUM(total_price)"] /shares
+        curr_price = lookup(stock)["price"]
 
 
+        temp_dict = {
+            "symbol" : stock,
+            "name" : lookup(stock)["name"],
+            "curr_price" : usd(lookup(stock)["price"]),
+            "percent_change" : percent((curr_price - avg_price) / avg_price * 100),
+            "total_price" : usd(shares*curr_price)
+        }
+
+        portfolio.append(temp_dict)
+        stock_sum = stock_sum + shares*curr_price
+
+    '''
     portfolio = []
     stock_sum = cash
     for stock in db_data:
@@ -86,7 +103,7 @@ def index():
             }
             portfolio.append(temp_dict)
             stock_sum = stock_sum + stock["SUM(shares)"]*curr_price
-
+    '''
     return render_template("index.html", portfolio=portfolio, cash=usd(cash), total = usd(stock_sum))
 
 
