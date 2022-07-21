@@ -284,7 +284,7 @@ def sell():
         curr_price = -1 * lookup(symbol)["price"]
 
         # Record purchase to database (transactions table)
-        db.execute("INSERT INTO transactions(user_id,symbol,shares,total_price,time) Values (?,?,?,?,?)", session["user_id"], symbol, -1 * shares, shares * curr_price, date_time)
+        db.execute("INSERT INTO transactions(user_id,symbol,shares,total_price,time) Values (?,?,?,?,?)", session["user_id"], symbol, -1 * int(shares), int(shares) * curr_price, date_time)
 
         flash('Sold!')
         return redirect("/")
