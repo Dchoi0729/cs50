@@ -243,7 +243,7 @@ def sell():
     """Sell shares of stock"""
 
     # Returns symbol of stocks and number of shares owned by user from data base
-    db_data = db.execute("SELECT symbol, SUM(shares) FROM transactions WHERE user_id=? AND shares > 0 GROUP BY symbol", session["user_id"])
+    db_data = db.execute("SELECT symbol, SUM(shares) FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
 
     list_of_symbol = [value for elem in db_data for value in elem.values()]
 
