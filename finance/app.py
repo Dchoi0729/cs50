@@ -244,7 +244,7 @@ def sell():
     """Sell shares of stock"""
 
     # Returns symbol of stocks and number of shares traded by user from data base
-    db_data = db.execute("SELECT symbol, SUM(shares) FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
+    db_data = db.execute("SELECT symbol FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
 
     # List of symbol and shares of stocks currently owned by user
     curr_data = []
@@ -286,7 +286,6 @@ def sell():
         curr_price = -1 * lookup(symbol)["price"]
         total_price = shares * curr_price
         shares = -1 * shares
-
 
         # Record purchase to database (transactions table)
         db.execute("INSERT INTO transactions(user_id,symbol,shares,total_price,time) Values (?,?,?,?,?)", session["user_id"], symbol, shares, total_price, date_time)
