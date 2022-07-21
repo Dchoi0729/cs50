@@ -162,6 +162,10 @@ def history():
     """Show history of transactions"""
 
     history = db.execute("SELECT * FROM transactions WHERE user_id=? ORDER BY id DESC",session["user_id"])
+    for row in history:
+        price = row["total_price"]
+        shares = row["shares"]
+        row["price"] = usd(price/shares)
 
     return render_template("history.html",history=history)
 
