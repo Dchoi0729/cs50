@@ -294,7 +294,10 @@ def sell():
 
 
         # If user sold all shares of a specific stock, record to no_stock table
-        if -1 * shares == 
+        remaining_shares = db.execute("SELECT SUM(shares) FROM transactions WHERE user_id=? AND symbol=?",session["user_id"],symbol)[0]["SUM(shares)"]
+        if remaining_shares == 0:
+            db.execute("INSERT INTO no_stock(user_id, symbol, sold_id) Values(?,?,?)",session["user_id"],symbol,)
+
 
         flash('Sold!')
         return redirect("/")
