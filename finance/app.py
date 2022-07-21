@@ -294,6 +294,23 @@ def sell():
         return redirect("/")
 
 
+@app.route("/selloption", methods=["GET"])
+@login_required
+def sell_data():
+    stocks = request.args.get("stocks")
+    return jsonify(stocks)
+
+'''
+@app.route("/search")
+def search():
+    q = request.args.get("q")
+    if q:
+        shows = db.execute("SELECT * FROM shows WHERE title LIKE ? LIMIT 50", "%" + q + "%")
+    else:
+        shows = []
+    return jsonify(shows)
+'''
+
 # Returns a list of dictionary for each type of stock owned
 # Dict has keys symbol, name, shares, curr_price, percent_change, total_price
 def get_portfolio():

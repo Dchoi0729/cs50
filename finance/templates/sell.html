@@ -21,4 +21,10 @@
         </div>
         <button class="btn btn-primary" type="submit">Sell</button>
     </form>
+
+    <script>
+        document.querySelector('.form-select mx-auto w-auto').addEventListener('change', function() {
+            console.log('You selected: ', this.value);
+        });
+    </script>
 {% endblock %}
