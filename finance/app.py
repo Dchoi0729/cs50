@@ -76,6 +76,7 @@ def index():
         temp_dict = {
             "symbol" : stock,
             "name" : lookup(stock)["name"],
+            "shares" : shares,
             "curr_price" : usd(lookup(stock)["price"]),
             "percent_change" : percent((curr_price - avg_price) / avg_price * 100),
             "total_price" : usd(shares*curr_price)
