@@ -54,20 +54,21 @@ def index():
     portfolio = []
     stock_sum = cash
     for stock in db_data:
-        symbol = stock["symbol"]
-        name = lookup(symbol)["name"]
-        curr_price = lookup(symbol)["price"]
-        avg_price = stock["SUM(total_price)"] / stock["SUM(shares)"]
-        temp_dict = {
-            "symbol" : symbol,
-            "name" : name,
-            "shares" : stock["SUM(shares)"],
-            "curr_price" : usd(curr_price),
-            "percent_change" : percent((curr_price - avg_price) / avg_price * 100),
-            "total_price" : usd(stock["SUM(shares)"]*curr_price)
-        }
-        portfolio.append(temp_dict)
-        stock_sum = stock_sum + stock["SUM(shares)"]*curr_price
+        if stock["SUM(shares)"] > 0:
+            symbol = stock["symbol"]
+            name = lookup(symbol)["name"]
+            curr_price = lookup(symbol)["price"]
+            avg_price = stock["SUM(total_price)"] / stock["SUM(shares)"]
+            temp_dict = {
+                "symbol" : symbol,
+                "name" : name,
+                "shares" : stock["SUM(shares)"],
+                "curr_price" : usd(curr_price),
+                "percent_change" : percent((curr_price - avg_price) / avg_price * 100),
+                "total_price" : usd(stock["SUM(shares)"]*curr_price)
+            }
+            portfolio.append(temp_dict)
+            stock_sum = stock_sum + stock["SUM(shares)"]*curr_price
 
     return render_template("index.html", portfolio=portfolio, cash=usd(cash), total = usd(stock_sum))
 
@@ -282,6 +283,8 @@ def sell():
 
         # Get current price
         curr_price = -1 * lookup(symbol)["price"]
+        
+
 
         # Record purchase to database (transactions table)
         db.execute("INSERT INTO transactions(user_id,symbol,shares,total_price,time) Values (?,?,?,?,?)", session["user_id"], symbol, -1 * int(shares), int(shares) * curr_price, date_time)
@@ -290,6 +293,7 @@ def sell():
         return redirect("/")
 
 
+# Returns json format of number of shares for given symbol parameter
 @app.route("/selloption", methods=["GET"])
 @login_required
 def sell_data():
@@ -299,6 +303,10 @@ def sell_data():
     shares = db.execute("SELECT SUM(shares) FROM transactions WHERE user_id=? AND symbol=?", session["user_id"], symbol)
 
     return jsonify(shares[0]["SUM(shares)"])
+
+
+
+
 
 
 # Returns a list of dictionary for each type of stock owned

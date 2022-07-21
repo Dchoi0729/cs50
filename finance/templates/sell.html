@@ -23,17 +23,18 @@
     </form>
 
     <script>
+        // AJAX script for capping max number of shares for different stocks
+
         let input = document.querySelector("#symb");
         let shares = document.querySelector("#shares");
 
         input.addEventListener('change', async function() {
+
+            // Reset input text
             shares.value = "";
 
-            console.log('You selected: ', this.value);
             let response = await fetch("/selloption?stock=" + input.value);
-            console.log(response);
             let value = await response.json();
-            console.log(value);
 
             shares = document.querySelector("#shares");
             shares.max = value;
