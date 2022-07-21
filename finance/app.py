@@ -242,14 +242,15 @@ def register():
 def sell():
     """Sell shares of stock"""
 
-    # Returns symbol of stocks owned by user from data base
-    db_data = db.execute("SELECT symbol FROM transactions WHERE user_id=? AND shares > 0 GROUP BY symbol", session["user_id"])
+    # Returns symbol of stocks and number of shares owned by user from data base
+    db_data = db.execute("SELECT symbol, SUM(shares) FROM transactions WHERE user_id=? AND shares > 0 GROUP BY symbol", session["user_id"])
 
     list_of_symbol = [value for elem in db_data for value in elem.values()]
 
     # User clicked on sell tab on navbar
     if request.method == "GET":
-        return render_template("sell.html", stocklist=list_of_symbol)
+
+        return render_template("sell.html", stocklist=db_data)
 
     # User clicked on sell tab on navbar
     if request.method == "POST":
@@ -263,7 +264,18 @@ def sell():
         if symbol not in list_of_symbol:
             return apology("You do not own that stock")
 
+        # Check to see if shares was provided
         shares = request.form.get("shares")
+        if not shares:
+            return apology("Choose shares")
+
+        # Get current time
+        now = datetime.now()
+        date_time = now.strftime("%Y-%m-%d %H:%M:%S")
+
+        # Record purchase to database (transactions table)
+        db.execute("INSERT INTO transactions(user_id,symbol,shares,total_price,time) Values (?,?,?,?,?)", session["user_id"], symbol, -1 * shares, desired, date_time)
+
 
 
     return apology("TODO")
