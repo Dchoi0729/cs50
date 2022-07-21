@@ -52,6 +52,8 @@ def index():
     # Returns symbol, the total share for that symbol, the total price bought for that symbol from data base
     db_data = db.execute("SELECT symbol, SUM(shares), SUM(total_price) FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
 
+    
+
     portfolio = []
     stock_sum = cash
     for stock in db_data:
