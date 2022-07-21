@@ -297,8 +297,15 @@ def sell():
 @app.route("/selloption", methods=["GET"])
 @login_required
 def sell_data():
-    stocks = request.args.get("stocks")
-    return jsonify(stocks)
+    symbol = request.args.get("stock")
+    price = lookup(symbol)["price"]
+
+    data = []
+
+    if symbol:
+        data.append({symbol:price})
+
+    return jsonify(data)
 
 '''
 @app.route("/search")
