@@ -65,7 +65,7 @@ def index():
         if len(last_emptied) > 0:
             start_id = last_emptied[0]["sold_id"]
 
-        
+        #db_data = db.execute("SELECT * FROM transactions WHERE user_id=?)
 
     portfolio = []
     stock_sum = cash
