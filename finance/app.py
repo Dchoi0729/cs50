@@ -49,7 +49,7 @@ def index():
     cash = db.execute("SELECT cash FROM users WHERE id=?",session["user_id"])[0]["cash"]
 
     # Returns symbol, the total share for that symbol, the total price bought for that symbol from data base
-    db_data = db.execute("SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? AND type = 'buy' GROUP BY symbol", session["user_id"])
+    db_data = db.execute("SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
 
     portfolio = []
     stock_sum = cash
@@ -109,7 +109,7 @@ def buy():
         date_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
         # Record purchase to database (transactions table)
-        db.execute("INSERT INTO transactions(user_id,symbol,type,shares,total_price,time) Values (?,?,?,?,?,?)", session["user_id"], symbol, "buy", shares, desired, date_time)
+        db.execute("INSERT INTO transactions(user_id,symbol,shares,total_price,time) Values (?,?,?,?,?)", session["user_id"], symbol, shares, desired, date_time)
 
         # Change remaining balance (users table)
         db.execute("UPDATE users SET cash = ? WHERE id = ?", balance - desired, session["user_id"])
@@ -243,12 +243,25 @@ def sell():
     """Sell shares of stock"""
 
     # Returns symbol of stocks owned by user from data base
-    db_data = db.execute("SELECT symbol FROM transactions WHERE user_id=? AND type = 'buy' GROUP BY symbol", session["user_id"])
+    db_data = db.execute("SELECT symbol FROM transactions WHERE user_id=? AND shares > 0 GROUP BY symbol", session["user_id"])
 
+    # User clicked on sell tab on navbar
     if request.method == "GET":
-        return render_template("sell.html")
+        return render_template("sell.html", stocklist=db_data)
+
+    # User clicked on sell tab on navbar
+    if request.method == "POST":
+
+        # Check to see if symbol was provided
+        symbol = request.form.get("symbol")
+        if not symbol:
+            return apology("Choose stock")
+
+        shares = request.form.get("shares")
+        if
 
     return apology("TODO")
+
 
 # Returns a list of dictionary for each type of stock owned
 # Dict has keys symbol, name, shares, curr_price, percent_change, total_price
