@@ -244,21 +244,18 @@ def sell():
     """Sell shares of stock"""
 
     # Returns symbol of stocks and number of shares traded by user from data base
-    db_data = db.execute("SELECT symbol FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
+    db_data = db.execute("SELECT symbol, SUM(shares) FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
 
     # List of symbol and shares of stocks currently owned by user
-    curr_data = []
     list_of_symbol = []
 
     for stock in db_data:
         if stock["SUM(shares)"] > 0:
-            temp_dict={"symbol":stock["symbol"],"shares":stock["SUM(shares)"]}
-            curr_data.append(temp_dict)
             list_of_symbol.append(stock["symbol"])
 
     # User clicked on sell tab on navbar
     if request.method == "GET":
-        return render_template("sell.html", stocklist=curr_data)
+        return render_template("sell.html", stocklist=list_of_symbol)
 
     # User sent a sell post request
     if request.method == "POST":
