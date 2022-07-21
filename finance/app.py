@@ -292,6 +292,10 @@ def sell():
         init_cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"]
         db.execute("UPDATE users SET cash = ? WHERE id = ?",  init_cash+-1*total_price, session["user_id"])
 
+
+        # If user sold all shares of a specific stock, record to no_stock table
+        if -1 * shares == 
+
         flash('Sold!')
         return redirect("/")
 
