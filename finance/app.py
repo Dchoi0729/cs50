@@ -52,7 +52,7 @@ def index():
     # Returns symbol, the total share for that symbol, the total price bought for that symbol from data base
     db_data = db.execute("SELECT symbol, SUM(shares), SUM(total_price) FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
 
-    
+
 
     portfolio = []
     stock_sum = cash
@@ -246,15 +246,8 @@ def register():
 def sell():
     """Sell shares of stock"""
 
-    # Returns symbol of stocks and number of shares traded by user from data base
-    db_data = db.execute("SELECT symbol, SUM(shares) FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
-
     # List of symbol and shares of stocks currently owned by user
-    list_of_symbol = []
-
-    for stock in db_data:
-        if stock["SUM(shares)"] > 0:
-            list_of_symbol.append(stock["symbol"])
+    list_of_symbol = currently_owned()
 
     # User clicked on sell tab on navbar
     if request.method == "GET":
@@ -319,7 +312,19 @@ def sell_data():
 
 
 
+# Returns a list of of symbols of stocks currently owned by user
+def currently_owned():
+    # Returns symbol of stocks and number of shares traded by user from data base
+    db_data = db.execute("SELECT symbol, SUM(shares) FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
 
+    # List of symbol and shares of stocks currently owned by user
+    list_of_symbol = []
+
+    for stock in db_data:
+        if stock["SUM(shares)"] > 0:
+            list_of_symbol.append(stock["symbol"])
+
+    return list_of_symbol
 
 # Returns a list of dictionary for each type of stock owned
 # Dict has keys symbol, name, shares, curr_price, percent_change, total_price
