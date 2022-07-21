@@ -247,6 +247,7 @@ def sell():
 
     # List of symbol and shares of stocks currently owned by user
     curr_data = []
+    list_of_symbol = []
 
     for stock in db_data:
         if stock["SUM(shares)"] > 0:
@@ -278,12 +279,14 @@ def sell():
         now = datetime.now()
         date_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
+        # Get current price
+        curr_price = -1 * lookup(symbol)["price"]
+
         # Record purchase to database (transactions table)
-        db.execute("INSERT INTO transactions(user_id,symbol,shares,total_price,time) Values (?,?,?,?,?)", session["user_id"], symbol, -1 * shares, desired, date_time)
+        db.execute("INSERT INTO transactions(user_id,symbol,shares,total_price,time) Values (?,?,?,?,?)", session["user_id"], symbol, -1 * shares, shares * curr_price, date_time)
 
-
-
-    return apology("TODO")
+        flash('Sold!')
+        return redirect("/")
 
 
 # Returns a list of dictionary for each type of stock owned
