@@ -26,7 +26,7 @@
                     <td id ="end" class="text-end">{{ stock["total_price"] }} {{ stock["percent_change"] }} </td>
                     <td id ="index-row-button" class="text-end">
                         <form action="/buy" method="post">
-                            <input autocomplete="off" name="shares" placeholder="Shares" type="number">
+                            <input id ="index-row-button" autocomplete="off" name="shares" placeholder="Shares" type="number">
                             <button class="btn btn-primary" type="submit"></button>
                         </form>
                     </td>
@@ -46,6 +46,7 @@
     </table>
 
     <script>
+
         // Helper function that parses the TOTAL column into a double of just the percent change
         function parsePercent(number){
             let i = 0, found = false;
@@ -68,9 +69,7 @@
         // Changes the color of the row of the table depending on whether it is at a profit or not
         let entries = document.querySelectorAll("#end")
         for(let i = 0; i < entries.length; i++){
-            entry = entries[i]
-            console.log(entry.innerHTML);
-            console.log(parsePercent(entry.innerHTML));
+            entry = entries[i];
 
             if (parsePercent(entry.innerHTML) > 0){
                 entry.parentNode.style.background = "#90EE90";
@@ -78,12 +77,6 @@
             else if (parsePercent(entry.innerHTML) < 0){
                 entry.parentNode.style.background = "#FFCCCB";
             }
-        }
-
-        let last_cols = document.querySelectorAll("#index-row-button");
-        for(let i = 0; i < entries.length; i++){
-            last_col = last_cols[i];
-            last_col.style.background = "rgba(0,0,0,0.0)";
         }
 
     </script>
