@@ -26,6 +26,12 @@ nav .navbar-brand .green
     width: 150px;
 }
 
+#index-row-input{
+    display:inline-block;
+    margin-bottom: 5px;
+    width: 80px;
+}
+
 #index-row-button{
-    width: 50px;
+    display:inline-block;
 }
