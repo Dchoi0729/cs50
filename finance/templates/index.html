@@ -25,7 +25,7 @@
                     <td class="text-end">{{ stock["curr_price"] }}</td>
                     <td id ="end" class="text-end">{{ stock["total_price"] }} {{ stock["percent_change"] }} </td>
                     <td id ="index-row-button" class="text-end">
-                        <form action="/buy" method="post">
+                        <form action="/buy" method="post" onsubmit="submitForm(event);">
                             <input type="hidden" name="symbol" value="{{ stock['symbol'] }}">
                             <input class ="index-row-input" name="shares" placeholder="Shares" type="number" min="{{(-1)*stock['shares']}}">
                             <button id="lastbtn" class="btn btn-primary" type="submit">Submit</button>
@@ -96,21 +96,9 @@
             })
         }
 
-        let buttons = document.querySelectorAll("#lastbtn");
-        for (let i = 0; i < buttons.length; i++){
-            button = buttons[i];
-            console.log(button);
-
-            button.addEventListener("click", function(){
-                console.log(this.nextSibling);
-                console.log(this.previousSibling);
-
-                if(this.value < 0){
-                    this.parentNode.action = "/sell";
-                }
-            })
+        function submitForm(e){
+            console.log(e.shares.value);
         }
-
 
     </script>
 {% endblock %}
