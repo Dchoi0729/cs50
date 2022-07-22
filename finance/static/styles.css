@@ -25,3 +25,7 @@ nav .navbar-brand .green
 #sell-shares{
     width: 150px;
 }
+
+.index-last-col{
+    display: inline-block;
+}
