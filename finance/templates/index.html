@@ -86,7 +86,10 @@
             input = inputs[i];
 
             input.addEventListener("input", function(){
-                console.log(input.value);
+                console.log(this.value);
+                if(this.value < 0){
+                    this.parentNode.action = "/sell";
+                }
             })
         }
 
