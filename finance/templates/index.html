@@ -27,7 +27,7 @@
                     <td id ="index-row-button" class="text-end">
                         <form action="/buy" method="post">
                             <input type="hidden" name="symbol" value="{{ stock['symbol'] }}">
-                            <input id = "{{ stock['symbol'] }}" class ="index-row-input" name="shares" placeholder="Shares" type="number" min="{{(-1)*stock['shares']}}">
+                            <input class ="index-row-input" name="shares" placeholder="Shares" type="number" min="{{(-1)*stock['shares']}}">
                             <button id = "button" class="btn btn-primary" type="submit">Submit</button>
                         </form>
                     </td>
@@ -89,7 +89,7 @@
                 console.log(button);
 
                 button.addEventListener("click", function(){
-                    console.log(input.value);
+                    console.log(button.previousElementSibling);
                 })
             }
         })
