@@ -19,11 +19,22 @@
 
             {% for stock in portfolio %}
                 <tr>
-                    <td class="text-start">{{ stock["symbol"] }}</th>
-                    <td class="text-start">{{ stock["name"] }}</th>
-                    <td class="text-end">{{ stock["shares"] }}</th>
-                    <td class="text-end">{{ stock["curr_price"] }}</th>
-                    <td id ="end" class="text-end">{{ stock["total_price"] }} {{ stock["percent_change"] }} </th>
+                    <td class="text-start">{{ stock["symbol"] }}</td>
+                    <td class="text-start">{{ stock["name"] }}</td>
+                    <td class="text-end">{{ stock["shares"] }}</td>
+                    <td class="text-end">{{ stock["curr_price"] }}</td>
+                    <td id ="end" class="text-end">{{ stock["total_price"] }} {{ stock["percent_change"] }} </td>
+                    <td class="text-end">
+                        <form action="/buy" method="post">
+                            <div class="mb-3">
+                                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="symbol" placeholder="Symbol" type="text">
+                            </div>
+                            <div class="mb-3">
+                                <input autocomplete="off" class="form-control mx-auto w-auto" name="shares" placeholder="Shares" type="number">
+                            </div>
+                            <button class="btn btn-primary" type="submit">Buy</button>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
