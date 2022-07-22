@@ -25,10 +25,12 @@
                     <td class="text-end">{{ stock["curr_price"] }}</td>
                     <td id ="end" class="text-end">{{ stock["total_price"] }} {{ stock["percent_change"] }} </td>
                     <td id ="index-row-button" class="text-end">
-                        <form action="/buy" method="post">
-                            <input autocomplete="off" class="form-control mx-auto w-auto" name="shares" placeholder="Shares" type="number">
-                            <button class="btn btn-primary" type="submit"></button>
-                        </form>
+                        <div class="index-last-col">
+                            <form action="/buy" method="post">
+                                <input autocomplete="off" class="form-control mx-auto w-auto" name="shares" placeholder="Shares" type="number">
+                                <button class="btn btn-primary" type="submit"></button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             {% endfor %}
