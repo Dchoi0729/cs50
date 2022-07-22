@@ -28,7 +28,7 @@ nav .navbar-brand .green
 }
 
 /* For input tag in each row in index.html*/
-#index-row-input{
+.index-row-input{
     display:inline-block;
     margin-bottom: 5px;
     width: 80px;
