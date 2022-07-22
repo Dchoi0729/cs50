@@ -81,9 +81,9 @@
 
         let inputs = document.querySelectorAll("#index-row-input");
         for(let i = 0; i < inputs.length; i++){
-            input = inputs[i]
-            input.addEventListener("change", function(){
-                console.log(input.value)
+            input = inputs[i];
+            input.addEventListener("input", function(){
+                console.log(input.value);
             })
         }
 
