@@ -26,6 +26,6 @@ nav .navbar-brand .green
     width: 150px;
 }
 
-.index-last-col{
-    display: inline-block;
+.index-row-button{
+    background-color: rgba(0, 0, 0, 0.0);
 }

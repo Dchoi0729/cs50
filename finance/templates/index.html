@@ -25,12 +25,10 @@
                     <td class="text-end">{{ stock["curr_price"] }}</td>
                     <td id ="end" class="text-end">{{ stock["total_price"] }} {{ stock["percent_change"] }} </td>
                     <td id ="index-row-button" class="text-end">
-                        <div class="index-last-col">
-                            <form action="/buy" method="post">
-                                <input autocomplete="off" name="shares" placeholder="Shares" type="number">
-                                <button class="btn btn-primary" type="submit"></button>
-                            </form>
-                        </div>
+                        <form action="/buy" method="post">
+                            <input autocomplete="off" name="shares" placeholder="Shares" type="number">
+                            <button class="btn btn-primary" type="submit"></button>
+                        </form>
                     </td>
                 </tr>
             {% endfor %}
@@ -80,6 +78,12 @@
             else if (parsePercent(entry.innerHTML) < 0){
                 entry.parentNode.style.background = "#FFCCCB";
             }
+        }
+
+        let last_cols = document.querySelectorAll("#index-row-button");
+        for(let i = 0; i < entries.length; i++){
+            last_col = last_cols[i];
+            last_col.style.background = "rgba(0,0,0,0.0)";
         }
 
     </script>
