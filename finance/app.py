@@ -317,6 +317,8 @@ def sell():
         if not shares:
             return apology("Choose shares")
 
+        # Check to see if user has that many shares
+        shares = int(shares)
         curr_shares = db.execute("SELECT SUM(shares) FROM transactions WHERE user_id=? AND symbol=?", session["user_id"],symbol)[0]["SUM(shares)"]
         if curr_shares < shares:
             return apology("You don't have that many shares")
@@ -326,7 +328,6 @@ def sell():
         date_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
         # Get current price
-        shares = int(shares)
         curr_price = -1 * lookup(symbol)["price"]
         total_price = shares * curr_price
         shares = -1 * shares
