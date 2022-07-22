@@ -26,7 +26,7 @@
                     <td id ="end" class="text-end">{{ stock["total_price"] }} {{ stock["percent_change"] }} </td>
                     <td id ="index-row-button" class="text-end">
                         <form action="/buy" method="post">
-                            <input id ="index-row-input" name="{{stock['symbol']}}_shares" placeholder="Shares" type="number" min="{{(-1)*stock['shares']}}">
+                            <input id ="index-row-input" name="shares" placeholder="Shares" type="number" min="{{(-1)*stock['shares']}}">
                             <button class="btn btn-primary" type="submit">Submit</button>
                         </form>
                     </td>
