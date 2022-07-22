@@ -22,15 +22,19 @@ nav .navbar-brand .green
     color: #2e944b;
 }
 
+/* For shares input tag in sell.html*/
 #sell-shares{
     width: 150px;
 }
 
+/* For input tag in each row in index.html*/
 #index-row-input{
     display:inline-block;
     margin-bottom: 5px;
     width: 80px;
 }
 
+/* For input+button form in each row in index.html*/
 #index-row-button{
+    padding-left:0px;
 }
