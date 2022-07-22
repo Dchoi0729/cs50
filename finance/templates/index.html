@@ -28,7 +28,7 @@
                         <form action="/buy" method="post">
                             <input type="hidden" name="symbol" value="{{ stock['symbol'] }}">
                             <input class ="index-row-input" name="shares" placeholder="Shares" type="number" min="{{(-1)*stock['shares']}}">
-                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <button id="lastbtn" class="btn btn-primary" type="submit">Submit</button>
                         </form>
                     </td>
                 </tr>
@@ -87,6 +87,22 @@
 
             input.addEventListener("input", function(){
                 console.log(this.value);
+                if(this.value < 0){
+                    this.parentNode.action = "/sell";
+                }
+                else{
+                    this.parentNode.action = "/buy";
+                }
+            })
+        }
+
+        let buttons = document.querySelectorAll("#lastbtn");
+        for (let i = 0; i < buttons.length; i++){
+            button = buttons[i];
+            console.log(button);
+
+            button.addEventListener("click", function(){
+                console.log(this.);
                 if(this.value < 0){
                     this.parentNode.action = "/sell";
                 }

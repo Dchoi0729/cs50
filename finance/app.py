@@ -323,6 +323,10 @@ def sell():
         if curr_shares < shares:
             return apology("You don't have that many shares")
 
+        # Check to see if user gave positive share value
+        if shares < 0:
+            return apology("Can't sell negative shares")
+
         # Get current time
         now = datetime.now()
         date_time = now.strftime("%Y-%m-%d %H:%M:%S")
