@@ -173,7 +173,11 @@ def history():
     for row in history:
         price = row["total_price"]
         shares = row["shares"]
-        row["price"] = usd(price/shares)
+        if not shares == 0:
+            row["price"] = usd(price/shares)
+        else:
+            row["price"] = 0
+
 
     return render_template("history.html",history=history)
 
