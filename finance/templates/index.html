@@ -97,7 +97,9 @@
         }
 
         function submitForm(event){
-            console.log(event.srcElement.shares.value);
+            if(event.srcElement.shares.value < 0){
+                event.srcElement.shares.value = -1*event.srcElement.shares.value;
+            }
         }
 
     </script>
