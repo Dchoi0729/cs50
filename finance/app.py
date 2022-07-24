@@ -106,12 +106,13 @@ def account():
         if request.form.get("cash"):
             new_cash = int(request.form.get("cash"))
 
-        # Check if user supplied positive cash
-        if new_cash < 0:
-            return apology("You can only add more cash!")
+            # Check if user supplied positive cash
+            if new_cash < 0:
+                return apology("You can only add more cash!")
 
-        # Update users table
-        db.execute("UPDATE users SET cash=?, seed_money=? WHERE id=?",left_cash+new_cash,seed_cash+new_cash,session["user_id"])
+            # Update users table
+            db.execute("UPDATE users SET cash=?, seed_money=? WHERE id=?",left_cash+new_cash,seed_cash+new_cash,session["user_id"])
+            flash("Cash added")
 
         # If user wants to change password
         if request.form.get("oldpassword") and request.form.get("password") and request.form.get("confirmation"):
@@ -129,10 +130,11 @@ def account():
 
             # Update users table
             db.execute("UPDATE users SET hash=? WHERE id=?",generate_password_hash(new_pwd),session["user_id"])
+            flash("Password updated")
 
         return render_template("profile.html", money = usd(seed_cash+new_cash))
 
-    # If user cliked on navbar
+    # If user clicked on navbar
     if request.method == "GET":
         return render_template("profile.html", money = usd(seed_cash))
 
