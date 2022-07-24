@@ -46,38 +46,38 @@
     </table>
 
     <script>
+        /*
+        document.addEventListener('DOMContentLoaded', function() {
+            // Helper function that parses string of format "Text +12.12%" into just number
+            function parsePercent(number){
+                let i = 0, found = false;
+                while(!found){
+                    found = number[i] == " ";
+                    i++;
+                }
 
-        // Helper function that parses string of format "Text +12.12%" into just number
-        function parsePercent(number){
-            let i = 0, found = false;
-            while(!found){
-                found = number[i] == " ";
-                i++;
+                number = number.substr(i+1);
+
+                i = 0, found = false;
+                while(!found){
+                    found = number[i] == ".";
+                    i++;
+                }
+
+                return parseFloat(number.substring(0,i+5));
             }
 
-            number = number.substr(i+1);
-
-            i = 0, found = false;
-            while(!found){
-                found = number[i] == ".";
-                i++;
+            // Changes the color of the row of the table depending on whether it is at a profit or not
+            let percent = document.querySelector("#percent");
+            console.log(parsePercent(percent));
+            percent = parsePercent(percent);
+            if(percent > 0){
+                document.querySelector("#status").innerHTML = "Overall Performance: :)";
             }
-
-            return parseFloat(number.substring(0,i+5));
-        }
-
-        // Changes the color of the row of the table depending on whether it is at a profit or not
-        let percent = document.querySelector("#percent");
-        console.log(parsePercent(percent));
-        percent = parsePercent(percent);
-        if(percent > 0){
-            document.querySelector("#status").innerHTML = "Overall Performance: :)";
-        }
-        else if(percent < 0){
-            document.querySelector("#status").innerHTML = "Overall Performance: :(";
-        }
-
-
-
+            else if(percent < 0){
+                document.querySelector("#status").innerHTML = "Overall Performance: :(";
+            }
+        })
+        */
     </script>
 {% endblock %}
