@@ -94,8 +94,12 @@ def index():
 @login_required
 def account():
     """Add cash, change password and show overall profitability"""
+    if request.method == "POST":
 
-    return render_template("profile.html")
+        return render_template("profile.html")
+
+    if request.method == "GET":
+        return render_template("profile.html")
 
 
 @app.route("/buy", methods=["GET", "POST"])
