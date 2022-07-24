@@ -102,11 +102,17 @@ def account():
             db.execute("UPDATE users SET hash=? WHERE id=?",generate_password_hash(new_pwd),session["user_id"])
             flash("Password updated")
 
-        return render_template("profile.html", money = usd(seed_cash+new_cash))
+        total = get_portfolio()[0]
+        cash = seed_cash+new_cash
+        percent_change = (total-cash)/cash
+
+        return render_template("profile.html", money=usd(cash), total=usd(total), change=percent(percent_change))
 
     # If user clicked on navbar
     if request.method == "GET":
-        return render_template("profile.html", money = usd(seed_cash))
+        total = get_portfolio()[0]
+        percent_change = (total-seed_cash)/seed_cash
+        return render_template("profile.html", money=usd(seed_cash), total=usd(get_portfolio()[0]),change=percent(percent_change))
 
 
 @app.route("/buy", methods=["GET", "POST"])
