@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setNavbar();
 
     // If current page is the home page
-    if(currentPage == "Home"){
+    if(currentPage == "Home" || currentPage == "Interests" || currentPage == "Hobbies"){
         // Center the maindiv top height and content element when window is resized
         window.addEventListener("resize", function(){
             vcenterElement(".maindiv");
