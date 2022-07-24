@@ -17,7 +17,7 @@ body, html {
 
 
 /* Background for main page*/
-.bg-h {
+.bg-m {
     /* The image used */
     background-image: url("https://images.unsplash.com/photo-1506816561089-5cc37b3aa9b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1575&q=80");
 
@@ -82,4 +82,18 @@ body, html {
     font-size: 18px;
     background-color: white;
     height: 120px;
+}
+
+/* Background for about page*/
+.bg-i {
+    /* The image used */
+    background-image: url("https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
