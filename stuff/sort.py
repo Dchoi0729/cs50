@@ -4,6 +4,7 @@ def main():
     list = [2,1,5,3,4,5,2,1,9,123,2,4,6,1,-1,3,5,32,2]
 
     print(merge_sort(list))
+    print(list)
 
 # Sorts a list using merge sort
 def merge_sort(list):
