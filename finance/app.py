@@ -65,8 +65,8 @@ def index():
 def account():
     """Add cash, change password and show overall profitability"""
 
-    seed_cash = db.execute("SELECT seed_money FROM users WHERE id=?",session["user_id"])[0]["seed_money"]
-    left_cash = db.execute("SELECT cash FROM users WHERE id=?",session["user_id"])[0]["cash"]
+    seed_cash = db.execute("SELECT seed_money FROM users WHERE id=?", session["user_id"])[0]["seed_money"]
+    left_cash = db.execute("SELECT cash FROM users WHERE id=?", session["user_id"])[0]["cash"]
 
     # If user sent a post request by filling up one of the forms
     if request.method == "POST":
@@ -77,7 +77,8 @@ def account():
             new_cash = int(request.form.get("cash"))
 
             # Update users table
-            db.execute("UPDATE users SET cash=?, seed_money=? WHERE id=?",left_cash+new_cash,seed_cash+new_cash,session["user_id"])
+            db.execute("UPDATE users SET cash=?, seed_money=? WHERE id=?",
+                       left_cash+new_cash, seed_cash+new_cash, session["user_id"])
 
             if new_cash > 0:
                 flash("Cash added")
@@ -88,7 +89,7 @@ def account():
         if request.form.get("oldpassword") and request.form.get("password") and request.form.get("confirmation"):
 
             # Check if original password is correct
-            original_pwd = db.execute("SELECT hash FROM users WHERE id=?",session["user_id"])[0]["hash"]
+            original_pwd = db.execute("SELECT hash FROM users WHERE id=?", session["user_id"])[0]["hash"]
             if not check_password_hash(original_pwd, request.form.get("oldpassword")):
                 return apology("Original password is incorrect")
 
@@ -99,20 +100,20 @@ def account():
                 return apology("New password and confirmation password don't match")
 
             # Update users table
-            db.execute("UPDATE users SET hash=? WHERE id=?",generate_password_hash(new_pwd),session["user_id"])
+            db.execute("UPDATE users SET hash=? WHERE id=?", generate_password_hash(new_pwd), session["user_id"])
             flash("Password updated")
 
         total = get_portfolio()[0]
         cash = seed_cash+new_cash
         percent_change = (total-cash)/cash * 100
 
-        return render_template("profile.html", money=usd(cash), total=usd(total), change=percent2(percent_change))
+        return redirect("/account")
 
     # If user clicked on navbar
     if request.method == "GET":
         total = get_portfolio()[0]
         percent_change = (total-seed_cash)/seed_cash * 100
-        return render_template("profile.html", money=usd(seed_cash), total=usd(get_portfolio()[0]),change=percent2(percent_change))
+        return render_template("profile.html", money=usd(seed_cash), total=usd(get_portfolio()[0]), change=percent2(percent_change))
 
 
 @app.route("/buy", methods=["GET", "POST"])
@@ -415,7 +416,7 @@ def get_portfolio():
         portfolio.append(temp_dict)
         stock_sum = stock_sum + shares*curr_price
 
-    return [stock_sum,portfolio]
+    return [stock_sum, portfolio]
 
 
 # Returns a list of of symbols of stocks currently owned by user

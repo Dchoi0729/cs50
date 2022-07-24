@@ -68,6 +68,7 @@ def percent(value):
     """Format value as percentage."""
     return f"({value:+,.2f}%)"
 
+
 def percent2(value):
     """Format value as percentage."""
     return f"{value:+,.5f}%"
