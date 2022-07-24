@@ -47,10 +47,11 @@ def index():
     """Show portfolio of stocks"""
 
     # Returns cash owned by user
-    cash = db.execute("SELECT cash FROM users WHERE id=?",session["user_id"])[0]["cash"]
+    cash = db.execute("SELECT cash FROM users WHERE id=?", session["user_id"])[0]["cash"]
 
     # Returns symbol, the total share for that symbol, the total price bought for that symbol from data base
-    db_data = db.execute("SELECT symbol, SUM(shares), SUM(total_price) FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
+    db_data = db.execute(
+        "SELECT symbol, SUM(shares), SUM(total_price) FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
 
     # Populates portfolio with dictionaries of currently owned stok with all relevant information
     curr_owned = currently_owned()
@@ -59,53 +60,34 @@ def index():
 
     for stock in curr_owned:
 
-        last_emptied = db.execute("SELECT sold_id FROM no_stock WHERE user_id=? AND symbol=? ORDER BY id DESC LIMIT 1",session["user_id"],stock)
+        last_emptied = db.execute(
+            "SELECT sold_id FROM no_stock WHERE user_id=? AND symbol=? ORDER BY id DESC LIMIT 1", session["user_id"], stock)
         start_id = 0
 
         # If the stock was all sold and bought again, reset starting id point to calculate all values
         if len(last_emptied) > 0:
             start_id = last_emptied[0]["sold_id"]
 
-        db_data = db.execute("SELECT SUM(shares), SUM(total_price) FROM transactions WHERE user_id=? AND symbol=? AND id > ?", session["user_id"],stock,start_id)
+        db_data = db.execute(
+            "SELECT SUM(shares), SUM(total_price) FROM transactions WHERE user_id=? AND symbol=? AND id > ?", session["user_id"], stock, start_id)
 
         shares = db_data[0]["SUM(shares)"]
-        avg_price = db_data[0]["SUM(total_price)"] /shares
+        avg_price = db_data[0]["SUM(total_price)"] / shares
         curr_price = lookup(stock)["price"]
 
-
         temp_dict = {
-            "symbol" : stock,
-            "name" : lookup(stock)["name"],
-            "shares" : shares,
-            "curr_price" : usd(lookup(stock)["price"]),
-            "percent_change" : percent((curr_price - avg_price) / avg_price * 100),
-            "total_price" : usd(shares*curr_price)
+            "symbol": stock,
+            "name": lookup(stock)["name"],
+            "shares": shares,
+            "curr_price": usd(lookup(stock)["price"]),
+            "percent_change": percent((curr_price - avg_price) / avg_price * 100),
+            "total_price": usd(shares*curr_price)
         }
 
         portfolio.append(temp_dict)
         stock_sum = stock_sum + shares*curr_price
 
-    '''
-    portfolio = []
-    stock_sum = cash
-    for stock in db_data:
-        if stock["SUM(shares)"] > 0:
-            symbol = stock["symbol"]
-            name = lookup(symbol)["name"]
-            curr_price = lookup(symbol)["price"]
-            avg_price = stock["SUM(total_price)"] / stock["SUM(shares)"]
-            temp_dict = {
-                "symbol" : symbol,
-                "name" : name,
-                "shares" : stock["SUM(shares)"],
-                "curr_price" : usd(curr_price),
-                "percent_change" : percent((curr_price - avg_price) / avg_price * 100),
-                "total_price" : usd(stock["SUM(shares)"]*curr_price)
-            }
-            portfolio.append(temp_dict)
-            stock_sum = stock_sum + stock["SUM(shares)"]*curr_price
-    '''
-    return render_template("index.html", portfolio=portfolio, cash=usd(cash), total = usd(stock_sum))
+    return render_template("index.html", portfolio=portfolio, cash=usd(cash), total=usd(stock_sum))
 
 
 @app.route("/account")
@@ -153,7 +135,8 @@ def buy():
         date_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
         # Record purchase to database (transactions table)
-        db.execute("INSERT INTO transactions(user_id,symbol,shares,total_price,time) Values (?,?,?,?,?)", session["user_id"], symbol, shares, desired, date_time)
+        db.execute("INSERT INTO transactions(user_id,symbol,shares,total_price,time) Values (?,?,?,?,?)",
+                   session["user_id"], symbol, shares, desired, date_time)
 
         # Change remaining balance (users table)
         db.execute("UPDATE users SET cash = ? WHERE id = ?", balance - desired, session["user_id"])
@@ -164,12 +147,13 @@ def buy():
     if request.method == "GET":
         return render_template("buy.html")
 
+
 @app.route("/history")
 @login_required
 def history():
     """Show history of transactions"""
 
-    history = db.execute("SELECT * FROM transactions WHERE user_id=? ORDER BY id DESC",session["user_id"])
+    history = db.execute("SELECT * FROM transactions WHERE user_id=? ORDER BY id DESC", session["user_id"])
     for row in history:
         price = row["total_price"]
         shares = row["shares"]
@@ -178,8 +162,7 @@ def history():
         else:
             row["price"] = 0
 
-
-    return render_template("history.html",history=history)
+    return render_template("history.html", history=history)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -238,7 +221,7 @@ def quote():
     # User sent a post request with symbol
     if request.method == "POST":
         data = lookup(request.form.get("symbol"))
-        return render_template("quoted.html",name=data["name"],symbol=data["symbol"],price=usd(data["price"]))
+        return render_template("quoted.html", name=data["name"], symbol=data["symbol"], price=usd(data["price"]))
 
     # User clicked on quote tab on navbar
     if request.method == "GET":
@@ -259,7 +242,7 @@ def register():
             return redirect("/register")
 
         # Check to see if username already exists in database
-        db_user = db.execute("SELECT * FROM users WHERE username=?",user)
+        db_user = db.execute("SELECT * FROM users WHERE username=?", user)
         if db_user:
             flash("Username already exists")
             return redirect("/register")
@@ -323,7 +306,8 @@ def sell():
 
         # Check to see if user has that many shares
         shares = int(shares)
-        curr_shares = db.execute("SELECT SUM(shares) FROM transactions WHERE user_id=? AND symbol=?", session["user_id"],symbol)[0]["SUM(shares)"]
+        curr_shares = db.execute("SELECT SUM(shares) FROM transactions WHERE user_id=? AND symbol=?",
+                                 session["user_id"], symbol)[0]["SUM(shares)"]
         if curr_shares < shares:
             return apology("You don't have that many shares")
 
@@ -341,18 +325,20 @@ def sell():
         shares = -1 * shares
 
         # Record purchase to database (transactions table)
-        db.execute("INSERT INTO transactions(user_id,symbol,shares,total_price,time) Values (?,?,?,?,?)", session["user_id"], symbol, shares, total_price, date_time)
+        db.execute("INSERT INTO transactions(user_id,symbol,shares,total_price,time) Values (?,?,?,?,?)",
+                   session["user_id"], symbol, shares, total_price, date_time)
 
         # Add cash to user
         init_cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"]
         db.execute("UPDATE users SET cash = ? WHERE id = ?",  init_cash+-1*total_price, session["user_id"])
 
-
         # If user sold all shares of a specific stock, record to no_stock table
-        remaining_shares = db.execute("SELECT SUM(shares) FROM transactions WHERE user_id=? AND symbol=?",session["user_id"],symbol)[0]["SUM(shares)"]
+        remaining_shares = db.execute("SELECT SUM(shares) FROM transactions WHERE user_id=? AND symbol=?",
+                                      session["user_id"], symbol)[0]["SUM(shares)"]
         if remaining_shares == 0:
-            last_id = db.execute("SELECT id FROM transactions WHERE symbol=? AND user_id=? ORDER BY id DESC LIMIT 1", symbol, session["user_id"])[0]["id"]
-            db.execute("INSERT INTO no_stock(user_id, symbol, sold_id) Values(?,?,?)",session["user_id"],symbol,last_id)
+            last_id = db.execute("SELECT id FROM transactions WHERE symbol=? AND user_id=? ORDER BY id DESC LIMIT 1",
+                                 symbol, session["user_id"])[0]["id"]
+            db.execute("INSERT INTO no_stock(user_id, symbol, sold_id) Values(?,?,?)", session["user_id"], symbol, last_id)
 
         flash('Sold!')
         return redirect("/")
@@ -385,18 +371,14 @@ def currently_owned():
     return list_of_symbol
 
 
-
-
-
-
-
-
+'''
 # Returns a list of dictionary for each type of stock owned
 # Dict has keys symbol, name, shares, curr_price, percent_change, total_price
 def get_portfolio():
 
     # Returns symbol, the total share for that symbol, the total price bought for that symbol from data base
-    db_data = db.execute("SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? AND type = 'buy' GROUP BY symbol", session["user_id"])
+    db_data = db.execute(
+        "SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? AND type = 'buy' GROUP BY symbol", session["user_id"])
 
     portfolio = []
     for stock in db_data:
@@ -417,3 +399,4 @@ def get_portfolio():
         portfolio.append(temp_dict)
 
     return portfolio
+'''

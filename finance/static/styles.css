@@ -38,3 +38,9 @@ nav .navbar-brand .green
 #index-row-button{
     padding-left:0px;
 }
+
+
+/* For table in profile.html */
+#profile-table thead tr th{
+    width:33%;
+}
