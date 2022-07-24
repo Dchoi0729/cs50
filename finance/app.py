@@ -95,14 +95,26 @@ def index():
 def account():
     """Add cash, change password and show overall profitability"""
 
-    cash = db.execute()
+    seed_cash = db.execute("SELECT seed_money FROM users WHERE id=?",session["user_id"])[0]["seed_money"]
+    left_cash = db.execute("SELECT cash FROM users WHERE id=?",session["user_id"])[0]["cash"]
 
     if request.method == "POST":
 
-        return render_template("profile.html")
+        # If user wants to add more cash
+        new_cash = 0
+        if request.form.get("cash"):
+            new_cash = int(request.form.get("cash"))
+
+        # Check if user supplied positive cash
+        if new_cash < 0:
+            return apology("You can only add more cash!")
+
+        db.execute("UPDATE users SET cash=?, seed_money=? WHERE id=?",left_cash+new_cash,seed_cash+new_cash,session["user_id"])
+
+        return render_template("profile.html", money = usd(seed_cash))
 
     if request.method == "GET":
-        return render_template("profile.html")
+        return render_template("profile.html", money = usd(seed_cash))
 
 
 @app.route("/buy", methods=["GET", "POST"])
