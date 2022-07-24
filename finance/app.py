@@ -98,6 +98,7 @@ def account():
     seed_cash = db.execute("SELECT seed_money FROM users WHERE id=?",session["user_id"])[0]["seed_money"]
     left_cash = db.execute("SELECT cash FROM users WHERE id=?",session["user_id"])[0]["cash"]
 
+    # If user sent a post request by filling up one of the forms
     if request.method == "POST":
 
         # If user wants to add more cash
@@ -109,10 +110,29 @@ def account():
         if new_cash < 0:
             return apology("You can only add more cash!")
 
+        # Update users table
         db.execute("UPDATE users SET cash=?, seed_money=? WHERE id=?",left_cash+new_cash,seed_cash+new_cash,session["user_id"])
 
-        return render_template("profile.html", money = usd(seed_cash))
+        # If user wants to change password
+        if request.form.get("oldpassword") and request.form.get("password") and request.form.get("confirmation"):
 
+            # Check if original password is correct
+            original_pwd = db.execute("SELECT hash FROM users WHERE id=?",session["user_id"])[0]["hash"]
+            if not check_password_hash(original_pwd, request.form.get("oldpassword")):
+                return apology("Original password is incorrect")
+
+            # Check if confirmation and new password match
+            new_pwd = request.form.get("password")
+            confirm_pwd = request.form.get("confirmation")
+            if not new_pwd == confirm_pwd:
+                return apology("New password and confirmation password don't match")
+
+            # Update users table
+            db.execute("UPDATE users SET hash=? WHERE id=?",generate_password_hash(new_pwd),session["user_id"])
+
+        return render_template("profile.html", money = usd(seed_cash+new_cash))
+
+    # If user cliked on navbar
     if request.method == "GET":
         return render_template("profile.html", money = usd(seed_cash))
 
