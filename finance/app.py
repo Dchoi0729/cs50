@@ -90,10 +90,13 @@ def index():
     return render_template("index.html", portfolio=portfolio, cash=usd(cash), total=usd(stock_sum))
 
 
-@app.route("/account")
+@app.route("/account", methods=["GET", "POST"])
 @login_required
 def account():
     """Add cash, change password and show overall profitability"""
+
+    cash = db.execute()
+
     if request.method == "POST":
 
         return render_template("profile.html")
