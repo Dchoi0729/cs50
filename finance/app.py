@@ -78,6 +78,7 @@ def account():
 
             # Update users table
             db.execute("UPDATE users SET cash=?, seed_money=? WHERE id=?",left_cash+new_cash,seed_cash+new_cash,session["user_id"])
+            
             flash("Cash added")
 
         # If user wants to change password
