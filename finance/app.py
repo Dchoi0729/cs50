@@ -113,7 +113,7 @@ def index():
 def account():
     """Add cash, change password and show overall profitability"""
 
-    return apology("TODO")
+    return render_template("profile.html")
 
 
 @app.route("/buy", methods=["GET", "POST"])
