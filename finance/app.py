@@ -76,10 +76,6 @@ def account():
         if request.form.get("cash"):
             new_cash = int(request.form.get("cash"))
 
-            # Check if user supplied positive cash
-            if new_cash < 0:
-                return apology("You can only add more cash!")
-
             # Update users table
             db.execute("UPDATE users SET cash=?, seed_money=? WHERE id=?",left_cash+new_cash,seed_cash+new_cash,session["user_id"])
             flash("Cash added")
