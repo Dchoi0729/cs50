@@ -74,10 +74,12 @@
             let percent = parsePercent(document.querySelector("#percent").innerHTML);
 
             if(percent > 0){
-                document.querySelector("#status").innerHTML = "Overall Performance: :)";
+                document.querySelector("#status").innerHTML = "Overall Performance: 😊";
+                document.querySelector("#percent").style.color = "green";
             }
             else if(percent < 0){
                 document.querySelector("#status").innerHTML = "Overall Performance: 😭";
+                document.querySelector("#percent").style.color = "red";
             }
         })
 
