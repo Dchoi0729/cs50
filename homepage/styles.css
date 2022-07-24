@@ -63,22 +63,21 @@ body, html {
 }
 
 /*about page image*/
-#carouselExampleIndicators{
-}
-
 .my-container{
     position:absolute;
-    border: 0px solid green;
-}
-
-.my-row{
-    border: 0px solid red;
-}
-
-.my-col{
-    border: 0px dotted blue;
 }
 
 .col-item{
-    border: 3px solid blue;
+    border: 1px solid blue;
+}
+
+.title-text{
+    text-align: center;
+    font-size: 25px;
+    background-color: white;
+}
+
+.body-text{
+    font-size: 18px;
+    background-color: white;
 }
