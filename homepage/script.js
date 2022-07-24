@@ -89,21 +89,15 @@ function vcenterElement(name){
     let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
     let elementHeight = Math.max(document.querySelector(name).offsetHeight, document.querySelector(name).scrollHeight);
 
-    console.log(vh);
-    console.log(elementHeight);
-
     if(elementHeight < 340){
         elementHeight = 340;
     }
-    console.log(elementHeight);
 
     if(elementHeight > 1000){
         document.querySelector(name).style.top = "200px";
-        console.log(2);
     }
     else{
         document.querySelector(name).style.top = (vh- elementHeight)/2 + "px";
-        console.log(1);
     }
 }
 
