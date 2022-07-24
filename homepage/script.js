@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         resizeContent();
     }
 
-
+    // If current page is the about page
     if(currentPage == "About"){
 
         resizeGrid();
