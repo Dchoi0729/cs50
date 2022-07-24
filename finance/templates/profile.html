@@ -39,7 +39,7 @@
                 <th class="text-middle">
                     <p>Seed money: {{money}}</p>
                     <p>Total valuation: {{total}}</p>
-                    <p>Percent Change: {{change}}</p>
+                    <p id="percent">Percent Change: {{change}}</p>
                 </th>
             </tr>
         </tbody>
@@ -47,7 +47,7 @@
 
     <script>
 
-        // Helper function that parses the TOTAL column into a double of just the percent change
+        // Helper function that parses string of format "Text +12.12%" into just number
         function parsePercent(number){
             let i = 0, found = false;
             while(!found){
@@ -63,43 +63,21 @@
                 i++;
             }
 
-            return parseFloat(number.substring(0,i+2));
+            return parseFloat(number.substring(0,i+5));
         }
 
         // Changes the color of the row of the table depending on whether it is at a profit or not
-        let entries = document.querySelectorAll("#end")
-        for(let i = 0; i < entries.length; i++){
-            entry = entries[i];
-
-            if (parsePercent(entry.innerHTML) > 0){
-                entry.parentNode.style.background = "#90EE90";
-            }
-            else if (parsePercent(entry.innerHTML) < 0){
-                entry.parentNode.style.background = "#FFCCCB";
-            }
+        let percent = document.querySelector("#percent");
+        console.log(parsePercent(percent));
+        percent = parsePercent(percent);
+        if(percent > 0){
+            document.querySelector("#status").innerHTML = "Overall Performance: :)";
+        }
+        else if(percent < 0){
+            document.querySelector("#status").innerHTML = "Overall Performance: :(";
         }
 
 
-        let inputs = document.querySelectorAll(".index-row-input");
-        for (let i = 0; i < inputs.length; i++){
-            input = inputs[i];
-
-            input.addEventListener("input", function(){
-                console.log(this.value);
-                if(this.value < 0){
-                    this.parentNode.action = "/sell";
-                }
-                else{
-                    this.parentNode.action = "/buy";
-                }
-            })
-        }
-
-        function submitForm(event){
-            if(event.srcElement.shares.value < 0){
-                event.srcElement.shares.value = -1*event.srcElement.shares.value;
-            }
-        }
 
     </script>
 {% endblock %}
