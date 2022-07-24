@@ -92,7 +92,7 @@ function vcenterElement(name){
     console.log(vh);
     console.log(elementHeight);
 
-    if(elementHeight < 100){
+    if(elementHeight < 340){
         elementHeight = 340;
     }
 

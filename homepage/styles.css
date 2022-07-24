@@ -80,4 +80,5 @@ body, html {
 .body-text{
     font-size: 18px;
     background-color: white;
+    height: 120px;
 }
