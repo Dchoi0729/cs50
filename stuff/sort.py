@@ -9,20 +9,13 @@ def main():
 def merge_sort(list):
     return merge_sort_helper(list)
 
-#splits list into two parts
+# Recursive merge sort helper
 def merge_sort_helper(list):
     if len(list) == 1:
         return list
     else:
-        print(f"whole: {list}")
-        print(f"left: {list[0:len(list)//2]}")
-        print(f"right: {list[len(list)//2:]}")
-
-
         left_list = merge_sort_helper(list[0:len(list)//2])
         right_list = merge_sort_helper(list[len(list)//2:])
-
-        print(f"merged: {merge(left_list,right_list)}")
 
         return merge(left_list,right_list)
 
