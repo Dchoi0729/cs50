@@ -17,7 +17,8 @@ def merge_sort_helper(list):
     if len(list) == 1:
         return list
     else:
-        left_list = merge_sort_helper(list[0:len(list)//2+1])
+        print(list[0:len(list)//2+1])
+        left_list = merge_sort_helper(list[0:len(list)//2])
         right_list = merge_sort_helper(list[len(list)//2:])
         return merge(left_list,right_list)
 
