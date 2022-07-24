@@ -46,7 +46,7 @@
     </table>
 
     <script>
-        /*
+
         document.addEventListener('DOMContentLoaded', function() {
             // Helper function that parses string of format "Text +12.12%" into just number
             function parsePercent(number){
@@ -56,7 +56,7 @@
                     i++;
                 }
 
-                number = number.substr(i+1);
+                number = number.substr(i);
 
                 i = 0, found = false;
                 while(!found){
@@ -78,6 +78,6 @@
                 document.querySelector("#status").innerHTML = "Overall Performance: :(";
             }
         })
-        */
+
     </script>
 {% endblock %}
