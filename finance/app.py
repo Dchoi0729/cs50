@@ -7,7 +7,7 @@ from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
 
-from helpers import apology, login_required, lookup, usd, percent
+from helpers import apology, login_required, lookup, usd, percent, percent2
 
 # export API_KEY=pk_01c5fa2829cb450e91de45efa0669518
 # Configure application
@@ -104,15 +104,15 @@ def account():
 
         total = get_portfolio()[0]
         cash = seed_cash+new_cash
-        percent_change = (total-cash)/cash
+        percent_change = (total-cash)/cash * 100
 
-        return render_template("profile.html", money=usd(cash), total=usd(total), change=percent(percent_change))
+        return render_template("profile.html", money=usd(cash), total=usd(total), change=percent2(percent_change))
 
     # If user clicked on navbar
     if request.method == "GET":
         total = get_portfolio()[0]
-        percent_change = (total-seed_cash)/seed_cash
-        return render_template("profile.html", money=usd(seed_cash), total=usd(get_portfolio()[0]),change=percent(percent_change))
+        percent_change = (total-seed_cash)/seed_cash * 100
+        return render_template("profile.html", money=usd(seed_cash), total=usd(get_portfolio()[0]),change=percent2(percent_change))
 
 
 @app.route("/buy", methods=["GET", "POST"])
