@@ -1,7 +1,7 @@
 
 # Main method
 def main():
-    list = [2,1,5,3,4]
+    list = [2,1,5,3,4,5,2,1,9,123,2,4,6,1,-1,3,5,32,2]
 
     print(merge_sort(list))
 
