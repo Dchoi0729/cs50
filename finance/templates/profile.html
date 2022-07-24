@@ -57,7 +57,7 @@
                 }
 
                 number = number.substr(i);
-
+                console.log(number);
                 i = 0, found = false;
                 while(!found){
                     found = number[i] == ".";
@@ -68,16 +68,16 @@
             }
 
             // Changes the color of the row of the table depending on whether it is at a profit or not
-            let percent = document.querySelector("#percent");
+            let percent = document.querySelector("#percent").innerHTML;
             console.log(percent);
-            /*
             percent = parsePercent(percent);
+            console.log(percent);
             if(percent > 0){
                 document.querySelector("#status").innerHTML = "Overall Performance: :)";
             }
             else if(percent < 0){
                 document.querySelector("#status").innerHTML = "Overall Performance: :(";
-            }*/
+            }
         })
 
     </script>
