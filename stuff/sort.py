@@ -7,10 +7,26 @@ def main():
 
 # Sorts a list using merge sort
 def merge_sort(whole_list):
-    if not whole_list.length == 1:
-        
+    whole_list[0] = 1
+    return whole_list
 
-def merge_sort_helper(part_list):
+# Merges two lists together
+def merge(list1, list2):
+    list = [], i = 0, j = 0
+
+    number = list1.length + list2.length
+
+    for k in range(number) :
+        if list1[i] > list2[j]:
+            list[k] = list2[j]
+            j = j + 1
+        else
+            list[k] = list2[j]
+            j = j + 1
+
+
+
+#def merge_sort_helper(part_list):
 
 
 main()
