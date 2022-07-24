@@ -50,9 +50,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Helper function that parses string of format "Text +12.12%" into just number
             function parsePercent(number){
-                let i = 0, found = false;
+                let i = 0, found = false, count = 0;
                 while(!found){
-                    found = number[i] == " ";
+                    if(number[i] == " "){
+                        count++;
+                    }
+                    found = count == 2;
                     i++;
                 }
 
@@ -68,10 +71,8 @@
             }
 
             // Changes the color of the row of the table depending on whether it is at a profit or not
-            let percent = document.querySelector("#percent").innerHTML;
-            console.log(percent);
-            percent = parsePercent(percent);
-            console.log(percent);
+            let percent = parsePercent(document.querySelector("#percent").innerHTML);
+
             if(percent > 0){
                 document.querySelector("#status").innerHTML = "Overall Performance: :)";
             }
