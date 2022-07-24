@@ -14,12 +14,14 @@ def merge_sort_helper(list):
     if len(list) == 1:
         return list
     else:
-        left_list = merge_sort_helper(list[0:len(list)//2])
-        right_list = merge_sort_helper(list[len(list)//2:])
-
         print(f"whole: {list}")
         print(f"left: {list[0:len(list)//2]}")
         print(f"right: {list[len(list)//2:]}")
+
+
+        left_list = merge_sort_helper(list[0:len(list)//2])
+        right_list = merge_sort_helper(list[len(list)//2:])
+
         print(f"merged: {merge(left_list,right_list)}")
 
         return merge(left_list,right_list)
