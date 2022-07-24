@@ -73,13 +73,16 @@ def account():
 
         # If user wants to add more cash
         new_cash = 0
-        if request.form.get("cash"):
+        if request.form.get("cash") and not request.form.get("cash") == 0:
             new_cash = int(request.form.get("cash"))
 
             # Update users table
             db.execute("UPDATE users SET cash=?, seed_money=? WHERE id=?",left_cash+new_cash,seed_cash+new_cash,session["user_id"])
-            
-            flash("Cash added")
+
+            if new_cash > 0:
+                flash("Cash added")
+            else:
+                flash("Cash deducted")
 
         # If user wants to change password
         if request.form.get("oldpassword") and request.form.get("password") and request.form.get("confirmation"):
