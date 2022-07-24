@@ -55,39 +55,9 @@ def index():
 
     # Populates portfolio with dictionaries of currently owned stok with all relevant information
     curr_owned = currently_owned()
-    portfolio = []
-    stock_sum = cash
+    portfolio = get_portfolio()[1]
 
-    for stock in curr_owned:
-
-        last_emptied = db.execute(
-            "SELECT sold_id FROM no_stock WHERE user_id=? AND symbol=? ORDER BY id DESC LIMIT 1", session["user_id"], stock)
-        start_id = 0
-
-        # If the stock was all sold and bought again, reset starting id point to calculate all values
-        if len(last_emptied) > 0:
-            start_id = last_emptied[0]["sold_id"]
-
-        db_data = db.execute(
-            "SELECT SUM(shares), SUM(total_price) FROM transactions WHERE user_id=? AND symbol=? AND id > ?", session["user_id"], stock, start_id)
-
-        shares = db_data[0]["SUM(shares)"]
-        avg_price = db_data[0]["SUM(total_price)"] / shares
-        curr_price = lookup(stock)["price"]
-
-        temp_dict = {
-            "symbol": stock,
-            "name": lookup(stock)["name"],
-            "shares": shares,
-            "curr_price": usd(lookup(stock)["price"]),
-            "percent_change": percent((curr_price - avg_price) / avg_price * 100),
-            "total_price": usd(shares*curr_price)
-        }
-
-        portfolio.append(temp_dict)
-        stock_sum = stock_sum + shares*curr_price
-
-    return render_template("index.html", portfolio=portfolio, cash=usd(cash), total=usd(stock_sum))
+    return render_template("index.html", portfolio=portfolio, cash=usd(cash), total=usd(get_portfolio()[0]))
 
 
 @app.route("/account", methods=["GET", "POST"])
@@ -397,6 +367,51 @@ def sell_data():
     return jsonify(shares[0]["SUM(shares)"])
 
 
+# Returns [stock_sum, portfolio], where stock_sum is the amount of money and portfolio is a list of dict with all stock
+# Dict has keys symbol, name, shares, curr_price, percent_change, total_price
+def get_portfolio():
+
+    # Returns symbol, the total share for that symbol, the total price bought for that symbol from data base
+    db_data = db.execute(
+        "SELECT symbol, SUM(shares), SUM(total_price) FROM transactions WHERE user_id=? GROUP BY symbol", session["user_id"])
+
+    # Populates portfolio with dictionaries of currently owned stok with all relevant information
+    curr_owned = currently_owned()
+    portfolio = []
+    stock_sum = db.execute("SELECT cash FROM users WHERE id=?", session["user_id"])[0]["cash"]
+
+    for stock in curr_owned:
+
+        last_emptied = db.execute(
+            "SELECT sold_id FROM no_stock WHERE user_id=? AND symbol=? ORDER BY id DESC LIMIT 1", session["user_id"], stock)
+        start_id = 0
+
+        # If the stock was all sold and bought again, reset starting id point to calculate all values
+        if len(last_emptied) > 0:
+            start_id = last_emptied[0]["sold_id"]
+
+        db_data = db.execute(
+            "SELECT SUM(shares), SUM(total_price) FROM transactions WHERE user_id=? AND symbol=? AND id > ?", session["user_id"], stock, start_id)
+
+        shares = db_data[0]["SUM(shares)"]
+        avg_price = db_data[0]["SUM(total_price)"] / shares
+        curr_price = lookup(stock)["price"]
+
+        temp_dict = {
+            "symbol": stock,
+            "name": lookup(stock)["name"],
+            "shares": shares,
+            "curr_price": usd(lookup(stock)["price"]),
+            "percent_change": percent((curr_price - avg_price) / avg_price * 100),
+            "total_price": usd(shares*curr_price)
+        }
+
+        portfolio.append(temp_dict)
+        stock_sum = stock_sum + shares*curr_price
+
+    return [stock_sum,portfolio]
+
+
 # Returns a list of of symbols of stocks currently owned by user
 def currently_owned():
     # Returns symbol of stocks and number of shares traded by user from data base
@@ -411,33 +426,3 @@ def currently_owned():
 
     return list_of_symbol
 
-
-'''
-# Returns a list of dictionary for each type of stock owned
-# Dict has keys symbol, name, shares, curr_price, percent_change, total_price
-def get_portfolio():
-
-    # Returns symbol, the total share for that symbol, the total price bought for that symbol from data base
-    db_data = db.execute(
-        "SELECT symbol, SUM(shares), AVG(total_price) FROM transactions WHERE user_id=? AND type = 'buy' GROUP BY symbol", session["user_id"])
-
-    portfolio = []
-    for stock in db_data:
-        symbol = stock["symbol"]
-        name = lookup(symbol)["name"]
-        curr_price = lookup(symbol)["price"]
-        avg_price = stock["AVG(total_price)"] / stock["SUM(shares)"]
-
-        temp_dict = {
-            "symbol" : symbol,
-            "name" : name,
-            "shares" : stock["SUM(shares)"],
-            "curr_price" : usd(curr_price),
-            "percent_change" : percent((curr_price - avg_price) / avg_price * 100),
-            "total_price" : usd(stock["SUM(shares)"]*curr_price)
-        }
-
-        portfolio.append(temp_dict)
-
-    return portfolio
-'''
