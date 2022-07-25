@@ -341,6 +341,8 @@ def sell():
         if not shares:
             return apology("Choose shares")
 
+        # Check to see if shares provided is 
+
         # Check to see if user has that many shares
         shares = int(shares)
         curr_shares = db.execute("SELECT SUM(shares) FROM transactions WHERE user_id=? AND symbol=?",
