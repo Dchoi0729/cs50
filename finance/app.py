@@ -137,11 +137,12 @@ def buy():
         if not request.form.get("shares"):
             return apology("Missing shares")
 
-        shares
-        if not
+        shares = request.form.get("shares")
+        if not shares.isdigit():
+            return apology("Provide int for shares")
 
         # If user inputted a negative amount of shares
-        shares = int(request.form.get("shares"))
+        shares = int(shares)
         if shares < 0:
             return apology("Negative shares")
 
