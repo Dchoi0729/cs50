@@ -139,6 +139,7 @@ def buy():
 
         # If user inputted a negative amount of shares
         shares = int(request.form.get("shares"))
+
         if shares < 0:
             return apology("Negative shares")
 
