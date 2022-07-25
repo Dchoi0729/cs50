@@ -257,7 +257,7 @@ def register():
         user = request.form.get("username")
         if not user:
             flash("Please provide a username")
-            return redirect("/register")
+            return redirect("/register"), 400
 
         # Check to see if username already exists in database
         db_user = db.execute("SELECT * FROM users WHERE username=?", user)
