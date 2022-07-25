@@ -238,8 +238,14 @@ def quote():
 
     # User sent a post request with symbol
     if request.method == "POST":
+
         data = lookup(request.form.get("symbol"))
-        return render_template("quoted.html", name=data["name"], symbol=data["symbol"], price=usd(data["price"]))
+
+        # If symbol is valid
+        if not data == None:
+            return render_template("quoted.html", name=data["name"], symbol=data["symbol"], price=usd(data["price"]))
+        else:
+            return apology("Invalid symbol")
 
     # User clicked on quote tab on navbar
     if request.method == "GET":
