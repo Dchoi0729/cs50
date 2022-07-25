@@ -341,7 +341,9 @@ def sell():
         if not shares:
             return apology("Choose shares")
 
-        # Check to see if shares provided is 
+        # Check to see if shares provided is an integer
+        if not shares.isdigit():
+            return apology("Provide int for shares")
 
         # Check to see if user has that many shares
         shares = int(shares)
