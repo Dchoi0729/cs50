@@ -9,6 +9,7 @@ from datetime import datetime
 
 from helpers import apology, login_required, lookup, usd, percent, percent2
 
+# https://scrimba.com/learn/learnreact
 # https://cs50.readthedocs.io/heroku/
 # export API_KEY=pk_01c5fa2829cb450e91de45efa0669518
 # Configure application
