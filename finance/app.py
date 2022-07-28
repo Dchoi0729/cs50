@@ -27,7 +27,14 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///finance.db")
+#db = SQL("sqlite:///finance.db")
+
+#pgloader --no-ssl-cert-verification finance.db postgres://ptlepkvkwfvfna:eb196da7e7e10e1b50c8147542fcaffce812bc37008f2e27021406f9b026a161@ec2-44-195-100-240.compute-1.amazonaws.com:5432/d5bta94ctgeqc7?sslmode=allow
+
+uri = os.getenv("DATABASE_URL")
+if uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://")
+db = SQL(uri)
 
 # Make sure API key is set
 if not os.environ.get("API_KEY"):
