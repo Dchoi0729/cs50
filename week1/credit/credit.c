@@ -105,6 +105,9 @@ int get_digit(long number, int place)
     return ((number / power(10, place)) % 10);
 }
 
+//54321
+// 543 % 10 = 3
+
 // Returns base^power
 long power(int base, int power)
 {
