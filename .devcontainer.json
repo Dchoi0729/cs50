@@ -5,6 +5,7 @@
     "/opt/cs50/extensions/workspace-layout-0.0.7.vsix", 
     "cs50.ddb50", 
     "cs50.extension-uninstaller", 
+    "cs50.vscode-presentation-mode", 
     "ms-python.python", 
     "ms-vscode.cpptools", 
     "ms-vscode.hexeditor", 
@@ -12,7 +13,7 @@
     "tomoki1207.pdf", 
     "vsls-contrib.gitdoc"
   ], 
-  "image": "ghcr.io/cs50/codespace:8fd6e6735968c4923888c43aafa343fbc6570831", 
+  "image": "ghcr.io/cs50/codespace:ea2154dd6fa770b16ddd647e258d989c51350f16", 
   "postCreateCommand": "/opt/cs50/bin/postCreateCommand", 
   "settings": {
     "C_Cpp.autocomplete": "Disabled", 
@@ -54,6 +55,7 @@
     "extension-uninstaller.uninstall": [
       "github.copilot", 
       "github.copilot-nightly", 
+      "ms-toolsai.jupyter", 
       "tabnine.tabnine-vscode"
     ], 
     "extensions.ignoreRecommendations": true, 
